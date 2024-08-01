@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Logseq
+Comment=logseq
+Icon=/home/fdan/AppImage/Logseq/logseq.png
+Exec=/home/fdan/AppImage/Logseq/Logseq-linux-x64-0.10.9.AppImage
+Terminal=false
+Categories=Office
