@@ -81,8 +81,9 @@ alias pdf='mupdf'
 alias update='sudo apt update'
 alias upgrade='sudo apt upgrade'
 alias su='sudo su'
-#alias lf='lf-kitty'
 alias ..='cd ..'
+alias c='xclip -sel clip'
+alias p='xclip -o -sel clip'
 
 # Shell integrations
 export PATH=/home/fdan/.local/bin:$PATH
