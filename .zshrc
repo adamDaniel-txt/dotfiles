@@ -93,8 +93,9 @@ eval "$(zoxide init zsh)"
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # ASCII
-neofetch
+#neofetch
 #figlet -t -c -f ANSIShadow "welcome"
+fortune | cowsay -f tux
 
 # The F
 eval $(thefuck --alias)
