@@ -68,6 +68,33 @@ git clone https://github.com/ericmurphyxyz/userChrome.css.git
 2. Save it as "ANSIShadow.flf"
 3. Install files to /usr/share/figlet/ or /usr/share/figlet/fonts/
 
+# My .bashrc config
+```
+# Vim Mode
+set -o vi
+
+# Exports
+export BROWSER='firefox'
+export EDITOR='nvim'
+export VISUAL='nvim'
+
+# Aliases
+alias ls='ls --color=auto'
+alias ll='ls -lah'
+alias c='xclip -sel clip'
+alias p='xclip -o -sel clip'
+
+# Shell Integrations
+eval "$(zoxide init bash)"
+eval "$(thefuck --alias)"
+
+# ASCII Art
+#neofetch
+#figlet -t F-c -f ANSIShadow "welcome"
+#fortune | cowsay -f tux
+fastfetch
+```
+
 # Applications 2 Install (optional)
 - bottom
 - auto-cpufreq
