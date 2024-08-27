@@ -70,6 +70,9 @@ git clone https://github.com/ericmurphyxyz/userChrome.css.git
 
 # My .bashrc config
 ```
+# Bash Prompt
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\n\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+
 # Vim Mode
 set -o vi
 
@@ -83,17 +86,23 @@ alias ls='ls --color=auto'
 alias ll='ls -lah'
 alias c='xclip -sel clip'
 alias p='xclip -o -sel clip'
+alias vim='nvim'
 
 # Shell Integrations
 eval "$(zoxide init bash)"
 eval "$(thefuck --alias)"
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 # ASCII Art
 #neofetch
 #figlet -t F-c -f ANSIShadow "welcome"
 #fortune | cowsay -f tux
-fastfetch
+fastfetch -c ~/.config/fastfetch/minimal.jsonc
+
+# PipX
+#export PATH="$PATH:/home/fdan/.dotfiles/.local/bin"
 ```
+
 # Winetricks
 ```
 winetricks d3dx10 d3dx9 dotnet35 dotnet40 dotnet45 dotnet48 dxvk vcrun2008 vcrun2010 vcrun2012 vcrun2019 vcrun6sp6
