@@ -94,6 +94,10 @@ eval "$(thefuck --alias)"
 #fortune | cowsay -f tux
 fastfetch
 ```
+# Winetricks
+```
+winetricks d3dx10 d3dx9 dotnet35 dotnet40 dotnet45 dotnet48 dxvk vcrun2008 vcrun2010 vcrun2012 vcrun2019 vcrun6sp6
+```
 
 # Applications 2 Install (optional)
 - bottom
