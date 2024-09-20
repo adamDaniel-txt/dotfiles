@@ -136,3 +136,7 @@ winetricks d3dx10 d3dx9 dotnet35 dotnet40 dotnet45 dotnet48 dxvk vcrun2008 vcrun
 - signal
 - keepassxc
 - okular
+- ani-cli
+- eza
+- dust
+- atuin
