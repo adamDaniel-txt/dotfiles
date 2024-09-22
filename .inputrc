@@ -20,4 +20,4 @@ set echo-control-characters off
 "\e[1;5C": forward-word
 
 # Bash Keybindings
-"\C-l":"clear\n"
+#"\C-l":"clear\n"
