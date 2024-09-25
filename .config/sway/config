@@ -1,0 +1,110 @@
+# Includes
+#include /etc/sway/config.d/* using directory
+include $HOME/.config/sway/autostart_applications
+
+set $mod Mod4
+
+# set terminal and menu
+set $term kitty
+set $menu rofi -show drun -modi drun -line-padding 4 -hide-scrollbar -show-icons
+
+bindsym $mod+Return exec $term
+bindsym $mod+Space exec $menu
+bindsym $mod+n exec swaync-client -t -sw
+#bindsym $mod+f exec thunar
+bindsym $mod+b exec librewolf
+#bindsym $mod+g exec swaymsg "workspace 8; exec gimp"
+#bindsym $mod+d exec swaymsg "workspace 9; exec Discord"
+bindsym $mod+o exec swaymsg "workspace 10; exec obs"
+bindsym $mod+e exec kitty -e lf
+# bindsym $mod+v exec tilix -e nvim
+
+# wallpaper
+output * background ~/Pictures/Wallpapers/cloud-hill-anime.jpg fill
+
+# windows
+bindsym $mod+q kill
+bindsym $mod+Shift+r reload; exec notify-send 'sway' 'Restarted'
+bindsym $mod+Shift+q exit
+
+# move focus
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+bindsym $mod+k focus up
+bindsym $mod+j focus down
+
+# move window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+j move down
+
+# resize window
+bindsym $mod+Ctrl+h resize shrink width 20px
+bindsym $mod+Ctrl+l resize grow width 20px
+
+# input configuration
+input * {
+    xkb_layout us
+    xkb_options caps:swapescape
+}
+
+# cursor configuration
+seat seat0 xcursor_theme Banana 32
+
+# audio
+bindsym $mod+Up exec ~/.config/scripts/changevolume up
+bindsym $mod+Down exec ~/.config/scripts/changevolume down
+bindsym $mod+m exec ~/.config/scripts/changevolume mute
+
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    bindsym $mod+7 workspace number 7
+    bindsym $mod+8 workspace number 8
+    bindsym $mod+9 workspace number 9
+    bindsym $mod+0 workspace number 10
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+    bindsym $mod+Shift+7 move container to workspace number 7
+    bindsym $mod+Shift+8 move container to workspace number 8
+    bindsym $mod+Shift+9 move container to workspace number 9
+    bindsym $mod+Shift+0 move container to workspace number 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+
+# cycle workspace
+bindsym Alt+tab workspace next_on_output 
+bindsym Alt+Shift+tab workspace prev_on_output 
+
+# Font
+font pango:Caskaydia Cove Nerd Font 12
+
+### Gaps
+gaps inner 16
+gaps outer 1
+default_border pixel 3
+
+### Borders
+client.focused          #7bb75b #7bb75b #282a36 #7bb75b #7bb75b
+client.focused_inactive #282a36 #282a36 #7bb75b #282a36 #282a36
+client.unfocused        #282a36 #282a36 #7bb75b #282a36 #282a36
+client.urgent           #ff5555 #ff5555 #282a36 #ff5555 #ff5555
+client.placeholder      #282a36 #282a36 #7bb75b #282a36 #282a36
+client.background       #282a36
+
+exec_always ~/.config/waybar/waybar.sh
+
+#GTK issue
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
