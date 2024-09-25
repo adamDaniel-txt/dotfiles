@@ -1,4 +1,12 @@
 #!/bin/sh
+#qrencode -t PNG -s 16 -o /tmp/tmp.png $()
 
-qrencode -t PNG -s 16 -o /tmp/tmp.png $(xclip -o -sel)
+# Check the display environment
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    # Wayland environment
+    qrencode -t PNG -s 16 -o /tmp/tmp.png $(wl-paste)
+else
+    # X11 environment
+    qrencode -t PNG -s 16 -o /tmp/tmp.png $(xclip -o -sel)
+fi
 sxiv /tmp/tmp.png

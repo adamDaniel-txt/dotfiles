@@ -126,7 +126,7 @@ map gc cd ~/.config
 map gD cd ~/Documents
 map gd cd ~/Downloads
 map gp cd ~/Pictures
-#map gr cd ~/repos
+map gw cd ~/Pictures/Wallpapers
 map gv cd ~/Videos
 map gs cd ~/.local/bin
 map gt cd ~/.local/share/Trash/files

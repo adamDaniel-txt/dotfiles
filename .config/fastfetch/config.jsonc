@@ -13,7 +13,7 @@
   "modules": [
 	{
 	  "type": "title",
-    "key":"  USER AT",
+//    "key":"  USER AT",
     "keyColor": "green",
 	  "color": {
 		  "user": "green",
@@ -25,7 +25,7 @@
 
 //system :
 
-    "break",
+//    "break",
     {
       "type": "custom",
       "format": "\u001b[90m╭──────────────────────SYSTEM──────────────────────╮"

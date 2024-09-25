@@ -21,6 +21,7 @@ bind -m vi-insert 'Control-l: clear-screen'
 # Aliases
 alias ls='ls --color=auto --group-directories-first'
 alias ll='eza -lah --git --group-directories-first'
+alias grep='grep --color=auto'
 alias c='xclip -sel clip'
 alias p='xclip -o -sel clip'
 alias vim='nvim'
@@ -50,6 +51,11 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 #figlet -t F-c -f ANSIShadow "welcome"
 #fortune | cowsay -f tux
 fastfetch -c ~/.config/fastfetch/minimal.jsonc
+
+# Compile and Run C prog file
+crun() {
+  gcc -o "${1%.*}" "$1" && ./"${1%.*}"
+}
 
 # Archive Extract
 ex ()
