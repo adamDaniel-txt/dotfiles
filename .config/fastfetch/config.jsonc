@@ -7,110 +7,87 @@
     "height": 26 
   },
   "display": {
-    "separator": "   ",
-    "color": "white"
+    "separator": " :  ",
+    "color": "blue"
   },
   "modules": [
 	{
 	  "type": "title",
-//    "key":"  USER AT",
-    "keyColor": "green",
+    "key":" ",
+    "keyColor": "red",
 	  "color": {
-		  "user": "green",
-		  "at": "white",
+		  "user": "yellow",
+		  "at": "green",
 		  "host": "blue"
-
 		}
 	},
 
+//user@host
+//    {
+//        "type": "custom",
+//        "format": "{#35}  {#37}:  {#31}[{#33}fdan{#32}@{#34}debian{#31}]"
+//    },
+
 //system :
 
-//    "break",
     {
       "type": "custom",
-      "format": "\u001b[90m╭──────────────────────SYSTEM──────────────────────╮"
-      //'\u001b[90m' is for color
+      "format": "┌────────────────────── System ──────────────────────┐",
+      "outputColor": "red"
     },
     {
       "type": "os",
       "key": "╭─  OS",
-      "keyColor": "cyan"
+      "keyColor": "green"
+    },
+    {
+      "type": "shell",
+      "key": "├─  SHELL",
+      "keyColor": "green"
     },
     {
       "type": "kernel",
       "key": "├─  KERNEL",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "uptime",
-      "key": "├─  UPTIME",
       "keyColor": "green"
     },
     {
       "type": "packages",
       "key": "├─  PACKAGES",
-      "keyColor": "blue"
+      "keyColor": "green"
     },  
     {
-      "type": "shell",
-      "key": "├─  SHELL",
-      "keyColor": "magenta"
-    },
-    {
-      "type": "wm",
-      "key": "├─  WINDOW MANAGER",
-      "keyColor": "red"
-    },
-    {
       "type": "terminal",
-      "key": "╰─  TERMINAL",
-      "keyColor": "magenta"
-    },
-    "break",
-
-//themes :
-    {
-      "type": "custom",
-      "format": "\u001b[90m╭─────────────────────────────THEMES──────────────────────────────╮"
-      //'\u001b[90m' is for color
-    },
-    {
-      "type": "theme",
-      "key": "╭─󰔎  THEMES",
-      "keyColor": "cyan"
-    },
-    {
-      "type": "icons",
-      "key": "├─  ICONS",
-      "keyColor": "yellow"
-    },
-    {
-      "type": "font",
-      "key": "├─  FONT",
+      "key": "├─  TERMINAL",
+      "format": "{pretty-name} {version}",
       "keyColor": "green"
     },
     {
-      "type": "cursor",
-      "key": "├─  CURSOR",
-      "keyColor": "blue"
+      "type": "wm",
+      "key": "╰─  WINDOW MANAGER",
+      "keyColor": "green"
     },
     {
-      "type": "terminalfont",
-      "key": "╰─  TERMINAL FONT",
-      "keyColor": "red"
+        "type": "custom",
+        "format": "└────────────────────────────────────────────────────┘",
+        "outputColor": "red"
     },
-    "break",
+
+//colors
+    {
+        "type": "custom",
+        "format": "{#37}█{#97}█ {#36}█{#96}█ {#35}█{#95}█ {#34}█{#94}█ {#33}█{#93}█ {#32}█{#92}█ {#31}█{#91}█ {#30}█{#90}█"
+    },
 
 //resources :
     {
       "type": "custom",
-      "format": "\u001b[90m╭────────────────────────────────RESOURCES─────────────────────────────────╮"
-      //'\u001b[90m' is for color
+      "format": "┌───────────────────── Resources ──────────────────────────────────────────┐",
+      "outputColor": "red"
     },
     {
       "type": "cpu",
       "key": "╭─  CPU",
-      "keyColor": "cyan"
+      "keyColor": "yellow"
     },
     {
       "type": "gpu",
@@ -118,21 +95,25 @@
       "keyColor": "yellow"
     },
     {
-      "type": "memory",
-      "key": "├─  MEMORY",  
-      "keyColor": "green"
-    },
-    {
       "type": "swap",
       "key": "├─  SWAP",
-      "keyColor": "blue"
+      "keyColor": "yellow"
     },
     {
       "type": "disk",
-      "key": "╰─  DISK",
-      "keyColor": "magenta"
+      "key": "├─  DISK",
+      "keyColor": "yellow"
     },
-    
+    {
+      "type": "memory",
+      "key": "╰─  MEMORY",  
+      "keyColor": "yellow"
+    },
+    {
+        "type": "custom",
+        "format": "└──────────────────────────────────────────────────────────────────────────┘",
+        "outputColor": "red"
+    },
     "break"
     // "colors"
   ]

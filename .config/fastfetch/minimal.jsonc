@@ -9,34 +9,32 @@
         {
             "type": "os",
             "key": "OS  ",
-            "keyColor": "31",  // = color1
+            "keyColor": "31"  // = color1
         },
         {
             "type": "kernel",
             "key": "KER ",
-            "keyColor": "32",
+            "keyColor": "32"
         },
         {
             "type": "packages",
-            "format": "{} (dpkg)",
             "key": "PKG ",
-            "keyColor": "33",  
+            "keyColor": "33"
         },
         {
             "type": "shell",
             "key": "SH  ",
-            "keyColor": "34", 
+            "keyColor": "34"
         },
         {
             "type": "terminal",
             "key": "TER ",
-            "keyColor": "35", 
+            "keyColor": "35"
         },
         {
             "type": "wm",
             "key": "WM  ",
-            "keyColor": "36", 
-        },
-        "break",
+            "keyColor": "36"
+        }
     ]
 }
