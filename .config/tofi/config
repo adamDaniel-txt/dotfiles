@@ -1,0 +1,18 @@
+prompt-text = "> "
+
+text-color = #f7f6ec
+prompt-color = #e8b32a
+selection-color = #7bb75b
+background-color = #1d1d1ddd
+
+width = 100%
+padding-left = 30%
+padding-top = 30%
+height = 100%
+border-width = 0
+outline-width = 0
+result-spacing = 14
+num-results = 8
+font = Caskaydia Cove Nerd Font
+font-variations = "wght 600"
+font-size = 24
