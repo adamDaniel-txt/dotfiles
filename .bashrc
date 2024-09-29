@@ -1,5 +1,5 @@
 # Exports
-export BROWSER='firefox'
+export BROWSER='librewolf'
 export EDITOR='nvim'
 export VISUAL='nvim'
 
@@ -58,7 +58,7 @@ crun() {
 }
 
 # Archive Extract
-ex ()
+ex()
 {
     if [ -f $1 ] ; then
       case $1 in
@@ -81,6 +81,41 @@ ex ()
   else
     echo "'$1' is not a valid file"
   fi
+}
+
+# Hastebin
+hb()
+{
+    if [ $# -eq 0 ]; then
+        echo "No file path specified."
+        return
+    elif [ ! -f "$1" ]; then
+        echo "File path does not exist."
+        return
+    fi
+
+    uri="http://bin.christitus.com/documents"
+    response=$(curl -s -X POST -d "$(cat "$1")" "$uri")
+    if [ $? -eq 0 ]; then
+        hasteKey=$(echo $response | jq -r '.key')
+        echo "http://bin.christitus.com/$hasteKey"
+    else
+        echo "Failed to upload the document."
+    fi
+}
+
+# Qrclip
+qr()
+{
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    # Wayland environment
+    qrencode -t PNG -s 16 -o /tmp/tmp.png $(wl-paste)
+else
+    # X11 environment
+    qrencode -t PNG -s 16 -o /tmp/tmp.png $(xclip -o -sel)
+fi
+
+sxiv /tmp/tmp.png
 }
 
 # PipX
