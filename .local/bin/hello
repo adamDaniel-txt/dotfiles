@@ -1,0 +1,27 @@
+#!/bin/bash
+
+echo
+
+echo "Hey there :)"
+echo
+
+echo "What's ur Name?" 
+read -p "= " name
+echo
+
+read -p "Good Morning $name!!"
+echo
+
+read -p "You're looking good today $name"
+echo
+
+read -p "jk, u ugly af"
+echo
+
+read -p "pfft, $name?"
+echo
+
+read -p "stupid name tbh"
+echo
+
+echo "kys, LOL"
