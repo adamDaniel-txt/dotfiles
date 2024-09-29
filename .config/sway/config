@@ -2,22 +2,30 @@
 #include /etc/sway/config.d/* using directory
 include $HOME/.config/sway/autostart_applications
 
+# variables
 set $mod Mod4
-
-# set terminal and menu
+set $volume_up pamixer -u -i 5
+set $volume_down pamixer -d 5
+set $toggle_mute pamixer -t
+set $volume_changed_sound paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 set $term kitty
-set $menu rofi -show drun -modi drun -line-padding 4 -hide-scrollbar -show-icons
+#set $menu rofi -show drun -modi drun -line-padding 4 -hide-scrollbar -show-icons
+set $menu tofi-drun --drun-launch=true
 
 bindsym $mod+Return exec $term
 bindsym $mod+Space exec $menu
 bindsym $mod+n exec swaync-client -t -sw
-#bindsym $mod+f exec thunar
 bindsym $mod+b exec librewolf
 #bindsym $mod+g exec swaymsg "workspace 8; exec gimp"
 #bindsym $mod+d exec swaymsg "workspace 9; exec Discord"
 bindsym $mod+o exec swaymsg "workspace 10; exec obs"
 bindsym $mod+e exec kitty -e lf
-# bindsym $mod+v exec tilix -e nvim
+
+# rules
+for_window [app_id="kitty"] floating enable, resize set 1280 720
+for_window [app_id="mpv"] floating enable, resize set 1280 720
+for_window [title="sxiv"] floating enable, resize set 720 720
+for_window [class="MuPDF"] floating enable, resize set 720 860
 
 # wallpaper
 output * background ~/Pictures/Wallpapers/cloud-hill-anime.jpg fill
@@ -49,13 +57,38 @@ input * {
     xkb_options caps:swapescape
 }
 
+# mouse sensitivity
+input "11145:26145:UGREEN_BLE_Mouse" {
+    accel_profile "flat"
+    pointer_accel -0.3
+}
+
+# mouse mode
+floating_modifier $mod
+
 # cursor configuration
 seat seat0 xcursor_theme Banana 32
 
 # audio
-bindsym $mod+Up exec ~/.config/scripts/changevolume up
-bindsym $mod+Down exec ~/.config/scripts/changevolume down
-bindsym $mod+m exec ~/.config/scripts/changevolume mute
+#bindsym $mod+Up exec ~/.config/scripts/changevolume up
+#bindsym $mod+Down exec ~/.config/scripts/changevolume down
+#bindsym $mod+m exec ~/.config/scripts/changevolume mute
+bindsym $mod+Up exec "$volume_up && $volume_changed_sound"
+bindsym $mod+Down exec "$volume_down && $volume_changed_sound"
+bindsym XF86AudioMute exec "$toggle_mute && sleep 0.3 && $volume_changed_sound"
+
+# Media
+bindsym $mod+Left exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym $mod+Right exec playerctl next
+
+# Screenshot
+bindsym $mod+s exec grimshot save screen ~/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png; exec notify-send 'Grim' 'Image saved to ~/Pictures/Screenshots/'
+bindsym $mod+Shift+s exec grimshot save area ~/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png; exec notify-send 'Grim' 'Image saved to ~/Pictures/Screenshots/'
+
+# Backlight
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 
 # Workspaces:
 #
@@ -87,6 +120,12 @@ bindsym $mod+m exec ~/.config/scripts/changevolume mute
 # cycle workspace
 bindsym Alt+tab workspace next_on_output 
 bindsym Alt+Shift+tab workspace prev_on_output 
+
+# make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# toggle floating mode
+bindsym $mod+t floating toggle
 
 # Font
 font pango:Caskaydia Cove Nerd Font 12
