@@ -127,13 +127,12 @@ bindsym $mod+f fullscreen
 # toggle floating mode
 bindsym $mod+t floating toggle
 
-# Font
+# font
 font pango:Caskaydia Cove Nerd Font 12
 
 ### Gaps
 gaps inner 16
-gaps outer 1
-default_border pixel 3
+default_border pixel 4
 
 ### Borders
 client.focused          #7bb75b #7bb75b #282a36 #7bb75b #7bb75b
