@@ -1,5 +1,6 @@
 set previewer ctpv
 set cleaner ctpvclear
+set icons
 &ctpv -s $id
 &ctpvquit $id
 

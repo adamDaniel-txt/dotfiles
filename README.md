@@ -1,6 +1,6 @@
 # Must Install 1st
 ```
-sudo apt install kitty htop neofetch mupdf sxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
+sudo apt install kitty htop neofetch zathura nsxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
 ```
 
 # Install Font
@@ -106,3 +106,4 @@ winetricks d3dx10 d3dx9 dotnet35 dotnet40 dotnet45 dotnet48 dxvk vcrun2008 vcrun
 - dust
 - atuin
 - cava
+- mupdf

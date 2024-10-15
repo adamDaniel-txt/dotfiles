@@ -1,6 +1,7 @@
-# Includes
-#include /etc/sway/config.d/* using directory
-include $HOME/.config/sway/autostart_applications
+# execute
+exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec swaync
+exec syncthing -no-browser &
 
 # variables
 set $mod Mod4
@@ -15,20 +16,21 @@ set $menu tofi-drun --drun-launch=true
 bindsym $mod+Return exec $term
 bindsym $mod+Space exec $menu
 bindsym $mod+n exec swaync-client -t -sw
-bindsym $mod+b exec librewolf
-#bindsym $mod+g exec swaymsg "workspace 8; exec gimp"
-#bindsym $mod+d exec swaymsg "workspace 9; exec Discord"
-bindsym $mod+o exec swaymsg "workspace 10; exec obs"
 bindsym $mod+e exec kitty -e lf
+bindsym $mod+Shift+b exec librewolf
+bindsym $mod+b exec swaymsg "workspace 2; exec firefox"
+bindsym $mod+g exec swaymsg "workspace 9; exec gimp"
+bindsym $mod+o exec swaymsg "workspace 10; exec obs"
 
 # rules
 for_window [app_id="kitty"] floating enable, resize set 1280 720
 for_window [app_id="mpv"] floating enable, resize set 1280 720
+for_window [app_id="zathura"] floating enable, resize set 720 860
 for_window [title="sxiv"] floating enable, resize set 720 720
 for_window [class="MuPDF"] floating enable, resize set 720 860
 
 # wallpaper
-output * background ~/Pictures/Wallpapers/cloud-hill-anime.jpg fill
+output * background ~/Pictures/Wallpapers/DeLorean.png fill
 
 # windows
 bindsym $mod+q kill
@@ -59,8 +61,8 @@ input * {
 
 # mouse sensitivity
 input "11145:26145:UGREEN_BLE_Mouse" {
-    accel_profile "flat"
-    pointer_accel -0.3
+    accel_profile "adaptive"
+    pointer_accel -1
 }
 
 # mouse mode
@@ -83,9 +85,9 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym $mod+Right exec playerctl next
 
 # Screenshot
-bindsym $mod+s exec grimshot save screen ~/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png; exec notify-send 'Grim' 'Image saved to ~/Pictures/Screenshots/'
-bindsym $mod+Shift+s exec grimshot save area ~/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png; exec notify-send 'Grim' 'Image saved to ~/Pictures/Screenshots/'
-
+bindsym $mod+Delete exec grimshot save screen ~/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png; exec notify-send 'Grim' 'Image saved to ~/Pictures/Screenshots/'
+bindsym $mod+s exec grimshot save screen - | wl-copy; exec notify-send 'Grim' 'Image saved to Clipboard'
+bindsym $mod+Shift+s exec grimshot save area - | wl-copy && exec notify-send 'Grim' 'Image saved to Clipboard'
 # Backlight
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
@@ -119,7 +121,7 @@ bindsym XF86MonBrightnessDown exec light -U 5
 
 # cycle workspace
 bindsym Alt+tab workspace next_on_output 
-bindsym Alt+Shift+tab workspace prev_on_output 
+bindsym $mod+tab workspace prev_on_output 
 
 # make the current focus fullscreen
 bindsym $mod+f fullscreen
