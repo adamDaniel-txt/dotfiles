@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Obdisian
-Comment=obsidian
-Icon=/home/fdan/AppImage/Obsidian/Obsidian.png
-Exec=/home/fdan/AppImage/Obsidian/Obsidian-1.6.5.AppImage
-Terminal=false
-Categories=Office

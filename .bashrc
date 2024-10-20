@@ -13,10 +13,10 @@ shopt -s cdspell
 # Ignore upper and lowercase when TAB completion
 #bind "set completion-ignore-case on"
 
-# Vim Mode
-set -o vi
-bind -m vi-command 'Control-l: clear-screen'
-bind -m vi-insert 'Control-l: clear-screen'
+## Vim Mode
+#set -o vi
+#bind -m vi-command 'Control-l: clear-screen'
+#bind -m vi-insert 'Control-l: clear-screen'
 
 # Aliases
 alias ls='ls --color=auto --group-directories-first'
