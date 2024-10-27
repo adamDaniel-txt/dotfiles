@@ -2,6 +2,11 @@
 exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec swaync
 exec syncthing -no-browser &
+exec swayidle \
+    timeout 300 'swaylock --color 1d1d1d' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    after-resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock --color 1d1d1d'
 
 # variables
 set $mod Mod4
@@ -30,12 +35,13 @@ for_window [title="sxiv"] floating enable, resize set 720 720
 for_window [class="MuPDF"] floating enable, resize set 720 860
 
 # wallpaper
-output * background ~/Pictures/Wallpapers/DeLorean.png fill
+output * background ~/Pictures/Wallpapers/abstract.png fill
 
 # windows
 bindsym $mod+q kill
 bindsym $mod+Shift+r reload; exec notify-send 'sway' 'Restarted'
 bindsym $mod+Shift+q exit
+bindsym $mod+x exec swaylock --color 1d1d1d
 
 # move focus
 bindsym $mod+h focus left
@@ -88,9 +94,12 @@ bindsym $mod+Right exec playerctl next
 bindsym $mod+Delete exec grimshot save screen ~/Pictures/Screenshots/$(date '+%Y-%m-%d-%T')-screenshot.png; exec notify-send 'Grim' 'Image saved to ~/Pictures/Screenshots/'
 bindsym $mod+s exec grimshot save screen - | wl-copy; exec notify-send 'Grim' 'Image saved to Clipboard'
 bindsym $mod+Shift+s exec grimshot save area - | wl-copy && exec notify-send 'Grim' 'Image saved to Clipboard'
+
 # Backlight
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym XF86MonBrightnessDown exec light -U 5
+#bindsym XF86MonBrightnessUp exec light -A 6
+#bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
 
 # Workspaces:
 #
@@ -120,8 +129,8 @@ bindsym XF86MonBrightnessDown exec light -U 5
     # We just use 1-10 as the default.
 
 # cycle workspace
-bindsym Alt+tab workspace next_on_output 
-bindsym $mod+tab workspace prev_on_output 
+bindsym Alt+tab workspace next_on_output
+bindsym $mod+tab workspace prev_on_output
 
 # make the current focus fullscreen
 bindsym $mod+f fullscreen
