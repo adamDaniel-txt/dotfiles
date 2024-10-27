@@ -2,6 +2,7 @@
 export BROWSER='w3m'
 export EDITOR='nvim'
 export VISUAL='nvim'
+export TERM='kitty'
 
 # Bash Prompt
 export PS1="\n\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\n\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
@@ -24,9 +25,9 @@ alias ll='eza -lah --git --group-directories-first'
 alias grep='grep --color=auto'
 alias c='xclip -sel clip'
 alias p='xclip -o -sel clip'
-alias vim='nvim'
+alias v='nvim'
 alias pdf='zathura'
-alias yta='yt-dlp --extract-audio --audio-format m4a --audio-quality 0 --add-metadata' 
+alias yta='yt-dlp --extract-audio --audio-format m4a --audio-quality 0 --add-metadata'
 alias cp='cp -riv'
 alias mv='mv -iv'
 alias df='df -h'
@@ -61,25 +62,24 @@ crun11() {
 }
 
 # Archive Extract
-ex()
-{
-    if [ -f $1 ] ; then
-      case $1 in
-        *.tar.bz2)   tar xjf $1   ;;
-        *.tar.gz)    tar xzf $1   ;;
-        *.bz2)       bunzip2 $1   ;;
-        *.rar)       unrar x $1   ;;
-        *.gz)        gunzip $1    ;;
-        *.tar)       tar xf $1    ;;
-        *.tbz2)      tar xjf $1   ;;
-        *.tgz)       tar xzf $1   ;;
-        *.zip)       unzip $1     ;;
-        *.Z)         uncompress $1;;
-        *.7z)        7za e x $1   ;;
-        *.deb)       ar x $1      ;;
-        *.tar.xz)    tar xf $1    ;;
-        *.tar.zst)   unzstd $1    ;;
-        *)           echo "'$1' cannot be extracted via ex()" ;;
+ex() {
+  if [ -f $1 ]; then
+    case $1 in
+    *.tar.bz2) tar xjf $1 ;;
+    *.tar.gz) tar xzf $1 ;;
+    *.bz2) bunzip2 $1 ;;
+    *.rar) unrar x $1 ;;
+    *.gz) gunzip $1 ;;
+    *.tar) tar xf $1 ;;
+    *.tbz2) tar xjf $1 ;;
+    *.tgz) tar xzf $1 ;;
+    *.zip) unzip $1 ;;
+    *.Z) uncompress $1 ;;
+    *.7z) 7za e x $1 ;;
+    *.deb) ar x $1 ;;
+    *.tar.xz) tar xf $1 ;;
+    *.tar.zst) unzstd $1 ;;
+    *) echo "'$1' cannot be extracted via ex()" ;;
     esac
   else
     echo "'$1' is not a valid file"
@@ -87,51 +87,48 @@ ex()
 }
 
 # Hastebin
-hb()
-{
-    if [ $# -eq 0 ]; then
-        echo "No file path specified."
-        return
-    elif [ ! -f "$1" ]; then
-        echo "File path does not exist."
-        return
-    fi
+hb() {
+  if [ $# -eq 0 ]; then
+    echo "No file path specified."
+    return
+  elif [ ! -f "$1" ]; then
+    echo "File path does not exist."
+    return
+  fi
 
-    uri="http://bin.christitus.com/documents"
-    response=$(curl -s -X POST -d "$(cat "$1")" "$uri")
-    if [ $? -eq 0 ]; then
-        hasteKey=$(echo $response | jq -r '.key')
-        echo "http://bin.christitus.com/$hasteKey"
-    else
-        echo "Failed to upload the document."
-    fi
+  uri="http://bin.christitus.com/documents"
+  response=$(curl -s -X POST -d "$(cat "$1")" "$uri")
+  if [ $? -eq 0 ]; then
+    hasteKey=$(echo $response | jq -r '.key')
+    echo "http://bin.christitus.com/$hasteKey"
+  else
+    echo "Failed to upload the document."
+  fi
 }
 
 # Qrclip
-qr()
-{
-    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+qr() {
+  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     # Wayland environment
     qrencode -t PNG -s 16 -o /tmp/tmp.png $(wl-paste)
-else
+  else
     # X11 environment
     qrencode -t PNG -s 16 -o /tmp/tmp.png $(xclip -o -sel)
-fi
+  fi
 
-nsxiv /tmp/tmp.png
+  nsxiv /tmp/tmp.png
 }
-qrrr()
-{
-    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+qrrr() {
+  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     # Wayland environment
     qrencode -t PNG -s 16 -o /tmp/tmp.png "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
-else
+  else
     # X11 environment
     qrencode -t PNG -s 16 -o /tmp/tmp.png "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
 
-fi
+  fi
 
-nsxiv /tmp/tmp.png
+  nsxiv /tmp/tmp.png
 }
 
 # PipX
