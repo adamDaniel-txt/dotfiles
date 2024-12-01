@@ -1,11 +1,12 @@
 # Exports
+export PATH="$PATH:/home/fdan/.local/bin"
 export BROWSER='w3m'
 export EDITOR='nvim'
 export VISUAL='nvim'
 export TERM='kitty'
 
 # Bash Prompt
-export PS1="\n\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\n\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\n\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
 # Shopt
 shopt -s autocd
@@ -20,13 +21,13 @@ shopt -s cdspell
 #bind -m vi-insert 'Control-l: clear-screen'
 
 # Aliases
-alias ls='ls --color=auto --group-directories-first'
+alias ls='eza --color=auto --group-directories-first'
 alias ll='eza -lah --git --group-directories-first'
 alias grep='grep --color=auto'
 alias c='xclip -sel clip'
 alias p='xclip -o -sel clip'
 alias v='nvim'
-alias pdf='zathura'
+alias pdf='mupdf'
 alias yta='yt-dlp --extract-audio --audio-format m4a --audio-quality 0 --add-metadata'
 alias cp='cp -riv'
 alias mv='mv -iv'
@@ -131,10 +132,7 @@ qrrr() {
   nsxiv /tmp/tmp.png
 }
 
-# PipX
-#export PATH="$PATH:/home/fdan/.dotfiles/.local/bin"
-
-. "$HOME/.atuin/bin/env"
-
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash)"
+#. "$HOME/.atuin/bin/env"
+#
+#[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+#eval "$(atuin init bash)"
