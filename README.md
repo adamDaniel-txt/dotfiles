@@ -1,6 +1,6 @@
 # Must Install 1st
 ```
-sudo apt install kitty htop neofetch zathura nsxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
+sudo apt install kitty htop neofetch mupdf nsxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
 ```
 
 # Install Font
@@ -17,7 +17,7 @@ cp fontfoldername ~/.local/share/fonts/
 # Install Zsh
 1. Install zsh
 ```
-sudo pkg install zsh
+sudo apt install zsh
 ```
 2. Change shell
 ```
