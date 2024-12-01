@@ -28,7 +28,7 @@ Plug 'tpope/vim-commentary'
 call plug#end()
 
 set title
-"set termguicolors
+set termguicolors
 set tabstop=2
 set softtabstop=0 noexpandtab
 set shiftwidth=2
@@ -39,7 +39,7 @@ set noshowmode
 set noruler
 set laststatus=2
 set noshowcmd
-"colorscheme vim
+colorscheme habamax
 
 let g:coc_disable_startup_warning = 1
 let g:lightline = {
@@ -47,21 +47,36 @@ let g:lightline = {
       \ }
 
 " Some basics:
-	nnoremap c "_c
-	filetype plugin on
-	syntax on
-	set encoding=utf-8
-	set number relativenumber
+		nnoremap c "_c
+		filetype plugin on
+		syntax on
+		set encoding=utf-8
+		set number relativenumber
 " Enable autocompletion:
-	set wildmode=longest,list,full
+		set wildmode=longest,list,full
 " Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+		autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Perform dot commands over visual blocks:
-	vnoremap . :normal .<CR>
-" Goyo plugin makes text more readable when writing prose:
-	map <leader>f :Goyo \| set spell spelllang=en_us \| set linebreak<CR>
+		vnoremap . :normal .<CR>
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-	set splitbelow splitright
+		set splitbelow splitright
+" Goyo plugin makes text more readable when writing prose:
+		map <leader>f :Goyo \| set spell spelllang=en_us \| set linebreak<CR>
+
+
+" Coc.nvim Remap
+" Remap <cr> to make it confirm completion
+		inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
 
 " Nerd tree
 	map <leader>n :NERDTreeToggle<CR>
@@ -118,7 +133,7 @@ let g:lightline = {
 	autocmd BufWritePre * %s/\n\+\%$//e
   autocmd BufWritePre *.[ch] %s/\%$/\r/e " add trailing newline for ANSI C standard
   autocmd BufWritePre *neomutt* %s/^--$/-- /e " dash-dash-space signature delimiter in emails
-  	autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
+  autocmd BufWritePre * cal cursor(currPos[1], currPos[2])
 
 " When shortcut files are updated, renew bash and ranger configs with new material:
 	autocmd BufWritePost bm-files,bm-dirs !shortcuts
