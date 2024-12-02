@@ -14,6 +14,7 @@ grey=#282c34
 blue=#4c99d3
 red=#ce3e60
 yellow=#e8b32a
+purple=#a57fc4
 darkblue=#388dce
 
 cpu() {
@@ -63,11 +64,16 @@ clock() {
 	printf "^c$black^^b$blue^  $(date '+%H:%M')  "
 }
 
+vol() {
+	printf "^c$purple^^b$black^  "
+  pamixer --get-volume-human
+}
+
 while true; do
 
   [ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
   interval=$((interval + 1))
 
   #sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  sleep 1 && xsetroot -name "$updates $(battery) $(wlan) $(clock)"
+  sleep 1 && xsetroot -name "$updates $(battery) $(wlan) $(clock) $(vol) "
 done
