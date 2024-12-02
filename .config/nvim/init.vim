@@ -148,7 +148,7 @@ inoremap <silent><expr> <Tab>
 "    highlight! link DiffText MatchParen
 "endif
 
-"" Function for Goyo
+" Function for Goyo
 "function! s:goyo_enter()
 "	set linebreak
 "	set spell spelllang=en_us
