@@ -1,5 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
+/* constants */
+#define TERMINAL "st"
+#define TERMCLASS "St"
+#define BROWSER "firefox"
+
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
@@ -14,10 +19,11 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
+static const char col_green[]       = "#7bb75b";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_gray1, col_green, col_green },
 };
 
 /* tagging */
@@ -63,10 +69,10 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_green, "-sf", col_gray1, NULL };
+static const char *termcmd[]  = { TERMINAL, NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120:34", "-e", "tmux", NULL };
 static const char *browser[]  = { "firefox", NULL };
 static const char *upbrightness[]   = { "brightnessctl", "set", "+10%", NULL };
 static const char *downbrightness[] = { "brightnessctl", "set", "10%-", NULL };
@@ -97,6 +103,18 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+
+	{ MODKEY,             					XK_s,      spawn,     		 SHCMD("screenshot") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,     		 SHCMD("screenshot select") },
+	{ MODKEY|ShiftMask,							XK_w,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
+	{ MODKEY,												XK_e,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "lf", NULL } } },
+	{ MODKEY,												XK_c,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qalc", NULL } } },
+	{ MODKEY|ShiftMask,             XK_k,      spawn,     		 SHCMD("xkill") },
+	{ MODKEY|ShiftMask,							XK_p,      spawn,          {.v = (const char*[]){ "passmenu", NULL } } },
+	{ MODKEY,												XK_p,      spawn,          {.v = (const char*[]){ "playerctl", "play-pause", NULL } } },
+	{ MODKEY,												XK_bracketleft, spawn,     {.v = (const char*[]){ "playerctl", "previous", NULL } } },
+	{ MODKEY,												XK_bracketright, spawn,    {.v = (const char*[]){ "playerctl", "next", NULL } } },
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -107,7 +125,13 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,             					XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_q,      spawn,          {.v = (const char*[]){ "sysact", NULL } } },
+	//{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+
+	{ 0, XF86XK_AudioMute,                     spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
+	{ 0, XF86XK_AudioRaiseVolume,              spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
+	{ 0, XF86XK_AudioLowerVolume,              spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%+ && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ 0, XF86XK_AudioMicMute,                  spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
 	{ 0, XF86XK_MonBrightnessUp,    					 spawn,          {.v = upbrightness } },
 	{ 0, XF86XK_MonBrightnessDown,  					 spawn,          {.v = downbrightness } },
 };
