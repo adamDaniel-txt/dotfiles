@@ -1,6 +1,6 @@
 # Must Install 1st
 ```
-sudo apt install kitty htop neofetch mupdf nsxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
+sudo apt install kitty slock scrot htop neofetch mupdf nsxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
 ```
 
 # Install Font

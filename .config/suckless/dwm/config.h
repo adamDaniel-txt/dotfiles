@@ -104,6 +104,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
+	{ MODKEY,												XK_Insert, spawn,          SHCMD("xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
 	{ MODKEY,             					XK_s,      spawn,     		 SHCMD("screenshot") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,     		 SHCMD("screenshot select") },
 	{ MODKEY|ShiftMask,							XK_w,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
