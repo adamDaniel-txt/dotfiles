@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#setxkbmap -option "caps:swapescape"
+#xrdb -load ~/.config/X11/xresources
+##feh --bg-fill ~/Pictures/Wallpapers/void.png
+#xwallpaper --zoom ~/Pictures/Wallpapers/cloud-hill-anime.jpg
+#redshift -l 3.14:101.69 &
+#pipewire &
+#syncthing -no-browser &
+#dunst &
+##dwmblocks &
+#dwmbar &
+#
+#exec dwm
+
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/X11/xprofile" ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/X11/xprofile"
+else
+	. "$HOME/.xprofile"
+fi
+# Activate dbus variables
+dbus-update-activation-environment --all
+#dbus-launch ssh-agent dwm
+dbus-launch dwm

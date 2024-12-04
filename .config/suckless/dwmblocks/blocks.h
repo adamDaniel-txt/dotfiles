@@ -2,9 +2,10 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	/*{"Mem:", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},*/
-	{" ", "internet",                            5,    0},
+	{" ", "internet",                           5,    0},
 	{"", "battery",                          	300,    0},
 	{"", "date '+%b %d (%a) %I:%M%p'",					5,		0},
+	{"", "pamixer --get-volume-human",				300,		0},
 };
 
 //sets delimiter between status commands. NULL character ('\0') means no delimiter.

@@ -1,0 +1,58 @@
+Xft.antialias:	1
+Xft.hinting:	1
+Xft.autohint:	0
+Xft.hintstyle:	hintslight
+Xft.rgba:	rgb
+Xft.lcdfilter:	lcddefault
+
+! window padding
+st.borderpx: 20
+
+!-- values between 0.1  - 1.0 --!
+st.alpha: 1.0
+st.font: Caskaydia Cove Nerd Font-14;
+
+*.foreground: #f7f6ec
+*.background: #1d1d1d
+*.cursorColor: #eccf4f
+*.color0: #343835
+*.color8: #343835
+*.color1: #ce3e60
+*.color9: #ce3e60
+*.color2: #7bb75b
+*.color10: #7bb75b
+*.color3: #e8b32a
+*.color11: #e8b32a
+*.color4: #4c99d3
+*.color12: #4c99d3
+*.color5: #a57fc4
+*.color13: #a57fc4
+*.color6: #389aac
+*.color14: #389aac
+*.color7: #f9faf6
+*.color15:#f9faf6
+
+!!*.foreground: #f7f6ec
+!!*.background: #1d1d1d
+!!*.cursorColor: #eccf4f
+!!*.color0: #585a58
+!!*.color8: #343835
+!!*.color1: #d18ea6
+!!*.color9: #ce3e60
+!!*.color2: #767e2b
+!!*.color10: #7bb75b
+!!*.color3: #77592e
+!!*.color11: #e8b32a
+!!*.color4: #135879
+!!*.color12: #4c99d3
+!!*.color5: #5f4190
+!!*.color13: #a57fc4
+!!*.color6: #76bbca
+!!*.color14: #389aac
+!!*.color7: #b1b5ae
+!!*.color15: #f9faf6
+
+!! Cursor
+Xft.dpi: 84
+Xcursor.theme: Banana
+Xcursor.size: 32

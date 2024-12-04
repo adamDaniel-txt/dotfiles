@@ -1,0 +1,17 @@
+#!/bin/sh
+
+setxkbmap -option "caps:swapescape"
+xrandr --dpi 84		# Set DPI. User may want to use a larger number for larger screens.
+xwallpaper --zoom ~/Pictures/Wallpapers/cloud-hill-anime.jpg
+redshift -l 3.14:101.69 &
+syncthing -no-browser &
+xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/X11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
+
+autostart="dunst unclutter pipewire dwmbar"
+
+for program in $autostart; do
+	pidof -sx "$program" || "$program" &
+done >/dev/null 2>&1
+
+# Ensure that xrdb has finished running before moving on to start the WM/DE.
+[ -n "$xrdbpid" ] && wait "$xrdbpid"

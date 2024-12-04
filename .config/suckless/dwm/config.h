@@ -106,7 +106,9 @@ static const Key keys[] = {
 
 	{ MODKEY,												XK_Insert, spawn,          SHCMD("xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
 	{ MODKEY,             					XK_s,      spawn,     		 SHCMD("screenshot") },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,     		 SHCMD("screenshot select") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,     		 SHCMD("screenshot window") },
+	{ MODKEY,												XK_w,      spawn,          SHCMD("webcam") },
+	{ MODKEY,             					XK_o,      spawn,     		 {.v = (const char*[]){ TERMINAL, "-e", "qr", NULL } } },
 	{ MODKEY|ShiftMask,							XK_w,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
 	{ MODKEY,												XK_e,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "lf", NULL } } },
 	{ MODKEY,												XK_c,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qalc", NULL } } },
