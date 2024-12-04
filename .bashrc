@@ -1,9 +1,9 @@
 # Exports
 export PATH="$PATH:/home/fdan/.local/bin"
-export BROWSER='w3m'
-export EDITOR='nvim'
-export VISUAL='nvim'
-export TERM='kitty'
+#export BROWSER='w3m'
+#export EDITOR='nvim'
+#export VISUAL='nvim'
+#export TERM='kitty'
 
 # Bash Prompt
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\n\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
@@ -26,8 +26,8 @@ alias ll='eza -lah --git --group-directories-first'
 alias grep='grep --color=auto'
 alias c='xclip -sel clip'
 alias p='xclip -o -sel clip'
-alias v='nvim'
-alias pdf='mupdf'
+alias vim='nvim'
+alias pdf='zathura'
 alias yta='yt-dlp --extract-audio --audio-format m4a --audio-quality 0 --add-metadata'
 alias cp='cp -riv'
 alias mv='mv -iv'
@@ -108,29 +108,29 @@ hb() {
 }
 
 # Qrclip
-qr() {
-  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    # Wayland environment
-    qrencode -t PNG -s 16 -o /tmp/tmp.png $(wl-paste)
-  else
-    # X11 environment
-    qrencode -t PNG -s 16 -o /tmp/tmp.png $(xclip -o -sel)
-  fi
-
-  nsxiv /tmp/tmp.png
-}
-qrrr() {
-  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    # Wayland environment
-    qrencode -t PNG -s 16 -o /tmp/tmp.png "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
-  else
-    # X11 environment
-    qrencode -t PNG -s 16 -o /tmp/tmp.png "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
-
-  fi
-
-  nsxiv /tmp/tmp.png
-}
+#qr() {
+#  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+#    # Wayland environment
+#    qrencode -t PNG -s 16 -o /tmp/tmp.png $(wl-paste)
+#  else
+#    # X11 environment
+#    qrencode -t PNG -s 16 -o /tmp/tmp.png $(xclip -o -sel)
+#  fi
+#
+#  nsxiv /tmp/tmp.png
+#}
+#qrrr() {
+#  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+#    # Wayland environment
+#    qrencode -t PNG -s 16 -o /tmp/tmp.png "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
+#  else
+#    # X11 environment
+#    qrencode -t PNG -s 16 -o /tmp/tmp.png "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
+#
+#  fi
+#
+#  nsxiv /tmp/tmp.png
+#}
 
 #. "$HOME/.atuin/bin/env"
 #
