@@ -1,9 +1,5 @@
 # Exports
 export PATH="$PATH:/home/fdan/.local/bin"
-#export BROWSER='w3m'
-#export EDITOR='nvim'
-#export VISUAL='nvim'
-#export TERM='kitty'
 
 # Bash Prompt
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\n\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
