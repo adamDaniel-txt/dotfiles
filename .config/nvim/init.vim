@@ -13,7 +13,7 @@ imap ,, <esc>:keepp /<++><CR>ca<
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'alvan/vim-closetag'
@@ -29,6 +29,7 @@ call plug#end()
 
 set title
 set termguicolors
+set cindent
 set tabstop=2
 set softtabstop=0 noexpandtab
 set shiftwidth=2
@@ -39,11 +40,11 @@ set noshowmode
 set noruler
 set laststatus=2
 set noshowcmd
-colorscheme habamax
+colorscheme retrobox
 
 let g:coc_disable_startup_warning = 1
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'wombat',
       \ }
 
 " Some basics:
@@ -63,20 +64,17 @@ let g:lightline = {
 " Goyo plugin makes text more readable when writing prose:
 		map <leader>f :Goyo \| set spell spelllang=en_us \| set linebreak<CR>
 
+" Install nessesary extension
+	let g:coc_global_extensions = [
+		\ 'coc-snippets',
+		\ 'coc-pairs',
+		\ 'coc-eslint',
+		\ ]
 
-" Coc.nvim Remap
-" Remap <cr> to make it confirm completion
-		inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-" use <tab> to trigger completion and navigate to the next complete item
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+	nmap <F2> <Plug>(coc-rename)
 
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
+" disable pairs character '<' for html
+	autocmd FileType html let b:coc_pairs_disabled = ['<']
 
 " Nerd tree
 	map <leader>n :NERDTreeToggle<CR>
@@ -123,9 +121,9 @@ inoremap <silent><expr> <Tab>
 	cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Enable Goyo by default for mutt writing
-"	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo 80 | call feedkeys("jk")
-"	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo!\|x!<CR>
-"	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo!\|q!<CR>
+	autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo 80 | call feedkeys("jk")
+	autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo!\|x!<CR>
+	autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo!\|q!<CR>
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save. & reset cursor position
  	autocmd BufWritePre * let currPos = getpos(".")
