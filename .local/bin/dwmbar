@@ -26,13 +26,14 @@ cpu() {
 
 pkg_updates() {
   #updates=$({ timeout 20 doas xbps-install -un 2>/dev/null || true; } | wc -l) # void
+# pacman -Qu | wc -l
   updates=$({ timeout 20 checkupdates 2>/dev/null || true; } | wc -l) # arch
   # updates=$({ timeout 20 aptitude search '~U' 2>/dev/null || true; } | wc -l)  # apt (ubuntu, debian etc)
 
   if [ -z "$updates" ]; then
-    printf "  ^c$yellow^     Fully Updated"
+    printf "  ^c$yellow^    Fully Updated"
   else
-    printf "  ^c$yellow^     $updates"" updates"
+    printf "  ^c$yellow^    $updates"" updates"
   fi
 }
 
@@ -59,9 +60,10 @@ wlan() {
 	esac
 }
 
-clock() {
-	printf "^c$black^^b$darkblue^ 󰥔  "
-	printf "^c$black^^b$blue^  $(date '+%H:%M')  "
+dateTime() {
+	# printf "^c$black^^b$darkblue^ $(date '+%b %d (%a)') "
+	printf "^c$black^^b$blue^  $(date '+%b %d (%a) %I:%M%p') "
+	#printf "^c$black^^b$blue^  $(date '+%H:%M'󰖨)  "
 }
 
 vol() {
@@ -74,6 +76,8 @@ while true; do
   [ $interval = 0 ] || [ $(($interval % 3600)) = 0 ] && updates=$(pkg_updates)
   interval=$((interval + 1))
 
-  #sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(clock)"
-  sleep 1 && xsetroot -name "$updates $(battery) $(wlan) $(clock) $(vol) "
+  #sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(date)"
+  xsetroot -name "$updates $(battery) $(wlan) $(dateTime) $(vol) "
+
+  sleep 55
 done
