@@ -6,7 +6,7 @@ Xft.rgba:	rgb
 Xft.lcdfilter:	lcddefault
 
 ! window padding
-st.borderpx: 20
+/* st.borderpx: 20 */
 
 !-- values between 0.1  - 1.0 --!
 st.alpha: 1.0
