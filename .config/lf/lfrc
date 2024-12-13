@@ -22,8 +22,9 @@ cmd mkfile ${{
   $EDITOR $ans
 }}
 
-cmd setwallpaper ${{
-    setwallpaper "$f"
+cmd setbg ${{
+  ln -s -f $f ~/.local/share/bg
+  xwallpaper --zoom ~/.local/share/bg
 }}
 
 # Archive bindings
@@ -122,7 +123,8 @@ map <enter> open
 map R reload
 map mf mkfile
 map md mkdir
-map b $setbg $f
+map b setbg
+map T $nsxiv -t "$(pwd)"
 map C clear
 
 # Movement
