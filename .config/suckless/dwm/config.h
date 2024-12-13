@@ -90,13 +90,13 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	//{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_z, 		 zoom,           {0} },
 	{ Alt,                       		XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	//{ MODKEY,                       XK_space,  setlayout,      {0} },
-	//{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ Alt|ShiftMask,                XK_space,  setlayout,      {0} },
+	{ Alt,             							XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -104,12 +104,13 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
-	{ MODKEY,												XK_Insert, spawn,          SHCMD("xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
+	{ 0,												    XK_Insert, spawn,          SHCMD("xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
 	{ MODKEY,             					XK_s,      spawn,     		 SHCMD("screenshot") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,     		 SHCMD("screenshot window") },
 	{ MODKEY,												XK_w,      spawn,          SHCMD("webcam") },
-	{ MODKEY,             					XK_o,      spawn,     		 {.v = (const char*[]){ TERMINAL, "-e", "qr", NULL } } },
 	{ MODKEY|ShiftMask,							XK_w,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
+	{ MODKEY|ShiftMask,							XK_l,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "slock", NULL } } },
+	{ MODKEY,             					XK_o,      spawn,     		 {.v = (const char*[]){ TERMINAL, "-e", "qr", NULL } } },
 	{ MODKEY,												XK_e,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "lf", NULL } } },
 	{ MODKEY,												XK_c,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qalc", NULL } } },
 	{ MODKEY|ShiftMask,             XK_k,      spawn,     		 SHCMD("xkill") },
@@ -117,6 +118,9 @@ static const Key keys[] = {
 	{ MODKEY,												XK_p,      spawn,          {.v = (const char*[]){ "playerctl", "play-pause", NULL } } },
 	{ MODKEY,												XK_bracketleft, spawn,     {.v = (const char*[]){ "playerctl", "previous", NULL } } },
 	{ MODKEY,												XK_bracketright, spawn,    {.v = (const char*[]){ "playerctl", "next", NULL } } },
+
+	/* { MODKEY,												XK_F9,     spawn,          {.v = (const char*[]){ "mounter", NULL } } }, */
+	/* { MODKEY,												XK_F10,    spawn,          {.v = (const char*[]){ "unmounter", NULL } } }, */
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -129,11 +133,11 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,             					XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      spawn,          {.v = (const char*[]){ "sysact", NULL } } },
-	//{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	/* { MODKEY|ShiftMask,             XK_q,      quit,           {0} }, */
 
-	{ 0, XF86XK_AudioMute,                     spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
-	{ 0, XF86XK_AudioRaiseVolume,              spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+") },
-	{ 0, XF86XK_AudioLowerVolume,              spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%+ && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ 0, XF86XK_AudioMute,                     spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && refbar") },
+	{ 0, XF86XK_AudioRaiseVolume,              spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && refbar") },
+	{ 0, XF86XK_AudioLowerVolume,              spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%+ && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && refbar") },
 	{ 0, XF86XK_AudioMicMute,                  spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
 	{ 0, XF86XK_MonBrightnessUp,    					 spawn,          {.v = upbrightness } },
 	{ 0, XF86XK_MonBrightnessDown,  					 spawn,          {.v = downbrightness } },
