@@ -2,7 +2,7 @@
 export PATH="$PATH:/home/fdan/.local/bin"
 
 # Bash Prompt
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\n\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+export PS1="\n\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\n\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 
 # Shopt
 shopt -s autocd
@@ -20,6 +20,7 @@ shopt -s cdspell
 alias ls='eza --color=auto --group-directories-first'
 alias ll='eza -lah --git --group-directories-first'
 alias grep='grep --color=auto'
+alias diff='diff --color=auto'
 alias c='xclip -sel clip'
 alias p='xclip -o -sel clip'
 alias vim='nvim'
