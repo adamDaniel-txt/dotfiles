@@ -45,7 +45,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
-static const int attachbelow = 1;    /* 1 means attach after the currently active window */
+static const int attachbelow = 0;    /* 1 means attach after the currently active window */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
@@ -95,13 +95,13 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ Alt|ShiftMask,                XK_space,  setlayout,      {0} },
-	{ Alt,             							XK_space,  togglefloating, {0} },
+	/* { MODKEY,             XK_space,  setlayout,      {0} }, */
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 	{ 0,												    XK_Insert, spawn,          SHCMD("xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
@@ -116,6 +116,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_k,      spawn,     		 SHCMD("xkill") },
 	{ MODKEY|ShiftMask,							XK_p,      spawn,          {.v = (const char*[]){ "passmenu", NULL } } },
 	{ MODKEY,												XK_p,      spawn,          {.v = (const char*[]){ "playerctl", "play-pause", NULL } } },
+	{ MODKEY,												XK_BackSpace,  spawn,      {.v = (const char*[]){ "sysact", NULL } } },
 	{ MODKEY,												XK_bracketleft, spawn,     {.v = (const char*[]){ "playerctl", "previous", NULL } } },
 	{ MODKEY,												XK_bracketright, spawn,    {.v = (const char*[]){ "playerctl", "next", NULL } } },
 
@@ -132,8 +133,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,             					XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_q,      spawn,          {.v = (const char*[]){ "sysact", NULL } } },
-	/* { MODKEY|ShiftMask,             XK_q,      quit,           {0} }, */
+	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
 	{ 0, XF86XK_AudioMute,                     spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && refbar") },
 	{ 0, XF86XK_AudioRaiseVolume,              spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && refbar") },
