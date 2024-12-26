@@ -1,0 +1,8 @@
+#!/bin/sh
+
+wallpaper=$(ls ~/Pictures/Wallpapers | dmenu -i -l 50)
+
+[ $wallpaper -z ] || {
+	ln -s -f ~/Pictures/Wallpapers/$wallpaper ~/.local/share/bg
+	xwallpaper --zoom ~/Pictures/Wallpapers/$wallpaper
+}
