@@ -51,6 +51,11 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 #fortune | cowsay -f tux
 fastfetch -c ~/.config/fastfetch/minimal.jsonc
 
+# Optimize image for the web
+webjpg() {
+  magick $1 -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize $2 $3
+}
+
 # Compile and Run C prog file
 crun() {
   gcc -o "${1%.*}" "$1" -lm && ./"${1%.*}"
