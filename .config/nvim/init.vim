@@ -103,8 +103,8 @@ let g:lightline = {
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler "%:p"<CR>
 
-" Open corresponding .pdf/.html or preview
-	map <leader>p :!opout "%:p"<CR>
+" Open current buffer in Browser
+	map <leader>p :execute ':silent !firefox %'<CR>
 
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
