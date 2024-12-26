@@ -1,6 +1,6 @@
 # Must Install 1st
 ```
-sudo apt install kitty slock scrot htop neofetch zathura nsxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
+sudo apt install  unclutter kitty slock scrot htop neofetch zathura nsxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
 ```
 
 # Install Font
@@ -73,7 +73,7 @@ git clone https://github.com/ericmurphyxyz/userChrome.css.git
 winetricks d3dx10 d3dx9 dotnet35 dotnet40 dotnet45 dotnet48 dxvk vcrun2008 vcrun2010 vcrun2012 vcrun2019 vcrun6sp6
 ```
 
-# Applications 2 Install (optional)
+# Cool Programs
 - bottom
 - auto-cpufreq
 - forge
@@ -95,7 +95,7 @@ winetricks d3dx10 d3dx9 dotnet35 dotnet40 dotnet45 dotnet48 dxvk vcrun2008 vcrun
 - kdenlive
 - veracrypt
 - qemu/kvm
-- musicbrain
+- picard
 - virtualbox
 - obsidian
 - signal
