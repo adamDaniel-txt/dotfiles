@@ -32,25 +32,25 @@ st.font: Caskaydia Cove Nerd Font-14;
 *.color7: #f9faf6
 *.color15:#f9faf6
 
-!!*.foreground: #f7f6ec
-!!*.background: #1d1d1d
-!!*.cursorColor: #eccf4f
-!!*.color0: #585a58
-!!*.color8: #343835
-!!*.color1: #d18ea6
-!!*.color9: #ce3e60
-!!*.color2: #767e2b
-!!*.color10: #7bb75b
-!!*.color3: #77592e
-!!*.color11: #e8b32a
-!!*.color4: #135879
-!!*.color12: #4c99d3
-!!*.color5: #5f4190
-!!*.color13: #a57fc4
-!!*.color6: #76bbca
-!!*.color14: #389aac
-!!*.color7: #b1b5ae
-!!*.color15: #f9faf6
+/* *.foreground: #f7f6ec */
+/* *.background: #1d1d1d */
+/* *.cursorColor: #eccf4f */
+/* *.color0: #585a58 */
+/* *.color8: #343835 */
+/* *.color1: #d18ea6 */
+/* *.color9: #ce3e60 */
+/* *.color2: #767e2b */
+/* *.color10: #7bb75b */
+/* *.color3: #77592e */
+/* *.color11: #e8b32a */
+/* *.color4: #135879 */
+/* *.color12: #4c99d3 */
+/* *.color5: #5f4190 */
+/* *.color13: #a57fc4 */
+/* *.color6: #76bbca */
+/* *.color14: #389aac */
+/* *.color7: #b1b5ae */
+/* *.color15: #f9faf6 */
 
 !! Cursor
 Xft.dpi: 84

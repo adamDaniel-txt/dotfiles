@@ -19,7 +19,8 @@
         {
             "type": "packages",
             "key": "PKG ",
-            "keyColor": "33"
+            "keyColor": "33",
+            "format": "{all}"
         },
         {
             "type": "shell",
