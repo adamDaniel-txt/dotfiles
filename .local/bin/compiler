@@ -26,7 +26,7 @@ case "${ext}" in
     h) sudo make install ;;
     java) javac -d classes "${file}" && java -cp classes "${base}" ;;
     m) octave "${file}" ;;
-    md) pandoc --template eisvogel --listings -o "${base}.pdf" "${file}" ;;
+    md) pandoc --from markdown --template eisvogel --listings -o "${base}.pdf" "${file}" ;;
     org) emacs "${file}" --batch -u "${USER}" -f org-latex-export-to-pdf ;;
     py) python "${file}" ;;
     [rR]md) Rscript -e "rmarkdown::render('${file}', quiet=TRUE)" ;;
