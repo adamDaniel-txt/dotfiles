@@ -1,26 +1,18 @@
 # Exports
-export PATH="$PATH:/home/fdan/.local/bin"
 
 # Bash Prompt
-export PS1="\n\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\n\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+export PS1="\n\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\n\[$(tput setaf 7)\]\\[$(tput sgr0)\]_ "
 
 # Shopt
 shopt -s autocd
 shopt -s cdspell
 
-# Ignore upper and lowercase when TAB completion
-#bind "set completion-ignore-case on"
-
-## Vim Mode
-#set -o vi
-#bind -m vi-command 'Control-l: clear-screen'
-#bind -m vi-insert 'Control-l: clear-screen'
-
 # Aliases
-alias ls='eza --color=auto --group-directories-first'
-alias ll='eza -lah --git --group-directories-first'
-alias grep='grep --color=auto'
+alias ls='exa --color=auto --group-directories-first'
+alias ll='exa -lah --git --group-directories-first'
+alias grep='grep --color=auto -i'
 alias diff='diff --color=auto'
+alias rsync='rsync --progress'
 alias c='xclip -sel clip'
 alias p='xclip -o -sel clip'
 alias vim='nvim'
@@ -29,6 +21,7 @@ alias yta='yt-dlp --extract-audio --audio-format m4a --audio-quality 0 --add-met
 alias cp='cp -riv'
 alias mv='mv -iv'
 alias df='df -h'
+alias ai='ollama run llama3.2:1b'
 alias po='sudo shutdown now'
 alias rs='sudo reboot'
 
@@ -43,7 +36,8 @@ alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Log out and log back in for ch
 # Shell Integrations
 eval "$(zoxide init bash)"
 eval "$(thefuck --alias)"
-export PATH="$PATH:/opt/nvim-linux64/bin"
+source /usr/share/doc/fzf/examples/key-bindings.bash
+# source /usr/share/doc/fzf/examples/completion.bash
 
 # ASCII Art
 #neofetch
@@ -53,7 +47,12 @@ fastfetch -c ~/.config/fastfetch/minimal.jsonc
 
 # Optimize image for the web
 webjpg() {
-  magick $1 -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize $2 $3
+  convert $1 -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize $2 $3
+}
+
+opti() {
+	mkdir min
+  mogrify -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize 400 -path "min" $1
 }
 
 # Compile and Run C prog file
@@ -108,28 +107,3 @@ hb() {
     echo "Failed to upload the document."
   fi
 }
-
-# Qrclip
-#qr() {
-#  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-#    # Wayland environment
-#    qrencode -t PNG -s 16 -o /tmp/tmp.png $(wl-paste)
-#  else
-#    # X11 environment
-#    qrencode -t PNG -s 16 -o /tmp/tmp.png $(xclip -o -sel)
-#  fi
-#
-#  nsxiv /tmp/tmp.png
-#}
-#qrrr() {
-#  if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-#    # Wayland environment
-#    qrencode -t PNG -s 16 -o /tmp/tmp.png "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
-#  else
-#    # X11 environment
-#    qrencode -t PNG -s 16 -o /tmp/tmp.png "https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUXbmV2ZXIgZ29ubmEgZ2l2ZSB5b3UgdXA%3D"
-#
-#  fi
-#
-#  nsxiv /tmp/tmp.png
-#}
