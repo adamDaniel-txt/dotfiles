@@ -1,13 +1,17 @@
+# Basic Settings
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set icons true
+# set sixel true
+set period 1
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+set autoquit true
+set ignorecase true
 set previewer ctpv
 set cleaner ctpvclear
 &ctpv -s $id
 &ctpvquit $id
-
-# Basic Settings
-set hidden true
-set ignorecase true
-set sixel true
-set icons true
 
 # Custom Functions
 cmd mkdir ${{
@@ -60,10 +64,6 @@ cmd open &{{
 		text/*) lf -remote "send $id \$nvim \$fx";;
 		*) xdg-open "$f"
 	esac
-}}
-
-cmd on-select &{{
-    lf -remote "send $id set statfmt \"$(exa -ld --color=always "$f")\""
 }}
 
 cmd fzf_jump ${{
@@ -129,10 +129,11 @@ map C clear
 
 # Movement
 map gc cd ~/.config
-map gD cd ~/Documents
-map gd cd ~/Downloads
-map gp cd ~/Pictures
-map gw cd ~/Pictures/Wallpapers
-map gs cd ~/Pictures/Screenshots
-map gv cd ~/Videos
+map gD cd ~/dox
+map gd cd ~/dl
+map gp cd ~/pix
+map gn cd ~/.local/share/nvim/vimwiki
+map gw cd ~/pix/wallpapers
+map gs cd ~/pix/screenshots
+map gv cd ~/vids
 map gt cd ~/.local/share/Trash/files
