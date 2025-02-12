@@ -14,12 +14,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Caskaydia Cove Nerd Font:size=12" };
 static const char dmenufont[]       = "Caskaydia Cove Nerd Font:size=12";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
+static const char col_gray1[]       = "#282828";
+static const char col_gray2[]       = "#928374";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-static const char col_green[]       = "#7bb75b";
+static const char col_green[]       = "#b8bb26";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -30,15 +30,15 @@ static const char *colors[][3]      = {
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const char *tagsel[][2] = {
-	{ "#ce3e60", "#1d1d1d" },
-	{ "#e8b32a", "#1d1d1d" },
-	{ "#7bb75b", "#1d1d1d" },
-	{ "#4c99d3", "#1d1d1d" },
-	{ "#76bbca", "#1d1d1d" },
-	{ "#a57fc4", "#1d1d1d" },
-	{ "#d18ea6", "#1d1d1d" },
-	{ "#f7f6ec", "#1d1d1d" },
-	{ "#585a58", "#1d1d1d" },
+	{ "#fb4934", "#1d2021" },
+	{ "#fabd2f", "#1d2021" },
+	{ "#b8bb26", "#1d2021" },
+	{ "#83a598", "#1d2021" },
+	{ "#8ec07c", "#1d2021" },
+	{ "#b16286", "#1d2021" },
+	{ "#d3869b", "#1d2021" },
+	{ "#f7f6ec", "#1d2021" },
+	{ "#a89984", "#1d2021" },
 };
 
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
@@ -52,8 +52,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "Gimp",    NULL,     NULL,           1 << 8,    0,          0,           0,        -1 },
+	/* { "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 }, */
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
@@ -88,9 +88,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_green, "-sf", col_gray1, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
+static const char *browser[]  = { BROWSER, NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120:34", NULL };
-static const char *browser[]  = { "firefox", NULL };
 static const char *upbrightness[]   = { "brightnessctl", "set", "+10%", NULL };
 static const char *downbrightness[] = { "brightnessctl", "set", "10%-", NULL };
 

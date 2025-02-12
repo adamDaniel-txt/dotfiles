@@ -7,15 +7,15 @@ interval=0
 
 # colors
 
-black=#1e222a
-green=#7bb75b
+black=#1d2021
+green=#b8bb26
 white=#abb2bf
-grey=#282c34
-blue=#4c99d3
-red=#ce3e60
-yellow=#e8b32a
-purple=#a57fc4
-darkblue=#388dce
+grey=#282828
+blue=#458588
+red=#fb4934
+yellow=#fabd2f
+purple=#d3869b
+darkblue=#83a598
 
 cpu() {
   cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
