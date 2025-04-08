@@ -29,6 +29,8 @@ set shiftwidth=2
 set go=a
 set mouse=a
 set nohlsearch
+set ignorecase
+set smartcase
 set clipboard+=unnamedplus
 set noshowmode
 set noruler
@@ -108,8 +110,7 @@ let g:coc_disable_startup_warning = 1
 	map <leader>s :!clear && shellcheck -x %<CR>
 
 " Open bibliography file
-	map <leader>b :vsp<space>$BIB<CR>
-	map <leader>r :vsp<space>$REFER<CR>
+	map <leader>b :vsp<space>~/.local/share/index.bib<CR>
 
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
