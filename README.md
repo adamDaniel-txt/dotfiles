@@ -24,7 +24,6 @@ sudo apt install zsh
 chsh -s /bin/zsh "username"
 chsh -s /bin/zsh root
 ```
-
 # Git Timer
 ```
 git config --global credential.helper 'cache --timeout=10800'
@@ -119,3 +118,5 @@ sudo ufw enable
 - atuin
 - cava
 - mupdf
+- kando
+- goofcord
