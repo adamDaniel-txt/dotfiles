@@ -7,37 +7,46 @@ export PS1="\n\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput 
 shopt -s autocd
 shopt -s cdspell
 
-# Aliases
-alias ls='exa --color=auto --group-directories-first'
-alias ll='exa -lah --git --group-directories-first'
-alias grep='grep --color=auto -i'
-alias diff='diff --color=auto'
-alias rsync='rsync --progress'
-alias c='xclip -sel clip'
-alias p='xclip -o -sel clip'
-alias vim='nvim'
-alias pdf='zathura'
-alias yta='yt-dlp --extract-audio --audio-format m4a --audio-quality 0 --add-metadata'
-alias cp='cp -riv'
-alias mv='mv -iv'
-alias df='df -h'
-alias ai='ollama run llama3.2:1b'
-alias po='sudo shutdown now'
-alias rs='sudo reboot'
+# Coolers
+alias ls="exa --color=auto --group-directories-first"
+alias ll="exa -lah --git --group-directories-first"
+alias grep="grep --color=auto -i"
+alias diff="diff --color=auto"
+
+# Verbosity
+alias cp="cp -riv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias rsync="rsync -vrPlu"
+alias yt="yt-dlp --embed-metadata -i"
+alias yta="yt-dlp --extract-audio --audio-format m4a --audio-quality 0 --add-metadata"
+
+# Abbreviate
+alias update="sudo apt update && sudo apt upgrade"
+alias sc="sc-im"
+alias ai="ollama run llama3.2:1b"
+alias po="sudo shutdown now"
+alias rs="sudo reboot"
+alias c="xclip -sel clip"
+alias p="xclip -o -sel clip"
+alias vim="nvim"
+alias pdf="zathura"
 
 # Git
-alias gs='git status'
-alias glog='git log --graph --decorate --oneline'
+alias g="git"
+alias gs="git status"
+alias glog="git log --graph --decorate --oneline"
 
-# Change your default USER shell
+# Change default shell
 alias tobash="sudo chsh $USER -s /bin/bash && echo 'Log out and log back in for change to take effect.'"
 alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Log out and log back in for change to take effect.'"
 
 # Shell Integrations
 eval "$(zoxide init bash)"
 eval "$(thefuck --alias)"
-source /usr/share/doc/fzf/examples/key-bindings.bash
-# source /usr/share/doc/fzf/examples/completion.bash
+eval "$(fzf --bash)"
+source /usr/share/bash-completion/bash_completion
+# source /usr/share/doc/fzf/examples/key-bindings.bash
 
 # ASCII Art
 #neofetch
@@ -77,7 +86,7 @@ ex() {
     *.tgz) tar xzf $1 ;;
     *.zip) unzip $1 ;;
     *.Z) uncompress $1 ;;
-    *.7z) 7za e x $1 ;;
+    *.7z) 7z e x $1 ;;
     *.deb) ar x $1 ;;
     *.tar.xz) tar xf $1 ;;
     *.tar.zst) unzstd $1 ;;

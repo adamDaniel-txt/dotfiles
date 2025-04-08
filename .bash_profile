@@ -20,7 +20,7 @@ fi
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="st"
-export BROWSER="firefox"
+export BROWSER="w3m"
 
 # default folders
 export XDG_CONFIG_HOME="$HOME/.config"
