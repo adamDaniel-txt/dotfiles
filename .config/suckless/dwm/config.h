@@ -123,23 +123,25 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 	{ 0,												    XK_Insert, spawn,          SHCMD("xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
-	{ MODKEY,             					XK_s,      spawn,     		 SHCMD("screenshot window") },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,     		 SHCMD("screenshot select") },
 	{ MODKEY,												XK_w,      spawn,          SHCMD("webcam") },
+	{ MODKEY,             					XK_s,      spawn,     		 SHCMD("screenshot window") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,     		 {.v = (const char*[]){ "flameshot", "gui", NULL } } },
 	{ MODKEY|ShiftMask,							XK_w,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
 	{ MODKEY|ShiftMask,							XK_l,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "slock", NULL } } },
 	{ MODKEY,             					XK_o,      spawn,     		 {.v = (const char*[]){ TERMINAL, "-e", "qr", NULL } } },
 	{ MODKEY,												XK_e,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "lf", NULL } } },
+	{ MODKEY,												XK_r,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
 	{ MODKEY,												XK_c,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qalc", NULL } } },
-	{ MODKEY|ShiftMask,             XK_k,      spawn,     		 SHCMD("xkill") },
+	{ MODKEY,												XK_x,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
+	{ MODKEY,												XK_n,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
+	{ MODKEY|ShiftMask,             XK_k,      spawn,     		 {.v = (const char*[]){ "xkill", NULL } } },
 	{ MODKEY|ShiftMask,							XK_p,      spawn,          {.v = (const char*[]){ "passmenu", NULL } } },
 	{ MODKEY,												XK_p,      spawn,          {.v = (const char*[]){ "playerctl", "play-pause", NULL } } },
 	{ MODKEY,												XK_BackSpace,  spawn,      {.v = (const char*[]){ "sysact", NULL } } },
 	{ MODKEY,												XK_bracketleft, spawn,     {.v = (const char*[]){ "playerctl", "previous", NULL } } },
 	{ MODKEY,												XK_bracketright, spawn,    {.v = (const char*[]){ "playerctl", "next", NULL } } },
-
-	/* { MODKEY,												XK_F9,     spawn,          {.v = (const char*[]){ "mounter", NULL } } }, */
-	/* { MODKEY,												XK_F10,    spawn,          {.v = (const char*[]){ "unmounter", NULL } } }, */
+	{ MODKEY,												XK_F9,     spawn,          {.v = (const char*[]){ "mounter", NULL } } },
+	{ MODKEY,												XK_F10,    spawn,          {.v = (const char*[]){ "unmounter", NULL } } },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
