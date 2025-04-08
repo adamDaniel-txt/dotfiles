@@ -1,6 +1,6 @@
 #!/bin/sh
 
-setxkbmap -option "caps:escape"
+setxkbmap -option "caps:swapescape"
 xset r rate 300 50
 xrandr --dpi 96 &		# Set DPI. User may want to use a larger number for larger screens.
 xwallpaper --zoom ~/.local/share/bg
@@ -8,7 +8,7 @@ redshift -l 3.14:101.69 &
 syncthing -no-browser &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/X11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 
-autostart="dunst unclutter pipewire dwmbar"
+autostart="mpd dunst unclutter pipewire dwmbar"
 
 for program in $autostart; do
 	pidof -sx "$program" || "$program" &
