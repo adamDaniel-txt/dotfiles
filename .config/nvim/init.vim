@@ -26,7 +26,6 @@ set cindent
 set tabstop=2
 set softtabstop=0 noexpandtab
 set shiftwidth=2
-set go=a
 set mouse=a
 set nohlsearch
 set ignorecase
