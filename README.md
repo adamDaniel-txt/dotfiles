@@ -1,6 +1,6 @@
 # Must Install 1st
 ```
-sudo apt install duf ripgrep pamixer unclutter kitty slock scrot htop neofetch zathura nsxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
+sudo apt install playerctl lf duf ripgrep pamixer unclutter kitty slock scrot htop neofetch zathura nsxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
 ```
 
 # Install Font
