@@ -13,7 +13,6 @@ imap ,, <esc>:keepp /<++><CR>ca<
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ellisonleao/gruvbox.nvim'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'echasnovski/mini.nvim'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'alvan/vim-closetag'
@@ -118,7 +117,7 @@ let g:coc_disable_startup_warning = 1
 	map <leader>c :w! \| !compiler "%:p"<CR>
 
 " Open current buffer in Browser
-	map <leader>p :execute ':silent !firefox %'<CR>
+	map <leader>p :execute ':silent !zen %'<CR>
 
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
