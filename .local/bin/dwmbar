@@ -25,10 +25,10 @@ cpu() {
 }
 
 pkg_updates() {
-  #updates=$({ timeout 20 doas xbps-install -un 2>/dev/null || true; } | wc -l) # void
+  updates=$({ timeout 20 doas xbps-install -un 2>/dev/null || true; } | wc -l) # void
 	# pacman -Qu | wc -l
   # updates=$({ timeout 20 checkupdates 2>/dev/null || true; } | wc -l) # arch
-  updates=$({ timeout 20 aptitude search '~U' 2>/dev/null || true; } | wc -l)  # apt (ubuntu, debian etc)
+  # updates=$({ timeout 20 aptitude search '~U' 2>/dev/null || true; } | wc -l)  # apt (ubuntu, debian etc)
 
   if [ -z "$updates" ]; then
     printf "  ^c$yellow^    Fully Updated"
@@ -39,8 +39,8 @@ pkg_updates() {
 
 battery() {
   get_capacity="$(cat /sys/class/power_supply/BAT1/capacity)"
-  printf "^c$black^^b$green^  "
-  printf "^c$green^^b$black^  $get_capacity"
+  printf "^c$black^^b$yellow^  "
+  printf "^c$yellow^^b$black^  $get_capacity"
 }
 
 brightness() {
@@ -77,7 +77,7 @@ while true; do
   interval=$((interval + 1))
 
   #sleep 1 && xsetroot -name "$updates $(battery) $(brightness) $(cpu) $(mem) $(wlan) $(date)"
-  xsetroot -name "$updates $(battery) $(wlan) $(dateTime) $(vol) "
+  xsetroot -name "$(battery) $(wlan) $(dateTime) $(vol) "
 
   sleep 55
 done
