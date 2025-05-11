@@ -54,3 +54,6 @@ fi
 
 # Start graphical server on user's current tty if not already running.
 [[ $(ps -e | grep startx) = '' ]] && startx
+
+# Switch escape and caps if tty and no passwd required:
+sudo -n loadkeys "$XDG_DATA_HOME/ttymaps.kmap" 2>/dev/null
