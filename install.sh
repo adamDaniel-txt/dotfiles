@@ -6,15 +6,17 @@ sudo -n true
 test $? -eq 0 || exit 1 "you should have sudo privilege to run this script"
 
 pkg_install="apt install"
+HOME="/home/fdan"
 
-mkdir /home/fdan/.local/bin/
-mkdir /home/fdan/"$HOME/desk"
-mkdir /home/fdan/"$HOME/dl"
-mkdir /home/fdan/"$HOME/dox"
-mkdir /home/fdan/"$HOME/mus"
-mkdir /home/fdan/"$HOME/sync"
-mkdir /home/fdan/"$HOME/pix"
-mkdir /home/fdan/"$HOME/vids"
+mkdir -p $HOME/.local/bin
+mkdir $HOME/.config
+mkdir $HOME/desk
+mkdir $HOME/dl
+mkdir $HOME/dox
+mkdir $HOME/mus
+mkdir $HOME/sync
+mkdir $HOME/pix
+mkdir $HOME/vids
 
 echo "Installing the necessary pre-requisites"
 while read -r p ; do sudo $pkg_install -y $p ; done < <(cat << "EOF"
@@ -61,6 +63,8 @@ git restore .
 
 echo "Installing suckless software"
 while read -r p ; do sudo $pkg_install -y $p ; done < <(cat << "EOF"
+	xorg
+	build-essential
 	dbus-x11
 	libx11-dev
 	libxft-dev
