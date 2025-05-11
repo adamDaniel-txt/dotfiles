@@ -1,9 +1,13 @@
-# Must Install 1st
+# My Dotfiles
+
+## Installation
+On debian based linux distro, run the following as root:
 ```
-sudo apt install playerctl lf duf ripgrep pamixer unclutter kitty slock scrot htop neofetch zathura nsxiv mpv neovim cmus zoxide fzf tldr thefuck gparted ncdu qrencode xclip stow tmux eza
+https://codeberg.org/somting-fishy/dotfiles.git
+sudo ./install.sh
 ```
 
-# Install Font
+## Install Font
 1. Install fonts from "https://www.nerdfonts.com/"
 2. Extract the zip file
 ```
@@ -14,7 +18,7 @@ unzip fontname.zip -d fontname
 cp fontfoldername ~/.local/share/fonts/
 ```
 
-# Install Zsh
+## Install Zsh
 1. Install zsh
 ```
 sudo apt install zsh
@@ -24,12 +28,13 @@ sudo apt install zsh
 chsh -s /bin/zsh "username"
 chsh -s /bin/zsh root
 ```
-# Git Timer
+
+## Git Timer
 ```
 git config --global credential.helper 'cache --timeout=10800'
 ```
 
-# Manage Dotfiles
+## Manage Dotfiles
 1. Go inside the dotfiles directory
 ```
 cd .dotfiles
@@ -49,30 +54,30 @@ git status
 git restore .
 ```
 
-# Firefox Customization
-## Firefox user.js
+## Firefox Customization
+### Firefox user.js
 1. Downloads or copy Betterfox user.js file
 ```
 git clone https://github.com/yokoffing/Betterfox.git
 ```
 2. Move the user.js file into Firefox's about:profiles
-## Firefox css theme
+### Firefox css theme
 1. Copy some else userChrome.css to make your Firefox looks cool.
 ```
 git clone https://github.com/ericmurphyxyz/userChrome.css.git
 ```
 
-# Figlet Fonts
+## Figlet Fonts
 1. Copy from "https://raw.githubusercontent.com/xero/figlet-fonts/master/ANSI%20Shadow.flf"
 2. Save it as "ANSIShadow.flf"
 3. Install files to /usr/share/figlet/ or /usr/share/figlet/fonts/
 
-# Winetricks
+## Winetricks
 ```
 winetricks d3dx10 d3dx9 dotnet35 dotnet40 dotnet45 dotnet48 dxvk vcrun2008 vcrun2010 vcrun2012 vcrun2019 vcrun6sp6
 ```
 
-# Rules for ufw
+## Rules for ufw
 ```
 sudo ufw limit 22/tcp
 sudo ufw allow 80/tcp
@@ -84,7 +89,7 @@ sudo ufw default allow outgoing
 sudo ufw enable
 ```
 
-# Cool Programs
+## Cool Programs
 - bottom
 - auto-cpufreq
 - forge
