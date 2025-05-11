@@ -8,8 +8,8 @@ shopt -s autocd
 shopt -s cdspell
 
 # Coolers
-alias ls="exa --color=auto --group-directories-first"
-alias ll="exa -lah --git --group-directories-first"
+alias ls="eza --color=auto --group-directories-first"
+alias ll="eza -lah --git --group-directories-first"
 alias grep="grep --color=auto -i"
 alias diff="diff --color=auto"
 
@@ -22,7 +22,10 @@ alias yt="yt-dlp --embed-metadata -i"
 alias yta="yt-dlp --extract-audio --audio-format m4a --audio-quality 0 --add-metadata"
 
 # Abbreviate
-alias update="sudo apt update && sudo apt upgrade"
+alias search="xbps-query -Rs"
+alias update="sudo xbps-install -Su"
+alias install="sudo xbps-install"
+alias remove="sudo xbps-remove -R"
 alias sc="sc-im"
 alias ai="ollama run llama3.2:1b"
 alias po="sudo shutdown now"
@@ -31,6 +34,7 @@ alias c="xclip -sel clip"
 alias p="xclip -o -sel clip"
 alias vim="nvim"
 alias pdf="zathura"
+alias nosleep="xset s off & xset -dpms &"
 
 # Git
 alias g="git"
@@ -42,8 +46,7 @@ alias tobash="sudo chsh $USER -s /bin/bash && echo 'Log out and log back in for 
 alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Log out and log back in for change to take effect.'"
 
 # Shell Integrations
-eval "$(zoxide init bash)"
-eval "$(thefuck --alias)"
+eval "$(zoxide init bash --cmd cd)"
 eval "$(fzf --bash)"
 source /usr/share/bash-completion/bash_completion
 # source /usr/share/doc/fzf/examples/key-bindings.bash
