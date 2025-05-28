@@ -53,6 +53,11 @@ while read -r p ; do sudo $pkg_install -y $p ; done < <(cat << "EOF"
 	xwallpaper
 	pipewire
 	redshift
+	xcompmgr
+	cron
+	acpi
+	mpd
+	ncmpcpp
 EOF
 )
 
