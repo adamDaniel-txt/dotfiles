@@ -8,7 +8,7 @@ redshift -l 3.14:101.69 &
 syncthing -no-browser &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 
-autostart="mpd dunst unclutter pipewire dwmbar"
+autostart="mpd xcompmgr dunst unclutter pipewire dwmbar"
 
 for program in $autostart; do
 	pidof -sx "$program" || "$program" &
