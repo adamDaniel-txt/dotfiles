@@ -59,7 +59,7 @@ fastfetch -c ~/.config/fastfetch/minimal.jsonc
 
 # Optimize image for the web
 webjpg() {
-  convert $1 -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize $2 $3
+  magick $1 -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize $2 $3
 }
 
 opti() {
