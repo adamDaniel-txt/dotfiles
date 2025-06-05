@@ -18,7 +18,7 @@ else
 fi
 
 echo "Installing the necessary pre-requisites"
-sudo $pkg_install git vim zip unzip curl playerctl dunst lf duf pamixer unclutter kitty slock scrot htop zathura nsxiv mpv neovim cmus zoxide fzf tealdeer gparted ncdu qrencode xclip stow tmux eza xwallpaper pipewire redshift xcompmgr cron acpi elogind
+sudo $pkg_install git vim zip unzip curl playerctl dunst lf duf pamixer unclutter kitty slock scrot htop zathura nsxiv mpv neovim cmus zoxide fzf tealdeer gparted ncdu qrencode xclip stow tmux xwallpaper pipewire redshift xcompmgr cron acpi elogind
 
 echo "Linking dotfiles"
 cd $HOME/.dotfiles/
@@ -39,4 +39,4 @@ make clean install
 cd $HOME/.config/suckless/sent/
 make clean install
 
-echo "Installation Finish"
+echo "\nInstallation Finish"

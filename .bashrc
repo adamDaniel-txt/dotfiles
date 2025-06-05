@@ -8,8 +8,9 @@ shopt -s autocd
 shopt -s cdspell
 
 # Coolers
-alias ls="eza --color=auto --group-directories-first"
-alias ll="eza -lah --git --group-directories-first"
+alias ls="ls -hN --color=auto --group-directories-first"
+alias l="ls -lah --color=auto --group-directories-first"
+# alias ll="eza -lah --git --group-directories-first"
 alias grep="grep --color=auto -i"
 alias diff="diff --color=auto"
 
@@ -34,7 +35,6 @@ alias c="xclip -sel clip"
 alias p="xclip -o -sel clip"
 alias vim="nvim"
 alias pdf="zathura"
-alias nosleep="xset s off & xset -dpms &"
 
 # Git
 alias g="git"
@@ -58,13 +58,17 @@ source /usr/share/bash-completion/bash_completion
 fastfetch -c ~/.config/fastfetch/minimal.jsonc
 
 # Optimize image for the web
-webjpg() {
+optimg() {
   magick $1 -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize $2 $3
 }
 
-opti() {
+optiimgs() {
 	mkdir min
   mogrify -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize 400 -path "min" $1
+}
+
+optvid() {
+	ffmpeg -i $1 -vcodec libx265 -crf 28 $2
 }
 
 # Compile and Run C prog file
