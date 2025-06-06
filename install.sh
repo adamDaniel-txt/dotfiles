@@ -9,6 +9,7 @@ pkg_install="apt install"
 HOME="/home/fdan"
 
 mkdir -p $HOME/.local/bin
+mkdir -p $HOME/.local/share/themes
 if [ -d "$HOME/.config" ]; then
 	echo ".config directory exists."
 else
