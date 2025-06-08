@@ -3,7 +3,7 @@
 /* constants */
 #define TERMINAL "st"
 #define TERMCLASS "St"
-#define BROWSER "librewolf"
+#define BROWSER "qutebrowser"
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -52,7 +52,6 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "librewolf",NULL,     NULL,           1 << 1,    0,          0,          -1,        -1 },
 	{ "zen",		 	NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
 	{ "kdenlive",	NULL,     NULL,           1 << 6,    0,          0,          -1,        -1 },
 	{ "Inkscape",	NULL,     NULL,           1 << 7,    0,          0,          -1,        -1 },
