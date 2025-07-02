@@ -4,7 +4,7 @@ setxkbmap -option "caps:swapescape"
 xset r rate 300 50
 xrandr --dpi 96 																										# Set DPI. User may want to use a larger number for larger screens.
 xwallpaper --zoom ~/.local/share/bg
-redshift -l 3.14:101.69 &
+redshift -O 4500
 syncthing -no-browser &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 

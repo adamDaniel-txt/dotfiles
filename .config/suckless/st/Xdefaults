@@ -53,7 +53,6 @@ st.font: Monospace-12;
 *.foreground: white
 *.cursorColor: white
 
-!! Cursor
-Xft.dpi: 84
+Xft.dpi: 96
 Xcursor.theme: Banana
 Xcursor.size: 32
