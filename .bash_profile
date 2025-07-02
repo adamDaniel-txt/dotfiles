@@ -40,6 +40,7 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export QT_STYLE_OVERRIDE="Adwaita-Dark"
 
 # use vim to open manpage
 export MANPAGER="nvim +Man!"
