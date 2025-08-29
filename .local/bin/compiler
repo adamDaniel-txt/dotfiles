@@ -24,9 +24,10 @@ case "${ext}" in
     cs) mcs "${file}" && mono "${base}.exe" ;;
     go) go run "${file}" ;;
     h) sudo make install ;;
-    java) javac -d classes "${file}" && java -cp classes "${base}" ;;
+    # java) javac -d classes "${file}" && java -cp classes "${base}" ;;
+    java) java "${file}" ;;
     m) octave "${file}" ;;
-    md) pandoc -f markdown --citeproc --bibliography ~/.local/share/index.bib --number-sections --template eisvogel --listings -o "${base}.pdf" "${file}" && mv "${base}.pdf" ~ ;;
+    md) pandoc -f markdown --citeproc --bibliography ~/.local/share/index.bib --template eisvogel --highlight-style kate -o "${base}.pdf" "${file}" && mv "${base}.pdf" ~ ;;
     org) emacs "${file}" --batch -u "${USER}" -f org-latex-export-to-pdf ;;
     py) python "${file}" ;;
     [rR]md) Rscript -e "rmarkdown::render('${file}', quiet=TRUE)" ;;
