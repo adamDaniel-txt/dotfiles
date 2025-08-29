@@ -1,6 +1,6 @@
-# My Dotfiles
+# my dotfiles
 
-## Installation
+## installation
 On debian based linux distro, run the following as root:
 ```
 git clone https://codeberg.org/somting-fishy/dotfiles .dotfiles
@@ -8,14 +8,14 @@ cd .dotfiles
 ./install.sh
 ```
 
-## After Installation
+## after installation
 
-### Set Git Timer
+### set git timer
 ```
 git config --global credential.helper 'cache --timeout=10800'
 ```
 
-## Rules for ufw
+## rules for ufw
 ```
 sudo ufw limit 22/tcp
 sudo ufw allow 80/tcp
@@ -27,7 +27,14 @@ sudo ufw default allow outgoing
 sudo ufw enable
 ```
 
-## Other Software I like
+## enable tap2click & naturalScrolling
+* add this in /usr/share/X11/xorg.conf.d/
+```
+Option "Tapping" "on"
+Option "NaturalScrolling" "true"
+```
+
+## other software i like
 - bottom
 - auto-cpufreq
 - forge
