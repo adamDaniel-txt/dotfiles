@@ -20,7 +20,7 @@ fi
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="st"
-export BROWSER="w3m"
+export BROWSER="librewolf"
 
 # default folders
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -38,9 +38,11 @@ export W3M_DIR="$XDG_STATE_HOME/w3m"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+# export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export QT_STYLE_OVERRIDE="Adwaita-Dark"
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
+export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
 
 # use vim to open manpage
 export MANPAGER="nvim +Man!"
