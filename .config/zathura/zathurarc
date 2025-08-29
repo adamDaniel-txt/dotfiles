@@ -1,31 +1,31 @@
-set recolor-lightcolor 			"#1d1d1d"
-set recolor-darkcolor 			"#f7f6ec"
+set recolor-lightcolor 		"#1d1d1d"
+set recolor-darkcolor 		"#f7f6ec"
 
-set statusbar-fg 						"#f7f6ec"
-set statusbar-bg 						"#1d1d1d"
+set statusbar-fg 		"#f7f6ec"
+set statusbar-bg 		"#1d1d1d"
 
-set inputbar-bg 						"#f7f6ec"
-set inputbar-fg 						"#1d1d1d"
+set inputbar-bg 		"#f7f6ec"
+set inputbar-fg 		"#1d1d1d"
 
 set notification-error-bg 	"#AC4142"
 set notification-error-fg 	"#1d1d1d"
 
-set notification-warning-bg "#AC4142"
-set notification-warning-fg "#1d1d1d"
+set notification-warning-bg	"#AC4142"
+set notification-warning-fg	"#1d1d1d"
 
-set highlight-color 				"#e8b32a"
+set highlight-color 		"#e8b32a"
 set highlight-active-color 	"#7bb75b"
 
-set completion-highlight-fg "#1d1d1d"
-set completion-highlight-bg "#7bb75b"
+set completion-highlight-fg	"#1d1d1d"
+set completion-highlight-bg	"#7bb75b"
 
-set completion-bg 					"#343835"
-set completion-fg 					"#f7f6ec"
+set completion-bg 		"#343835"
+set completion-fg 		"#f7f6ec"
 
-set notification-bg 				"#7bb75b"
-set notification-fg 				"#1d1d1d"
+set notification-bg 		"#7bb75b"
+set notification-fg 		"#1d1d1d"
 
-set recolor									true
+set recolor			true
 set page-padding 1
 set selection-clipboard clipboard
 
