@@ -18,7 +18,7 @@ mkdir -p $HOME/.config/qutebrowser
 sudo apt update && sudo apt upgrade
 
 echo "Installing the necessary"
-sudo apt install -y git vim zip unzip curl playerctl dunst lf duf pamixer unclutter kitty suckless-tools scrot htop zathura nsxiv mpv neovim cmus zoxide fzf tealdeer gparted ncdu qrencode xclip stow tmux xwallpaper pipewire redshift xcompmgr cron fastfetch qutebrowser preload
+sudo apt install -y git vim zip unzip curl playerctl dunst lf duf pamixer unclutter kitty suckless-tools scrot htop zathura nsxiv mpv neovim cmus zoxide fzf tealdeer gparted ncdu qrencode xclip stow tmux xwallpaper pipewire redshift picom cron fastfetch qutebrowser preload libnotify-bin
 
 echo "Linking dotfiles"
 cd $HOME/.dotfiles/
