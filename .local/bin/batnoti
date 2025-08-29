@@ -1,7 +1,8 @@
 #!/bin/bash
 
-battery_level=$(acpi -b | grep -P -o '[0-9]+(?=%)')
-if [ $battery_level -le 10 ]
-then
+battery_level=$(cat /sys/class/power_supply/BAT1/capacity)
+if [ $battery_level -le 10 ]; then
 	notify-send --urgency=CRITICAL "Battery Low" "Level: ${battery_level}%"
+else
+	notify-send --urgency=NORMAL "Nothing to worry, all good👍" "Level: ${battery_level}%"
 fi
