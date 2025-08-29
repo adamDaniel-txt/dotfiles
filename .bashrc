@@ -19,14 +19,14 @@ alias cp="cp -riv"
 alias mv="mv -iv"
 alias rm="rm -vI"
 alias rsync="rsync -vrPlu"
-alias yt="yt-dlp --embed-metadata -i"
-alias yta="yt-dlp --extract-audio --audio-format m4a --audio-quality 0 --add-metadata"
+alias yt="yt-dlp --embed-metadata"
+alias yta="yt-dlp --extract-audio --audio-format opus --audio-quality 0 --add-metadata"
 
 # Abbreviate
-alias search="xbps-query -Rs"
-alias update="sudo xbps-install -Su"
-alias install="sudo xbps-install"
-alias remove="sudo xbps-remove -R"
+alias search="apt search"
+alias update="sudo apt update -y && sudo apt upgrade -y"
+alias install="sudo apt install"
+alias remove="sudo apt purge"
 alias sc="sc-im"
 alias ai="ollama run llama3.2:1b"
 alias po="sudo shutdown now"
@@ -59,12 +59,12 @@ fastfetch -c ~/.config/fastfetch/minimal.jsonc
 
 # Optimize image for the web
 optimg() {
-  magick $1 -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize $2 $3
+  magick $1 -sampling-factor 4:2:0 -strip -quality 85 -interlace Plane -colorspace sRGB -resize $2 $3
 }
 
-optiimgs() {
+optimgs() {
 	mkdir min
-  mogrify -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize 400 -path "min" $1
+  mogrify -sampling-factor 4:2:0 -strip -quality 85 -interlace Plane -colorspace sRGB -resize 400 -path "min" $1
 }
 
 optvid() {
