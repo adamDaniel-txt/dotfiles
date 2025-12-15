@@ -11,7 +11,9 @@ map ,, :keepp /<++><CR>ca<
 imap ,, <esc>:keepp /<++><CR>ca<
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'echasnovski/mini.nvim'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
@@ -32,17 +34,22 @@ colorscheme gruvbox
 
 " call mini modules
 lua require('mini.ai').setup()
+lua require('mini.git').setup()
 lua require('mini.pick').setup()
 lua require('mini.files').setup()
 lua require('mini.pairs').setup()
 lua require('mini.icons').setup()
 lua require('mini.fuzzy').setup()
+lua require('mini.notify').setup()
 lua require('mini.comment').setup()
 lua require('mini.starter').setup()
-lua require('mini.snippets').setup()
+" lua require('mini.snippets').setup()
 lua require('mini.surround').setup()
 lua require('mini.bracketed').setup()
+lua require('mini.operators').setup()
 lua require('mini.statusline').setup()
+lua require('mini.indentscope').setup()
+lua require('mini.cursorword').setup()
 lua require('mini.completion').setup()
 
 let g:coc_disable_startup_warning = 1
@@ -68,9 +75,7 @@ map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " install nessesary extension
 let g:coc_global_extensions = [
-			\ 'coc-lua',
-			\ 'coc-css',
-			\ 'coc-html',
+			\ 'coc-java',
 			\ 'coc-eslint',
 			\ ]
 
@@ -110,6 +115,7 @@ map <leader>b :vsp<space>~/.local/share/index.bib<CR>
 nnoremap S :%s//g<Left><Left>
 
 " compile/run file
+map <leader>c :w! \| !compiler "%:p"<CR>
 map <leader>m :w! \| :make<CR>
 " open preview like pdf/html
 map <leader>p :!opout "%:p"<CR>
@@ -118,6 +124,7 @@ map <leader>p :!opout "%:p"<CR>
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 map <leader>v :VimwikiIndex<CR>
 let g:vimwiki_list = [{'path': '~/sync/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+autocmd BufNewFile,BufRead *.sent setfiletype sent
 
 " Save file as sudo on files that require root permission
 cabbrev w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
