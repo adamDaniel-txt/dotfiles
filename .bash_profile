@@ -38,26 +38,30 @@ export W3M_DIR="$XDG_STATE_HOME/w3m"
 export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
-# export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-export QT_STYLE_OVERRIDE="Adwaita-Dark"
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
+# export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT="MToolkit wmname LG3D"
+export QT_QPA_PLATFORMTHEME="Adwaita-Dark"
+export QT_STYLE_OVERRIDE="Adwaita-Dark"
 
 # use vim to open manpage
 export MANPAGER="nvim +Man!"
 
 # add Flatpak apps to PATH
-if [ -d "/var/lib/flatpak/exports/bin" ]; then
-    PATH="/var/lib/flatpak/exports/bin:$PATH"
-fi
-
-if [ -d "$HOME/.local/share/flatpak/exports/bin" ]; then
-     PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
-fi
+# if [ -d "/var/lib/flatpak/exports/bin" ]; then
+#     PATH="/var/lib/flatpak/exports/bin:$PATH"
+# fi
+#
+# if [ -d "$HOME/.local/share/flatpak/exports/bin" ]; then
+#      PATH="$HOME/.local/share/flatpak/exports/bin:$PATH"
+# fi
 
 # Start graphical server on user's current tty if not already running.
-[[ $(ps -e | grep startx) = '' ]] && startx
+# [[ $(ps -e | grep startx) = '' ]] && startx
 
 # Switch escape and caps if tty and no passwd required:
 sudo -n loadkeys "$XDG_DATA_HOME/ttymaps.kmap" 2>/dev/null
