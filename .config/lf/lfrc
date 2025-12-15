@@ -129,6 +129,8 @@ map C clear
 
 # Movement
 map gc cd ~/.config
+map gC cd ~/sync/college
+map gk cd ~/sync/manga/local
 map gD cd ~/dox
 map gd cd ~/dl
 map gp cd ~/pix
