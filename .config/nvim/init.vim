@@ -12,6 +12,7 @@ imap ,, <esc>:keepp /<++><CR>ca<
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'HakonHarnes/img-clip.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
 Plug 'ellisonleao/gruvbox.nvim'
@@ -30,6 +31,9 @@ set laststatus=2
 set cursorline
 set undofile
 set noswapfile
+set tabstop=4
+set shiftwidth=4
+set expandtab
 colorscheme gruvbox
 
 " call mini modules
@@ -81,6 +85,8 @@ let g:coc_global_extensions = [
 
 nmap <F2> <Plug>(coc-rename)
 
+map <leader>p :PasteImage<CR>
+
 " disable pairs character '<' for html
 autocmd FileType html let b:coc_pairs_disabled = ['<']
 
@@ -106,7 +112,7 @@ map <C-l> <C-w>l
 map Q gq
 
 " Check file in shellcheck:
-map <leader>s :!clear && shellcheck -x %<CR>
+" map <leader>s :!clear && shellcheck -x %<CR>
 
 " Open bibliography file
 map <leader>b :vsp<space>~/.local/share/index.bib<CR>
@@ -118,7 +124,7 @@ nnoremap S :%s//g<Left><Left>
 map <leader>c :w! \| !compiler "%:p"<CR>
 map <leader>m :w! \| :make<CR>
 " open preview like pdf/html
-map <leader>p :!opout "%:p"<CR>
+map <leader>s :!opout "%:p"<CR>
 
 " Ensure files are read as what I want:
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
