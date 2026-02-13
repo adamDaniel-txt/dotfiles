@@ -4,6 +4,6 @@ dmenu_flags="-i -l 30 -p Wallpaper:"
 wallpaper=$(ls ~/pix/wallpapers | dmenu $dmenu_flags)
 
 [ $wallpaper -z ] || {
-	ln -s -f ~/pix/wallpapers/$wallpaper ~/.local/share/bg
+	ln -s -f ~/pix/wallpapers/$wallpaper ~/.bg
 	xwallpaper --zoom ~/pix/wallpapers/$wallpaper
 }
