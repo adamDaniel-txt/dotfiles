@@ -53,6 +53,7 @@ static const Rule rules[] = {
 	 */
 	/* class     	instance  	title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "firefox",	NULL,     	NULL,           1 << 2,    0,          0,          -1,        -1 },
+	{ "audacity",	NULL,     	NULL,           1 << 5,    0,          0,          -1,        -1 },
 	{ "kdenlive",	NULL,     	NULL,           1 << 6,    0,          0,          -1,        -1 },
 	{ "Inkscape",	NULL,     	NULL,           1 << 7,    0,          0,          -1,        -1 },
 	{ "Gimp",    	NULL,     	NULL,           1 << 8,    0,          0,           0,        -1 },
@@ -125,26 +126,26 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
-	{ MODKEY,			XK_w,      spawn,          SHCMD("webcam") },
-	{ MODKEY,             		XK_s,      spawn,	   SHCMD("screenshot select") },
+	{ MODKEY,			            XK_o,      spawn,          SHCMD("tmuxdev") },
+	{ MODKEY,			            XK_w,      spawn,          SHCMD("webcam") },
+	{ MODKEY,             		    XK_s,      spawn,	       SHCMD("screenshot select") },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,     	   SHCMD("screenshot window") },
-	{ MODKEY|ShiftMask,		XK_w,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
-	{ MODKEY|ShiftMask,		XK_l,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "slock", NULL } } },
-	{ MODKEY,             		XK_m,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
-	{ MODKEY,             		XK_o,      spawn,	   {.v = (const char*[]){ TERMINAL, "-e", "qr", NULL } } },
-	{ MODKEY,			XK_e,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "lf", NULL } } },
-	{ MODKEY,			XK_r,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
-	{ MODKEY,			XK_c,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qalc", NULL } } },
-	{ MODKEY,			XK_x,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
-	{ MODKEY,			XK_n,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
-	{ MODKEY|ShiftMask,             XK_k,      spawn,     		 {.v = (const char*[]){ "xkill", NULL } } },
-	{ MODKEY|ShiftMask,		XK_p,      spawn,          {.v = (const char*[]){ "passmenu", NULL } } },
-	{ MODKEY,			XK_F9,     spawn,          {.v = (const char*[]){ "mounter", NULL } } },
-	{ MODKEY,			XK_F10,    spawn,          {.v = (const char*[]){ "unmounter", NULL } } },
-	{ MODKEY,			XK_BackSpace,  spawn,      {.v = (const char*[]){ "sysact", NULL } } },
-	{ MODKEY,			XK_p,      spawn,          {.v = (const char*[]){ "mpc", "toggle", NULL } } },
-	{ MODKEY,			XK_bracketleft, spawn,     {.v = (const char*[]){ "mpc", "prev", NULL } } },
-	{ MODKEY,			XK_bracketright, spawn,    {.v = (const char*[]){ "mpc", "next", NULL } } },
+	{ MODKEY|ShiftMask,		        XK_w,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
+	{ MODKEY|ShiftMask,		        XK_l,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "slock", NULL } } },
+	{ MODKEY,             		    XK_m,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
+	{ MODKEY,             		    XK_r,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qr", NULL } } },
+	{ MODKEY,			            XK_e,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "lf", NULL } } },
+	{ MODKEY,			            XK_c,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qalc", NULL } } },
+	{ MODKEY,			            XK_x,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
+	{ MODKEY,			            XK_n,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
+	{ MODKEY|ShiftMask,             XK_k,      spawn,     	   {.v = (const char*[]){ "xkill", NULL } } },
+	{ MODKEY|ShiftMask,		        XK_p,      spawn,          {.v = (const char*[]){ "passmenu", NULL } } },
+	{ MODKEY,			            XK_F9,     spawn,          {.v = (const char*[]){ "mounter", NULL } } },
+	{ MODKEY,			            XK_F10,    spawn,          {.v = (const char*[]){ "unmounter", NULL } } },
+	{ MODKEY,			            XK_BackSpace,  spawn,      {.v = (const char*[]){ "sysact", NULL } } },
+	{ MODKEY,			            XK_p,      spawn,          {.v = (const char*[]){ "mpc", "toggle", NULL } } },
+	{ MODKEY,			            XK_bracketleft, spawn,     {.v = (const char*[]){ "mpc", "prev", NULL } } },
+	{ MODKEY,			            XK_bracketright, spawn,    {.v = (const char*[]){ "mpc", "next", NULL } } },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -155,17 +156,17 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY,             		XK_q,      killclient,     {0} },
+	{ MODKEY,             		    XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
-	{ 0, XK_Print,				spawn,          {.v = (const char*[]){ "flameshot", "gui", NULL } } },
-	{ 0, XK_Insert,				spawn,          SHCMD("xdotool type $(grep -v '^#' ~/.local/share/snippets | dmenu -i -l 50 | cut -d' ' -f1)") },
-	{ 0, XF86XK_AudioMute,                  spawn,          SHCMD("pamixer --toggle-mute && refbar") },
-	{ 0, XF86XK_AudioRaiseVolume,           spawn,          SHCMD("pamixer --increase 5 && refbar") },
-	{ 0, XF86XK_AudioLowerVolume,           spawn,          SHCMD("pamixer --decrease 5 && refbar") },
-	{ 0, XF86XK_AudioMicMute,               spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-	{ 0, XF86XK_MonBrightnessUp,    	spawn,          {.v = upbrightness } },
-	{ 0, XF86XK_MonBrightnessDown,  	spawn,          {.v = downbrightness } },
+	{ 0, XK_Print,				    spawn,     {.v = (const char*[]){ "flameshot", "gui", NULL } } },
+	{ 0, XK_Insert,				    spawn,     SHCMD("xdotool type $(grep -v '^#' ~/.config/bookmarks | dmenu -i -l 30 -p Bookmarks: | cut -d' ' -f1)") },
+	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("pamixer --toggle-mute && refbar") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("pamixer --increase 5 && refbar") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("pamixer --decrease 5 && refbar") },
+	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     {.v = upbrightness } },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     {.v = downbrightness } },
 };
 
 /* button definitions */
