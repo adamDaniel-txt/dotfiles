@@ -52,3 +52,7 @@ st.font: Monospace-12;
 /* *.color14: #389aac */
 /* *.color7: #f9faf6 */
 /* *.color15:#f9faf6 */
+
+Xft.dpi: 125
+Xcursor.theme: Banana
+Xcursor.size: 32
