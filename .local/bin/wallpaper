@@ -1,6 +1,7 @@
 #!/bin/sh
 
-wallpaper=$(ls ~/pix/wallpapers | dmenu -i -l 30)
+dmenu_flags="-i -l 30 -p Wallpaper:"
+wallpaper=$(ls ~/pix/wallpapers | dmenu $dmenu_flags)
 
 [ $wallpaper -z ] || {
 	ln -s -f ~/pix/wallpapers/$wallpaper ~/.local/share/bg
