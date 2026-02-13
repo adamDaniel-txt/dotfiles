@@ -26,6 +26,21 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray1, col_iwant, col_iwant },
 };
 
+static const char *const autostart[] = {
+    "setxkbmap", "-option", "caps:escape", NULL,
+    "xset", "r", "rate", "300", "50", NULL,
+    // "xwallpaper", "--zoom", "~/.bg", NULL,
+    "redshift", "-O", "4500", NULL,
+    "syncthing", "-no-browser", NULL,
+	// "xrdb", "/home/fdan/.config/x11/xresources", NULL,
+	"dunst", NULL,
+	"picom", NULL,
+	"dwmbar", NULL,
+	"batnoti", NULL,
+	"mpd", NULL,
+	NULL /* terminate */
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
