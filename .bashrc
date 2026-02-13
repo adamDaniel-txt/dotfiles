@@ -16,7 +16,7 @@ alias diff="diff --color=auto"
 alias cp="cp -riv"
 alias mv="mv -iv"
 alias rm="rm -vI"
-alias rsync="rsync -vrPlu"
+alias rsync="rsync -ah --info=progress2"
 alias yt="yt-dlp -f 'bv[height=720]+ba/best[height=720]' --merge-output-format webm"
 alias yta="yt-dlp --extract-audio --audio-format opus --audio-quality 0 --add-metadata"
 
