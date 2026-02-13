@@ -14,7 +14,6 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'HakonHarnes/img-clip.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'chomosuke/typst-preview.nvim', {'tag': 'v1.*'}
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'echasnovski/mini.nvim'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
@@ -40,20 +39,25 @@ colorscheme gruvbox
 lua require('mini.ai').setup()
 lua require('mini.git').setup()
 lua require('mini.pick').setup()
+lua require('mini.diff').setup()
+lua require('mini.clue').setup()
 lua require('mini.files').setup()
 lua require('mini.pairs').setup()
 lua require('mini.icons').setup()
 lua require('mini.fuzzy').setup()
 lua require('mini.notify').setup()
 lua require('mini.comment').setup()
+" lua require('mini.cmdline').setup()
 lua require('mini.starter').setup()
+lua require('mini.tabline').setup()
 " lua require('mini.snippets').setup()
 lua require('mini.surround').setup()
+lua require('mini.bufremove').setup()
 lua require('mini.bracketed').setup()
 lua require('mini.operators').setup()
 lua require('mini.statusline').setup()
 lua require('mini.indentscope').setup()
-lua require('mini.cursorword').setup()
+" lua require('mini.cursorword').setup()
 lua require('mini.completion').setup()
 
 let g:coc_disable_startup_warning = 1
@@ -99,6 +103,8 @@ map <leader>t :sp \| :term<CR>
 " open mini.pick
 map <leader><leader> :Pick buffers<CR>
 map <leader>h :Pick help<CR>
+map <leader>g :Pick grep_live<CR>
+map <leader>G :Pick grep<CR>
 " open mini.files
 map <leader>n :lua MiniFiles.open()<CR>
 
