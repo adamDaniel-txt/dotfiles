@@ -34,6 +34,16 @@ Option "Tapping" "on"
 Option "NaturalScrolling" "true"
 ```
 
+## minimal grub boot
+* add this in /etc/default/grub
+```
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=0
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+GRUB_CMDLINE_LINUX=""
+GRUB_TERMINAL=console
+```
+
 ## other software i like
 - bottom
 - auto-cpufreq
