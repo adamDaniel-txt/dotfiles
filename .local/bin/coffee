@@ -1,5 +1,47 @@
 #!/bin/sh
 
-xset s off
-xset -dpms
-xset s noblank
+# File to store the current state
+STATE_FILE="/tmp/coffee_mode_state"
+
+# Function to turn coffee mode ON
+coffee_on() {
+    xset s off
+    xset -dpms
+    xset s noblank
+    echo "on" > "$STATE_FILE"
+
+    # Send notification
+    if command -v notify-send >/dev/null 2>&1; then
+        notify-send -t 3000 "Coffee Mode" "☕ Coffee mode is ON - Laptop will not sleep"
+    else
+        echo "☕ Coffee mode is ON - Laptop will not sleep"
+    fi
+}
+
+# Function to turn coffee mode OFF
+coffee_off() {
+    xset s on
+    xset +dpms
+    xset s blank
+    echo "off" > "$STATE_FILE"
+
+    # Send notification
+    if command -v notify-send >/dev/null 2>&1; then
+        notify-send -t 3000 "Coffee Mode" "💤 Coffee mode is OFF - Normal sleep behavior restored"
+    else
+        echo "💤 Coffee mode is OFF - Normal sleep behavior restored"
+    fi
+}
+
+# Check current state and toggle
+if [ -f "$STATE_FILE" ]; then
+    CURRENT_STATE=$(cat "$STATE_FILE")
+    if [ "$CURRENT_STATE" = "on" ]; then
+        coffee_off
+    else
+        coffee_on
+    fi
+else
+    # If state file doesn't exist, default to OFF and then turn ON
+    coffee_on
+fi
