@@ -9,11 +9,21 @@ static const char unknown_str[] = "n/a";
 /* maximum output string length */
 #define MAXLEN 2048
 
+/* battery levels to notify - add any levels you want to receive notification for (in percent) */
+const int notifiable_levels[] = {
+    20,
+    10,
+    5,
+};
+const size_t notifiable_levels_count = sizeof(notifiable_levels) / sizeof(notifiable_levels[0]);
+
 /*
  * function            description                     argument (example)
  *
  * battery_perc        battery percentage              battery name (BAT0)
  *                                                     NULL on OpenBSD/FreeBSD
+ * battery_notify      linux battery notifications     battery name (BAT0)
+ *                                                     OpenBSD/FreeBSD not supported
  * battery_remaining   battery remaining HH:MM         battery name (BAT0)
  *                                                     NULL on OpenBSD/FreeBSD
  * battery_state       battery charging state          battery name (BAT0)
@@ -66,12 +76,12 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-    // {battery_perc, "   %s%% | ", "BAT0"},
-    {battery_notify, "", "BAT1"},
-    {wifi_essid, " 󰤨  %s | ", "wlp3s0"},
-    {datetime, "%s | ", "%b %d (%a) %I:%M%p"},
-    {run_command, "  %s ", "pamixer --get-volume-human"},
     // { datetime, "%s",           "%F %T" },
+	{battery_notify, "", "BAT1"}, /* There is nothing to print its just a notifications*/
+    {battery_perc, "^c#1d2021^^b#fabd2f^  ^c#fabd2f^^b#1d2021^ %s ", "BAT1"},
+    {wifi_essid, "^c#1d2021^^b#fb4934^ 󰤨  ^c#fb4934^^b#1d2021^ %s ", "wlp3s0"},
+    {datetime, "^c#1d2021^^b#458588^ %s ", "%b %d (%a) %I:%M%p"},
+    {run_command, "^c#d3869b^^b#1d2021^  %s ", "pamixer --get-volume-human"},
     // {cpu_perc, " CPU 󰍛 %s%% | ", NULL},
     // {ram_perc, "RAM  %s%% | ", NULL},
     // { disk_perc,"HDD  %s%% | ", "/" },
