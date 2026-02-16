@@ -35,9 +35,9 @@ static const char *const autostart[] = {
 	// "xrdb", "/home/fdan/.config/x11/xresources", NULL,
 	"dunst", NULL,
 	"picom", NULL,
-	"dwmbar", NULL,
-	"batnoti", NULL,
+	"slstatus", NULL,
 	"mpd", NULL,
+	"mpdnoti", NULL,
 	NULL /* terminate */
 };
 
@@ -68,7 +68,7 @@ static const Rule rules[] = {
 	 */
 	/* class     	instance  	title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "firefox",	NULL,     	NULL,           1 << 2,    0,          0,          -1,        -1 },
-	{ "audacity",	NULL,     	NULL,           1 << 5,    0,          0,          -1,        -1 },
+	{ "Audacity",	NULL,     	NULL,           1 << 5,    0,          0,          -1,        -1 },
 	{ "kdenlive",	NULL,     	NULL,           1 << 6,    0,          0,          -1,        -1 },
 	{ "Inkscape",	NULL,     	NULL,           1 << 7,    0,          0,          -1,        -1 },
 	{ "Gimp",    	NULL,     	NULL,           1 << 8,    0,          0,           0,        -1 },
