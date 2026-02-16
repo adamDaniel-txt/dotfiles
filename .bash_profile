@@ -41,6 +41,7 @@ export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
+export STEAM_EXTRA_COMPAT_TOOLS_PATHS="$HOME/.steam/root/compatibilitytools.d"
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 export _JAVA_AWT_WM_NONREPARENTING=1
