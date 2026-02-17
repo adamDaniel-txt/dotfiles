@@ -240,6 +240,7 @@ static void updatetitle(Client *c);
 static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
+static void warp(const Client *c);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
@@ -254,6 +255,11 @@ static Client *swallowingclient(Window w);
 static Client *termforwin(const Client *c);
 static pid_t winpid(Window w);
 
+static void keyrelease(XEvent *e);
+static void combotag(const Arg *arg);
+static void comboview(const Arg *arg);
+
+
 /* variables */
 static const char broken[] = "broken";
 static char stext[1024];
@@ -265,6 +271,7 @@ static int (*xerrorxlib)(Display *, XErrorEvent *);
 static unsigned int numlockmask = 0;
 static void (*handler[LASTEvent]) (XEvent *) = {
 	[ButtonPress] = buttonpress,
+	[ButtonRelease] = keyrelease,
 	[ClientMessage] = clientmessage,
 	[ConfigureRequest] = configurerequest,
 	[ConfigureNotify] = configurenotify,
@@ -272,6 +279,7 @@ static void (*handler[LASTEvent]) (XEvent *) = {
 	[EnterNotify] = enternotify,
 	[Expose] = expose,
 	[FocusIn] = focusin,
+	[KeyRelease] = keyrelease,
 	[KeyPress] = keypress,
 	[MappingNotify] = mappingnotify,
 	[MapRequest] = maprequest,
@@ -330,6 +338,42 @@ autostart_exec() {
 
 
 /* function implementations */
+static int combo = 0;
+
+void
+keyrelease(XEvent *e) {
+	combo = 0;
+}
+
+void
+combotag(const Arg *arg) {
+	if(selmon->sel && arg->ui & TAGMASK) {
+		if (combo) {
+			selmon->sel->tags |= arg->ui & TAGMASK;
+		} else {
+			combo = 1;
+			selmon->sel->tags = arg->ui & TAGMASK;
+		}
+		focus(NULL);
+		arrange(selmon);
+	}
+}
+
+void
+comboview(const Arg *arg) {
+	unsigned newtags = arg->ui & TAGMASK;
+	if (combo) {
+		selmon->tagset[selmon->seltags] |= newtags;
+	} else {
+		selmon->seltags ^= 1;	/*toggle tagset*/
+		combo = 1;
+		if (newtags)
+			selmon->tagset[selmon->seltags] = newtags;
+	}
+	focus(NULL);
+	arrange(selmon);
+}
+
 void
 applyrules(Client *c)
 {
@@ -1068,6 +1112,7 @@ focusmon(const Arg *arg)
 	unfocus(selmon->sel, 0);
 	selmon = m;
 	focus(NULL);
+	warp(selmon->sel);
 }
 
 void
@@ -1661,6 +1706,8 @@ restack(Monitor *m)
 				wc.sibling = c->win;
 			}
 	}
+	if (m == selmon && (m->tagset[m->seltags] & m->sel->tags) && m->lt[m->sellt]->arrange != &monocle)
+		warp(m->sel);
 	XSync(dpy, False);
 	while (XCheckMaskEvent(dpy, EnterWindowMask, &ev));
 }
@@ -2543,6 +2590,28 @@ swallowingclient(Window w)
 	}
 
 	return NULL;
+}
+
+void
+warp(const Client *c)
+{
+	int x, y;
+
+	if (!c) {
+		XWarpPointer(dpy, None, root, 0, 0, 0, 0, selmon->wx + selmon->ww / 2, selmon->wy + selmon->wh / 2);
+		return;
+	}
+
+	if (!getrootptr(&x, &y) ||
+		(x > c->x - c->bw &&
+		 y > c->y - c->bw &&
+		 x < c->x + c->w + c->bw*2 &&
+		 y < c->y + c->h + c->bw*2) ||
+		(y > c->mon->by && y < c->mon->by + bh) ||
+		(c->mon->topbar && !y))
+		return;
+
+	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w / 2, c->h / 2);
 }
 
 Client *
