@@ -36,13 +36,13 @@ static const char *const autostart[] = {
     "xset", "r", "rate", "300", "50", NULL,
     // "xwallpaper", "--zoom", "~/.bg", NULL,
     "redshift", "-O", "4500", NULL,
-    "syncthing", "-no-browser", NULL,
+    "syncthing", "--no-browser", NULL,
 	// "xrdb", "/home/fdan/.config/x11/xresources", NULL,
 	"dunst", NULL,
 	"picom", NULL,
 	"slstatus", NULL,
 	"mpd", NULL,
-	"mpdnoti", NULL,
+	"mpd-notification", NULL,
 	NULL /* terminate */
 };
 
@@ -181,9 +181,9 @@ static const Key keys[] = {
 
 	{ 0, XK_Print,				    spawn,     {.v = (const char*[]){ "flameshot", "gui", NULL } } },
 	{ 0, XK_Insert,				    spawn,     SHCMD("xdotool type $(grep -v '^#' ~/.config/bookmarks | dmenu -i -l 30 -p Bookmarks: | cut -d' ' -f1)") },
-	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("pamixer --toggle-mute && refbar") },
-	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("pamixer --increase 5 && refbar") },
-	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("pamixer --decrease 5 && refbar") },
+	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("pamixer --toggle-mute") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("pamixer --increase 5") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("pamixer --decrease 5") },
 	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,     {.v = upbrightness } },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,     {.v = downbrightness } },
