@@ -79,7 +79,7 @@ map <leader>f :Goyo \| set linebreak<CR>
 let g:goyo_height='85%'
 let g:goyo_width='80%'
 " Spell-check set to <leader>o, 'o' for 'orthography':
-map <leader>o :setlocal spell! spelllang=en_us<CR>
+map <leader>O :setlocal spell! spelllang=en_us<CR>
 
 " install nessesary extension
 let g:coc_global_extensions = [
@@ -105,6 +105,7 @@ map <leader><leader> :Pick buffers<CR>
 map <leader>h :Pick help<CR>
 map <leader>g :Pick grep_live<CR>
 map <leader>G :Pick grep<CR>
+map <leader>s :Pick files<CR>
 " open mini.files
 map <leader>n :lua MiniFiles.open()<CR>
 
@@ -130,7 +131,7 @@ nnoremap S :%s//g<Left><Left>
 map <leader>c :w! \| !compiler "%:p"<CR>
 map <leader>m :w! \| :make<CR>
 " open preview like pdf/html
-map <leader>s :!opout "%:p"<CR>
+map <leader>o :!opout "%:p"<CR>
 
 " Ensure files are read as what I want:
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
