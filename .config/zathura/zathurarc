@@ -25,7 +25,6 @@ set completion-fg 		"#f7f6ec"
 set notification-bg 		"#7bb75b"
 set notification-fg 		"#1d1d1d"
 
-set recolor			true
 set page-padding 1
 set selection-clipboard clipboard
 
