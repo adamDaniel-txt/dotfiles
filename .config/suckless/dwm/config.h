@@ -6,7 +6,7 @@
 #define BROWSER "librewolf"
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 5;        /* border pixel of windows */
 static const unsigned int gappx     = 10;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -24,7 +24,7 @@ static const char col_gray2[]       = "#928374";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-static const char col_iwant[]       = "#b8bb26";
+static const char col_iwant[]       = "#fe8019";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -71,15 +71,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     	instance  	title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "firefox",	NULL,     	NULL,           1 << 2,    0,          0,          -1,        -1 },
-	{ "Audacity",	NULL,     	NULL,           1 << 5,    0,          0,          -1,        -1 },
-	{ "kdenlive",	NULL,     	NULL,           1 << 6,    0,          0,          -1,        -1 },
-	{ "Inkscape",	NULL,     	NULL,           1 << 7,    0,          0,          -1,        -1 },
-	{ "Gimp",    	NULL,     	NULL,           1 << 8,    0,          0,           0,        -1 },
-	{ "St",      	NULL,     	NULL,           0,         0,          1,           0,        -1 },
-	{ NULL,      	NULL,     	"Event Tester", 0,         0,          0,           1,        -1 },
-	{ TERMCLASS,	"floatterm",	NULL,       	0,         1,          1,           0,        -1 },
+	/* class     	instance  	 title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "firefox",	NULL,     	 NULL,           1 << 2,    0,          0,           0,        -1 },
+	{ "Audacity",	NULL,     	 NULL,           1 << 5,    0,          0,           0,        -1 },
+	{ "kdenlive",	NULL,     	 NULL,           1 << 6,    0,          0,           0,        -1 },
+	{ "Inkscape",	NULL,     	 NULL,           1 << 7,    0,          0,           0,        -1 },
+	{ "Gimp",    	NULL,     	 NULL,           1 << 8,    0,          0,           0,        -1 },
+	{ "Pcmanfm",	NULL,     	 NULL,           0,         1,          0,           0,        -1 },
+	{ NULL,      	NULL,     	 "Event Tester", 0,         0,          0,           1,        -1 },
+	{ TERMCLASS,    NULL,     	 NULL,           0,         0,          1,           0,        -1 },
+	{ TERMCLASS,	"floatterm", NULL,       	 0,         1,          1,           0,        -1 },
 };
 
 /* layout(s) */
@@ -148,16 +149,15 @@ static const Key keys[] = {
 
 	{ MODKEY,			            XK_o,      spawn,          SHCMD("tmuxdev") },
 	{ MODKEY,			            XK_w,      spawn,          SHCMD("webcam") },
-	{ MODKEY,             		    XK_s,      spawn,	       SHCMD("screenshot select") },
-	{ MODKEY|ShiftMask,             XK_s,      spawn,     	   SHCMD("screenshot window") },
+	{ MODKEY,             		    XK_s,      spawn,	       SHCMD("~/.config/scripts/dmenu_websearch") },
 	{ MODKEY|ShiftMask,		        XK_w,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
 	{ MODKEY|ShiftMask,		        XK_l,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "slock", NULL } } },
 	{ MODKEY,             		    XK_m,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
 	{ MODKEY,             		    XK_r,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qr", NULL } } },
-	{ MODKEY,			            XK_e,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "lf", NULL } } },
+	{ MODKEY,			            XK_e,      spawn,          {.v = (const char*[]){ "pcmanfm", NULL } } },
 	{ MODKEY,			            XK_c,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qalc", NULL } } },
 	{ MODKEY,			            XK_x,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
-	{ MODKEY,			            XK_n,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
+	{ MODKEY,			            XK_n,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "tmux", "new-session", "nvim", NULL } } },
 	{ MODKEY|ShiftMask,             XK_k,      spawn,     	   {.v = (const char*[]){ "xkill", NULL } } },
 	{ MODKEY|ShiftMask,		        XK_p,      spawn,          {.v = (const char*[]){ "passmenu", NULL } } },
 	{ MODKEY,			            XK_F9,     spawn,          {.v = (const char*[]){ "mounter", NULL } } },
