@@ -16,6 +16,14 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+# start ssh-agent and add your key
+if command -v ssh-agent >/dev/null 2>&1; then
+    # check if agent is already running
+    if [ -z "$SSH_AUTH_SOCK" ]; then
+        eval $(ssh-agent -s) > /dev/null
+    fi
+fi
+
 # default apps
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -48,6 +56,18 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT="MToolkit wmname LG3D"
 export QT_QPA_PLATFORMTHEME="Adwaita-Dark"
 export QT_STYLE_OVERRIDE="Adwaita-Dark"
+
+# fff
+# Favourites (Bookmarks) (keys 1-9) (dir or file)
+export FFF_FAV1=~/.config
+export FFF_FAV2=~/dox
+export FFF_FAV3=~/dl
+export FFF_FAV4=~/vids
+export FFF_FAV5=~/pix
+export FFF_FAV6=~/sync/college
+export FFF_FAV7=~/.local/share/nvim/vimwiki
+export FFF_FAV8=
+export FFF_FAV9=
 
 # use vim to open manpage
 export MANPAGER="nvim +Man!"
