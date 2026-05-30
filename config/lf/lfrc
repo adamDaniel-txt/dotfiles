@@ -1,0 +1,141 @@
+# Basic Settings
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 10
+set icons true
+# set sixel true
+set period 1
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+set autoquit true
+set ignorecase true
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
+
+# Custom Functions
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd setbg ${{
+  ln -s -f $f ~/.local/share/bg
+  xwallpaper --zoom ~/.local/share/bg
+}}
+
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.rar) unrar x "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *.7z) 7z e "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+# Trash bindings
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    file=${files%%;*}
+
+    trash "$(basename "$file")"
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+cmd open &{{
+	case $(file --mime-type -Lb $f) in
+		text/*) lf -remote "send $id \$nvim \$fx";;
+		*) xdg-open "$f"
+	esac
+}}
+
+cmd fzf_jump ${{
+    res="$(find . -maxdepth 1 | fzf --reverse --header='Jump to location')"
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+map <c-f> :fzf_jump
+
+cmd fzf_search ${{
+    RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+    res="$(
+        FZF_DEFAULT_COMMAND="$RG_PREFIX ''" \
+            fzf --bind "change:reload:$RG_PREFIX {q} || true" \
+            --ansi --layout=reverse --header 'Search in files' \
+            | cut -d':' -f1 | sed 's/\\/\\\\/g;s/"/\\"/g'
+    )"
+    [ -n "$res" ] && lf -remote "send $id select \"$res\""
+}}
+map <c-g> :fzf_search
+
+cmd z-jump ${{
+  ZLUA_SCRIPT="$ZDOTDIR/plugins/z.lua/z.lua"
+  lf -remote "send ${id} cd \"$($ZLUA_SCRIPT -e $@ | sed 's/\\/\\\\/g;s/"/\\"/g')\""
+}}
+map Z push :z-jump<space>-I<space>
+map zb push :z-jump<space>-b<space>
+map zz push :z-jump<space>
+
+# Bindings
+map c
+map d
+map m
+
+map co $vscodium "$f"
+map cf $dotbare fadd -f
+
+map au unarchive
+map ae $wine "$f"
+
+# Basic Functions
+map . set hidden!
+map dd trash
+map u $trash-restore
+map de $trash-empty
+map p paste
+map x cut
+map y copy
+map <enter> open
+map R reload
+map mf mkfile
+map md mkdir
+map b setbg
+map T $nsxiv -t "$(pwd)"
+map C clear
+
+# Movement
+map gc cd ~/.config
+map gC cd ~/sync/college
+map gk cd ~/sync/manga/local
+map gD cd ~/dox
+map gd cd ~/dl
+map gp cd ~/pix
+map gn cd ~/sync/note
+map gw cd ~/pix/wallpapers
+map gs cd ~/pix/screenshots
+map gv cd ~/vids
+map gt cd ~/.local/share/Trash/files

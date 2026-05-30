@@ -1,0 +1,204 @@
+/* See LICENSE file for copyright and license details. */
+
+/* constants */
+#define TERMINAL "st"
+#define TERMCLASS "st-256color"
+#define BROWSER "librewolf"
+
+/* appearance */
+static const unsigned int borderpx  = 5;        /* border pixel of windows */
+static const unsigned int gappx     = 10;        /* gaps between windows */
+static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const int showsystray        = 1;        /* 0 means no systray */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
+static const int showbar            = 1;        /* 0 means no bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
+static const char *fonts[]          = { "monospace:size=12" };
+static const char dmenufont[]       = "monospace:size=12";
+static const char col_gray1[]       = "#282828";
+static const char col_gray2[]       = "#928374";
+static const char col_gray3[]       = "#bbbbbb";
+static const char col_gray4[]       = "#eeeeee";
+static const char col_cyan[]        = "#005577";
+static const char col_iwant[]       = "#fe8019";
+static const char *colors[][3]      = {
+	/*               fg         bg         border   */
+	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeSel]  = { col_gray1, col_iwant, col_iwant },
+};
+
+static const char *const autostart[] = {
+    // "redshift", "-O", "4500", NULL,
+    // "syncthing", "--no-browser", NULL,
+    "xrdb", "/home/fdan/.config/nixos/config/x11/xresources", NULL,
+    "sh", "-c", "sleep 0.1 && xsetroot -cursor_name left_ptr", NULL, /* Fixes XCursor Theme on wallpaper */
+	"dunst", NULL,
+	"slstatus", NULL,
+	NULL /* terminate */
+};
+
+/* tagging */
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+static const char *tagsel[][2] = {
+	{ "#fb4934", "#1d2021" },
+	{ "#fabd2f", "#1d2021" },
+	{ "#b8bb26", "#1d2021" },
+	{ "#83a598", "#1d2021" },
+	{ "#8ec07c", "#1d2021" },
+	{ "#b16286", "#1d2021" },
+	{ "#d3869b", "#1d2021" },
+	{ "#f7f6ec", "#1d2021" },
+	{ "#a89984", "#1d2021" },
+};
+
+static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
+static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
+
+static const Rule rules[] = {
+	/* xprop(1):
+	 *	WM_CLASS(STRING) = instance, class
+	 *	WM_NAME(STRING) = title
+	 */
+	/* class     	instance  	 title           tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "firefox",	NULL,     	 NULL,           1 << 2,    0,          0,           0,        -1 },
+	{ "Audacity",	NULL,     	 NULL,           1 << 5,    0,          0,           0,        -1 },
+	{ "kdenlive",	NULL,     	 NULL,           1 << 6,    0,          0,           0,        -1 },
+	{ "Inkscape",	NULL,     	 NULL,           1 << 7,    0,          0,           0,        -1 },
+	{ "Gimp",    	NULL,     	 NULL,           1 << 8,    0,          0,           0,        -1 },
+	{ "Thunar",     NULL,     	 NULL,           0,         1,          0,           0,        -1 },
+	{ "Pcmanfm",	NULL,     	 NULL,           0,         1,          0,           0,        -1 },
+	{ NULL,      	NULL,     	 "Event Tester", 0,         0,          0,           1,        -1 },
+	{ TERMCLASS,    NULL,     	 NULL,           0,         0,          1,           0,        -1 },
+	{ TERMCLASS,	"floatterm", NULL,       	 0,         1,          1,           0,        -1 },
+};
+
+/* layout(s) */
+static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const int nmaster     = 1;    /* number of clients in master area */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int attachbelow = 1;    /* 1 means attach after the currently active window */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+
+static const Layout layouts[] = {
+	/* symbol     arrange function */
+	{ "[]=",      tile },    /* first entry is default */
+	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[M]",      monocle },
+};
+
+/* key definitions */
+#define MODKEY Mod4Mask
+#define Alt Mod1Mask
+#define TAGKEYS(KEY,TAG) \
+{ MODKEY,                       KEY,      comboview,           {.ui = 1 << TAG} }, \
+{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+{ MODKEY|ShiftMask,             KEY,      combotag,            {.ui = 1 << TAG} }, \
+{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+
+/* helper for spawning shell commands in the pre dwm-5.0 fashion */
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+
+/* commands */
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_iwant, "-sf", col_gray1, NULL };
+static const char *termcmd[]  = { TERMINAL, NULL };
+static const char *browser[]  = { BROWSER, NULL };
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "64x32", NULL };
+static const char *upbrightness[]   = { "brightnessctl", "set", "+10%", NULL };
+static const char *downbrightness[] = { "brightnessctl", "set", "10%-", NULL };
+
+static const Key keys[] = {
+	/* modifier                     key        function        argument */
+	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
+	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,			XK_grave,  spawn,	   {.v = (const char*[]){ "dmenunicode", NULL } } },
+	{ MODKEY,			XK_b,	   spawn,          {.v = browser } },
+	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
+	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_z,      zoom,           {0} },
+	{ Alt,                       	XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[2]} },
+	/* { MODKEY,             XK_space,  setlayout,      {0} }, */
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+
+	{ MODKEY,			            XK_o,      spawn,          SHCMD("tmuxdev") },
+	{ MODKEY,			            XK_w,      spawn,          SHCMD("webcam") },
+	{ MODKEY,             		    XK_s,      spawn,	       SHCMD("dmenu_websearch") },
+	{ MODKEY|ShiftMask,		        XK_w,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
+	{ MODKEY|ShiftMask,		        XK_l,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "slock", NULL } } },
+	{ MODKEY,             		    XK_m,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
+	{ MODKEY,             		    XK_r,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qr", NULL } } },
+	{ MODKEY,			            XK_e,      spawn,          {.v = (const char*[]){ "pcmanfm", NULL } } },
+	{ MODKEY,			            XK_c,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "qalc", NULL } } },
+	{ MODKEY,			            XK_x,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
+	{ MODKEY,			            XK_n,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "tmux", "new-session", "nvim", NULL } } },
+	{ MODKEY|ShiftMask,             XK_k,      spawn,     	   {.v = (const char*[]){ "xkill", NULL } } },
+	{ MODKEY|ShiftMask,		        XK_p,      spawn,          {.v = (const char*[]){ "passmenu", NULL } } },
+	{ MODKEY,			            XK_F9,     spawn,          {.v = (const char*[]){ "mounter", NULL } } },
+	{ MODKEY,			            XK_F10,    spawn,          {.v = (const char*[]){ "unmounter", NULL } } },
+	{ MODKEY,			            XK_BackSpace,  spawn,      SHCMD("sysact") },
+	{ MODKEY,			            XK_p,      spawn,          {.v = (const char*[]){ "mpc", "toggle", NULL } } },
+	{ MODKEY,			            XK_bracketleft, spawn,     {.v = (const char*[]){ "mpc", "prev", NULL } } },
+	{ MODKEY,			            XK_bracketright, spawn,    {.v = (const char*[]){ "mpc", "next", NULL } } },
+
+	TAGKEYS(                        XK_1,                      0)
+	TAGKEYS(                        XK_2,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_4,                      3)
+	TAGKEYS(                        XK_5,                      4)
+	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_7,                      6)
+	TAGKEYS(                        XK_8,                      7)
+	TAGKEYS(                        XK_9,                      8)
+	{ MODKEY,             		    XK_q,      killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+
+	{ 0, XK_Print,				    spawn,     {.v = (const char*[]){ "flameshot", "gui", NULL } } },
+	{ 0, XK_Insert,				    spawn,     SHCMD("xdotool type $(grep -v '^#' ~/.config/nixos/config/bookmarks | dmenu -i -l 30 -p Bookmarks: | cut -d' ' -f1)") },
+	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("pamixer --toggle-mute") },
+	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("pamixer --increase 5") },
+	{ 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("pamixer --decrease 5") },
+	{ 0, XF86XK_AudioMicMute,       spawn,     SHCMD("wpctl set-mute @DEFAULT_SOURCE@ toggle") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,     {.v = upbrightness } },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,     {.v = downbrightness } },
+};
+
+/* button definitions */
+/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+static const Button buttons[] = {
+	/* click                event mask      button          function        argument */
+	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkTagBar,            0,              Button1,        view,           {0} },
+	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+};
+

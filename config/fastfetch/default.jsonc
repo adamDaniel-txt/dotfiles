@@ -1,0 +1,122 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetc h/raw/dev/doc/json_schema.json",
+  "logo": {
+        "source": "debian", // search for logos: fastfetch --list-logos or --print-logos
+        "padding": {
+	        "top": 1
+        },
+  },
+  "display": {
+    "separator": " :  ",
+    "color": "blue"
+  },
+  "modules": [
+	{
+	  "type": "title",
+    "key":" ",
+    "keyColor": "red",
+	  "color": {
+		  "user": "yellow",
+		  "at": "green",
+		  "host": "blue"
+		}
+	},
+
+//user@host
+//    {
+//        "type": "custom",
+//        "format": "{#35}  {#37}:  {#31}[{#33}fdan{#32}@{#34}debian{#31}]"
+//    },
+
+//system :
+
+    {
+      "type": "custom",
+      "format": "┌─────────────────────── System ───────────────────────┐",
+      "outputColor": "red"
+    },
+    {
+      "type": "os",
+      "key": "╭─  OS",
+      "keyColor": "green"
+    },
+    {
+      "type": "shell",
+      "key": "├─  SHELL",
+      "keyColor": "green"
+    },
+    {
+      "type": "kernel",
+      "key": "├─  KERNEL",
+      "keyColor": "green"
+    },
+    {
+      "type": "packages",
+      "key": "├─  PACKAGES",
+      "keyColor": "green"
+    },
+    {
+      "type": "terminal",
+      "key": "├─  TERMINAL",
+      "format": "{pretty-name} {version}",
+      "keyColor": "green"
+    },
+    {
+      "type": "wm",
+      "key": "╰─  WINDOW MANAGER",
+      "keyColor": "green"
+    },
+    {
+        "type": "custom",
+        "format": "└────────────────────────────────────────────────────┘",
+        "outputColor": "red"
+    },
+
+//colors
+    {
+        "type": "custom",
+        "format": "{#37}█{#97}█ {#36}█{#96}█ {#35}█{#95}█ {#34}█{#94}█ {#33}█{#93}█ {#32}█{#92}█ {#31}█{#91}█ {#30}█{#90}█"
+    },
+
+//resources :
+    {
+      "type": "custom",
+      "format": "┌───────────────────── Resources ────────────────────┐",
+      "outputColor": "red"
+    },
+    {
+      "type": "cpu",
+      "key": "╭─  CPU",
+      "keyColor": "yellow",
+      "format": "{cores-logical} x {name}"
+    },
+    {
+      "type": "gpu",
+      "key": "├─󰘚  GPU",
+      "keyColor": "yellow",
+      "format": "{name}"
+    },
+    {
+      "type": "swap",
+      "key": "├─  SWAP",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "disk",
+      "key": "├─  DISK",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "memory",
+      "key": "╰─  MEMORY",
+      "keyColor": "yellow"
+    },
+    {
+      "type": "custom",
+      "format": "└────────────────────────────────────────────────────┘",
+      "outputColor": "red"
+    },
+    "break"
+    // "colors"
+  ]
+}

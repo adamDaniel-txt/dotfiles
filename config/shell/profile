@@ -1,0 +1,36 @@
+# default apps
+export EDITOR="nvim"
+export VISUAL="nvim"
+export TERMINAL="St"
+export BROWSER="librewolf"
+
+# default folders
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share"
+export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
+export ZDOTDIR="$HOME/.config/zsh"
+export INPUTRC="$HOME/.config/nixos/config/shell/inputrc"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export HISTFILE="$XDG_DATA_HOME/history"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm"
+export W3M_DIR="$XDG_STATE_HOME/w3m"
+export WINEPREFIX="$XDG_DATA_HOME/wineprefixes/default"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export TEXMFHOME="$XDG_DATA_HOME/texmf"
+export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
+export STEAM_EXTRA_COMPAT_TOOLS_PATHS="$HOME/.steam/root/compatibilitytools.d"
+# export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT="MToolkit wmname LG3D"
+export QT_QPA_PLATFORMTHEME="Adwaita-Dark"
+export QT_STYLE_OVERRIDE="Adwaita-Dark"
+
+# use vim to open manpage
+export MANPAGER="nvim +Man!"

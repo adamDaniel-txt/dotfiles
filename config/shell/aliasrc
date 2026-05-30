@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+se() {
+	choice="$(find ~/.local/bin -mindepth 1 -printf '%P\n' | fzf)"
+	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
+	}
+
+alias \
+	cp="cp -riv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	mkdir="mkdir -pv" \
+	rsync="rsync -ah --info=progress2" \
+	yt="yt-dlp --embed-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ffmpeg="ffmpeg -hide_banner" \
+    c="xclip -sel clip" \
+    p="xclip -o -sel clip"
+
+# colorize commands
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+    l="ls -lah --color=auto --group-directories-first" \
+	grep="grep --color=auto -i" \
+	diff="diff --color=auto"
+
+# abbreviate
+alias \
+	sc="sc-im" \
+	z="zathura" \
+    n="nsxiv"
+
+# git
+alias \
+	g="git" \
+	gc="git commit -m" \
+	gs="git status" \
+	gl="git log --graph --decorate --oneline"
+
+
+# alias javap="javac -d . -sourcepath src src/main/*.java && java main.Main"
+# alias optjpgs="mogrify -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace sRGB -resize 400 -path "min" *.jpg"
