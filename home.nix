@@ -55,6 +55,7 @@ in
   };
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles.fdan = {
       extraConfig = builtins.readFile ./config/firefox/user.js;
       userChrome = builtins.readFile ./config/firefox/userChrome.css;
@@ -88,6 +89,7 @@ in
     XDG_DOCUMENTS_DIR="$HOME/dox"
     XDG_MUSIC_DIR="$HOME/mus"
     XDG_PICTURES_DIR="$HOME/pix"
+    XDG_PROJECTS_DIR="$HOME/proj"
     XDG_VIDEOS_DIR="$HOME/vids"
   '';
   xdg.desktopEntries = {
