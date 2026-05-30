@@ -91,14 +91,14 @@
         package = pkgs.dwm.overrideAttrs {
           src = ./config/suckless/dwm;
           buildInputs = with pkgs; [
-            xorg.libX11
-            xorg.libXft
-            xorg.libXinerama
-            xorg.libxcb
+            libx11
+            libxft
+            libxinerama
+            libxcb
           ];
         };
       };
-      desktopManager.xfce.enable = true;
+      # desktopManager.xfce.enable = true;
     };
 
     picom = {
@@ -187,6 +187,7 @@
     mkcert
     nssTools
     steam-run
+    android-tools
   ];
 
   # Fonts
@@ -252,7 +253,6 @@
     enableAskPassword = false;
   };
   programs.slock.enable = true;
-  programs.adb.enable = true;
   programs.nix-ld.enable = true;
   programs.auto-cpufreq.enable = true;
   programs.appimage.enable = true;

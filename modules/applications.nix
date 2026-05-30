@@ -7,7 +7,7 @@
     pcmanfm
     # winboat
     protonup-ng
-    lutris
+    # lutris
     nwg-look
     onlyoffice-desktopeditors
     inkscape

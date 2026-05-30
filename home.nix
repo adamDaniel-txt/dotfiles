@@ -80,7 +80,7 @@ in
     configs;
 
   home.packages = with pkgs; [
-    bluetui duf dunst dust fastfetch fd fzf htop imagemagick lazygit lf mpc mpv ncdu ncmpcpp neovim pamixer qrencode redshift ripgrep taskwarrior3 tealdeer tmux trashy xdotool xfce.xfce4-whiskermenu-plugin xwallpaper zathura zoxide ghostscript brightnessctl p7zip unar yt-dlp fff ffmpeg ctpv bc vimv
+    bluetui duf dunst dust fastfetch fd fzf htop imagemagick lazygit lf mpc mpv ncdu ncmpcpp neovim pamixer qrencode redshift ripgrep taskwarrior3 tealdeer tmux trashy xdotool xwallpaper zathura zoxide ghostscript brightnessctl p7zip unar yt-dlp fff ffmpeg ctpv bc vimv
   ];
   home.file.".config/user-dirs.dirs".text = ''
     XDG_DESKTOP_DIR="$HOME/desk"
@@ -133,6 +133,7 @@ in
       package = pkgs.gruvbox-material-gtk-theme;
       name = "Gruvbox-Material-Dark";
     };
+    gtk4.theme = null;
     iconTheme = {
       package = pkgs.papirus-icon-theme;
       name = "Papirus-Dark";

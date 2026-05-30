@@ -8,11 +8,11 @@
       src = ../config/suckless/slstatus;
       patches = [ ];
       buildInputs = with pkgs; [
-        xorg.libX11
-        xorg.libXft
+        libx11
+        libxft
         libxcb
-        xorg.libXau
-        xorg.libXdmcp
+        libxau
+        libxdmcp
       ];
     }))
     (pkgs.dmenu.overrideAttrs (_: {
