@@ -10,6 +10,8 @@ vim.o.undofile = true
 vim.o.hlsearch = false
 vim.o.ignorecase = true
 vim.o.cursorline = true
+vim.o.splitbelow = true
+vim.o.splitright = true
 vim.o.clipboard = 'unnamedplus'
 
 vim.pack.add({
