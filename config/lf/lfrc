@@ -3,15 +3,14 @@ set shellopts '-eu'
 set ifs "\n"
 set scrolloff 10
 set icons true
-# set sixel true
 set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 set autoquit true
 set ignorecase true
-set previewer ctpv
-set cleaner ctpvclear
-&ctpv -s $id
-&ctpvquit $id
+set previewer ~/.config/lf/scope
+set cleaner ~/.config/lf/clean
+# &ctpv -s $id
+# &ctpvquit $id
 
 # Custom Functions
 cmd mkdir ${{

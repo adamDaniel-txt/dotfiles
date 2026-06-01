@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Clear Sixel graphics from the terminal window
+printf "\033[a"
