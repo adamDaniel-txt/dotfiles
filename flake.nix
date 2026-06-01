@@ -28,10 +28,10 @@
         # toolchain + headers/libs
         packages = with pkgs; [
           pkg-config
-          xorg.libX11
-          xorg.libXft
-          xorg.libXinerama
-          xorg.libxcb
+          libx11
+          libxft
+          libxinerama
+          libxcb
         ];
       };
 
