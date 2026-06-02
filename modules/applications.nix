@@ -5,7 +5,7 @@
     steam
     sunshine
     pcmanfm
-    # winboat
+    winboat
     protonup-ng
     # lutris
     nwg-look
@@ -28,7 +28,8 @@
     ungoogled-chromium
     distrobox
     blender
-    helium
+    # helium
     opencode
+    pi-coding-agent
   ];
 }
