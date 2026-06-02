@@ -5,13 +5,13 @@ let
    create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
    configs = {
      nvim = "nvim";
-     lf = "lf";
      fastfetch = "fastfetch";
      zathura = "zathura";
      tmux = "tmux";
      dunst = "dunst";
      mpv = "mpv";
      ncmpcpp = "ncmpcpp";
+     yazi = "yazi";
    };
 in
 
@@ -81,7 +81,7 @@ in
     configs;
 
   home.packages = with pkgs; [
-    bluetui duf dunst dust fastfetch fd fzf htop imagemagick lazygit lf mpc mpv ncdu ncmpcpp neovim pamixer qrencode redshift ripgrep taskwarrior3 tealdeer tmux trashy xdotool xwallpaper zathura zoxide ghostscript brightnessctl p7zip unar yt-dlp fff ffmpeg ctpv bc vimv
+    bluetui duf dunst dust fastfetch fd fzf htop imagemagick lazygit mpc mpv ncdu ncmpcpp neovim pamixer qrencode ripgrep taskwarrior3 tealdeer tmux trashy xdotool xwallpaper zathura zoxide ghostscript brightnessctl p7zip unar yt-dlp fff ffmpeg ctpv bc vimv file mediainfo bat yazi ueberzugpp
   ];
   home.file.".config/user-dirs.dirs".text = ''
     XDG_DESKTOP_DIR="$HOME/desk"
