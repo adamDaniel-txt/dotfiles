@@ -260,16 +260,18 @@
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-dmenu;
+    # enableSSHSupport = true;
+  };
   virtualisation.docker = {
     enable = true;
   };
 
   # List services that I want to enable:
 
+  services.clipmenu.enable = true;
   services.tailscale = {
     enable = true;
     # extraUpFlags = [ "--accept-routes" "--advertise-exit-node" ];
