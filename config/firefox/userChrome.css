@@ -16,6 +16,10 @@
 
     --uc-border-radius: 0;
 
+    /* --uc-urlbar-width: clamp(250px, 50vw, 600px); */
+    /* --uc-active-tab-width:   clamp( 50px, 18vw, 220px); */
+    /* --uc-inactive-tab-width: clamp( 50px, 15vw, 200px); */
+
     --show-tab-close-button: none;
     --show-tab-close-button-hover: -moz-inline-box;
     --container-tabs-indicator-margin: 0px;
