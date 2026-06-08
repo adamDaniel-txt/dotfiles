@@ -12,6 +12,7 @@ let
      mpv = "mpv";
      ncmpcpp = "ncmpcpp";
      yazi = "yazi";
+     kitty = "kitty";
    };
 in
 
@@ -81,7 +82,7 @@ in
     configs;
 
   home.packages = with pkgs; [
-    bluetui duf dunst dust fastfetch fd fzf htop imagemagick lazygit mpc mpv ncdu ncmpcpp neovim pamixer qrencode ripgrep taskwarrior3 tealdeer tmux trashy xdotool xwallpaper zathura zoxide ghostscript brightnessctl p7zip unar yt-dlp fff ffmpeg ctpv bc vimv file mediainfo bat yazi ueberzugpp pass
+    bluetui duf dunst dust fastfetch fd fzf htop imagemagick lazygit mpc mpv ncdu ncmpcpp neovim pamixer qrencode ripgrep taskwarrior3 tealdeer tmux trashy xdotool xwallpaper zathura zoxide ghostscript brightnessctl p7zip unar yt-dlp fff ffmpeg ctpv bc vimv file mediainfo bat yazi ueberzugpp pass kitty
   ];
   home.file.".config/user-dirs.dirs".text = ''
     XDG_DESKTOP_DIR="$HOME/desk"
