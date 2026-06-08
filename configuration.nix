@@ -192,13 +192,13 @@
 
   # Fonts
   fonts.packages = with pkgs; [
-    nerd-fonts.inconsolata
+    nerd-fonts.caskaydia-mono
     liberation_ttf
   ];
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = [ "Inconsolata Nerd Font" ];
+      monospace = [ "CaskaydiaMono Nerd Font" ];
       sansSerif = [ "Liberation Sans" ];
       serif = [ "Liberation Serif" ];
     };
@@ -238,7 +238,7 @@
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = ["fdan"];
   virtualisation.libvirtd = {
-    enable = true;
+    enable = false;
     qemu = {
       package = pkgs.qemu_kvm;
       runAsRoot = true;
