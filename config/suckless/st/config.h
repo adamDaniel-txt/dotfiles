@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "monospace:size=14";
+static char *font = "monospace:size=12";
 static int borderpx = 2;
 
 /*
@@ -75,6 +75,7 @@ static int bellvolume = 0;
 
 /* default TERM value */
 char *termname = "st-256color";
+static char *class = "St";
 
 /*
  * spaces per tab
