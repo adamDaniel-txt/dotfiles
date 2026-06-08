@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     arandr
     thunderbird
+    birdtray
     steam
     sunshine
     pcmanfm
@@ -25,11 +26,11 @@
     flameshot
     magic-wormhole
     # beets
-    ungoogled-chromium
     distrobox
     blender
     # helium
     opencode
     pi-coding-agent
+    google-chrome
   ];
 }
