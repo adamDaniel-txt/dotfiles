@@ -17,8 +17,8 @@ static const int showsystray        = 1;        /* 0 means no systray */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=12" };
-static const char dmenufont[]       = "monospace:size=12";
+static const char *fonts[]          = { "monospace:size=10" };
+static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#282828";
 static const char col_gray2[]       = "#928374";
 static const char col_gray3[]       = "#bbbbbb";
@@ -37,6 +37,7 @@ static const char *const autostart[] = {
     "xrdb", "/home/fdan/.config/nixos/config/x11/xresources", NULL,
     "sh", "-c", "sleep 0.1 && xsetroot -cursor_name left_ptr", NULL, /* Fixes XCursor Theme on wallpaper */
 	"dunst", NULL,
+    "birdtray", NULL,
 	"slstatus", NULL,
 	NULL /* terminate */
 };
@@ -68,6 +69,7 @@ static const Rule rules[] = {
 	 */
 	/* class     	instance  	 title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "firefox",	NULL,     	 NULL,           1 << 2,    0,          0,           0,        -1 },
+	{ "thunderbird",NULL,     	 NULL,           1 << 4,    0,          0,           0,        -1 },
 	{ "Audacity",	NULL,     	 NULL,           1 << 5,    0,          0,           0,        -1 },
 	{ "kdenlive",	NULL,     	 NULL,           1 << 6,    0,          0,           0,        -1 },
 	{ "Inkscape",	NULL,     	 NULL,           1 << 7,    0,          0,           0,        -1 },
@@ -110,6 +112,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_iwant, "-sf", col_gray1, NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *browser[]  = { BROWSER, NULL };
+static const char *passcmd[]  = { "passmenu", "-nb", col_gray1, "-nf", col_gray3, "-sb", col_iwant, "-sf", col_gray1, NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "64x32", NULL };
 static const char *upbrightness[]   = { "brightnessctl", "set", "+10%", NULL };
@@ -118,10 +121,10 @@ static const char *downbrightness[] = { "brightnessctl", "set", "10%-", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
-	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,			XK_grave,  spawn,	   {.v = (const char*[]){ "dmenunicode", NULL } } },
-	{ MODKEY,			XK_b,	   spawn,          {.v = browser } },
+	{ MODKEY,                       XK_grave,  spawn,	   {.v = (const char*[]){ "dmenunicode", NULL } } },
+	{ MODKEY,                       XK_b,	   spawn,          {.v = browser } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -144,6 +147,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 	{ MODKEY,			            XK_o,      spawn,          SHCMD("tmuxdev") },
+	{ MODKEY,			            XK_v,      spawn,          SHCMD("clipmenu") },
 	{ MODKEY,			            XK_w,      spawn,          SHCMD("webcam") },
 	{ MODKEY,             		    XK_s,      spawn,	       SHCMD("dmenu_websearch") },
 	{ MODKEY|ShiftMask,		        XK_w,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
@@ -155,7 +159,7 @@ static const Key keys[] = {
 	{ MODKEY,			            XK_x,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
 	{ MODKEY,			            XK_n,      spawn,          {.v = (const char*[]){ TERMINAL, "-e", "tmux", "new-session", "nvim", NULL } } },
 	{ MODKEY|ShiftMask,             XK_k,      spawn,     	   {.v = (const char*[]){ "xkill", NULL } } },
-	{ MODKEY|ShiftMask,		        XK_p,      spawn,          {.v = (const char*[]){ "passmenu", NULL } } },
+    { MODKEY|ShiftMask,             XK_p,      spawn,          {.v = passcmd } },
 	{ MODKEY,			            XK_F9,     spawn,          {.v = (const char*[]){ "mounter", NULL } } },
 	{ MODKEY,			            XK_F10,    spawn,          {.v = (const char*[]){ "unmounter", NULL } } },
 	{ MODKEY,			            XK_BackSpace,  spawn,      SHCMD("sysact") },
