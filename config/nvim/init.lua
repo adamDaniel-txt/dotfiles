@@ -17,6 +17,9 @@ vim.o.clipboard = 'unnamedplus'
 vim.pack.add({
     {src = "https://github.com/HakonHarnes/img-clip.nvim"},
     {src = "https://github.com/ellisonleao/gruvbox.nvim"},
+    {src = "https://github.com/nvim-lua/plenary.nvim.git"},
+    {src = "https://github.com/mikavilpas/yazi.nvim.git"},
+    {src = "https://github.com/sphamba/smear-cursor.nvim.git"},
     {src = "https://github.com/nvim-mini/mini.nvim"},
     {src = "https://github.com/alvan/vim-closetag"},
     {src = "https://github.com/junegunn/goyo.vim"},
@@ -57,7 +60,7 @@ map('', '<leader>h', ':Pick help<CR>')
 map('', '<leader>g', ':Pick grep_live<CR>')
 map('', '<leader>G', ':Pick grep<CR>')
 map('', '<leader>s', ':Pick files<CR>')
-map('', '<leader>n', ':lua MiniFiles.open()<CR>')
+map('', '<leader>n', ':Yazi<CR>')
 -- center
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
@@ -105,8 +108,7 @@ require('mini.pairs').setup()
 require('mini.icons').setup()
 require('mini.fuzzy').setup()
 require('mini.notify').setup()
-require('mini.comment').setup()
-require('mini.cmdline').setup()
+require('mini.comment').setup() require('mini.cmdline').setup()
 require('mini.starter').setup()
 require('mini.tabline').setup()
 require('mini.surround').setup()
@@ -157,4 +159,12 @@ miniclue.setup({
     miniclue.gen_clues.windows(),
     miniclue.gen_clues.z(),
   },
+})
+
+require('smear_cursor').setup({
+    smear_between_buffers = true,
+    smear_between_neighbor_lines = true,
+    scroll_buffer_space = true,
+    legacy_computing_symbols_support = true,
+    smear_insert_mode = true,
 })
