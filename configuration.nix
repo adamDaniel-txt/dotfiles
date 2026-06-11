@@ -283,6 +283,10 @@
     openDefaultPorts = true;
   };
   services.ollama.enable = true;
+  services.clamav = {
+    daemon.enable = true;
+    updater.enable = true;
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
