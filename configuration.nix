@@ -213,22 +213,22 @@
   zramSwap.enable = true;
 
   # Automatic updating
-  system.autoUpgrade = {
-    enable = true;
-    flake = "/home/fdan/.config/nixos";
-    flags = [
-      "--print-build-logs"
-      "--commit-lock-file"  # If you want to automatically commit the updated flake.lock
-    ];
-    dates = "02:00";
-    randomizedDelaySec = "45min";
-  };
+  # system.autoUpgrade = {
+  #   enable = true;
+  #   flake = "/home/fdan/.config/nixos";
+  #   flags = [
+  #     "--print-build-logs"
+  #     "--commit-lock-file"  # If you want to automatically commit the updated flake.lock
+  #   ];
+  #   dates = "02:00";
+  #   randomizedDelaySec = "45min";
+  # };
 
   # Automatic cleanup
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 7d";
   };
   nix.settings.auto-optimise-store = true;
 
