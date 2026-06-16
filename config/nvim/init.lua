@@ -1,3 +1,25 @@
+-- function
+local function pack_clean()
+	local active_plugins = {}
+	local unused_plugins = {}
+	for _, plugin in ipairs(vim.pack.get()) do
+		active_plugins[plugin.spec.name] = plugin.active
+	end
+	for _, plugin in ipairs(vim.pack.get()) do
+		if not active_plugins[plugin.spec.name] then
+			table.insert(unused_plugins, plugin.spec.name)
+		end
+	end
+	if #unused_plugins == 0 then
+		print("No unused plugins.")
+		return
+	end
+	local choice = vim.fn.confirm("Remove unused plugins?", "&Yes\n&No", 2)
+	if choice == 1 then
+		vim.pack.del(unused_plugins)
+	end
+end
+
 vim.g.mapleader = " "
 
 vim.o.number = true
@@ -15,11 +37,13 @@ vim.o.splitright = true
 vim.o.clipboard = 'unnamedplus'
 
 vim.pack.add({
+    {src = "https://github.com/chomosuke/typst-preview.nvim.git"},
+    {src = "https://github.com/sphamba/smear-cursor.nvim.git"},
     {src = "https://github.com/HakonHarnes/img-clip.nvim"},
-    {src = "https://github.com/ellisonleao/gruvbox.nvim"},
     {src = "https://github.com/nvim-lua/plenary.nvim.git"},
     {src = "https://github.com/mikavilpas/yazi.nvim.git"},
-    {src = "https://github.com/sphamba/smear-cursor.nvim.git"},
+    {src = "https://github.com/ellisonleao/gruvbox.nvim"},
+    {src = "https://github.com/mason-org/mason.nvim.git"},
     {src = "https://github.com/nvim-mini/mini.nvim"},
     {src = "https://github.com/alvan/vim-closetag"},
     {src = "https://github.com/junegunn/goyo.vim"},
@@ -50,6 +74,7 @@ map('', '<leader>m', ':w! | :make<CR>')
 map('', '<leader>o', ':!opout "%:p"<CR>')
 map('', '<leader>v', ':VimwikiIndex<CR>')
 map('', '<leader>b', ':vsp ~/.local/share/index.bib<CR>')
+map('', '<leader>pc', pack_clean)
 -- plugin shortcuts
 map('', '<leader>f', ':Goyo | set linebreak<CR>')
 map('', '<leader>O', ':setlocal spell! spelllang=en_us<CR>')
@@ -97,7 +122,7 @@ autocmd("BufWritePre", {
     end
 })
 
--- call mini modules
+-- setup plugins
 require('mini.ai').setup()
 require('mini.git').setup()
 require('mini.pick').setup()
@@ -118,6 +143,8 @@ require('mini.operators').setup()
 require('mini.statusline').setup()
 require('mini.indentscope').setup()
 require('mini.completion').setup()
+
+require("mason").setup()
 
 -- plugins config
 vim.g.goyo_width = '80%'
