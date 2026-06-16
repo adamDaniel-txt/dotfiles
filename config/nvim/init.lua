@@ -123,36 +123,24 @@ autocmd("BufWritePre", {
 })
 
 -- setup plugins
-require('mini.ai').setup()
-require('mini.git').setup()
-require('mini.pick').setup()
-require('mini.diff').setup()
-require('mini.clue').setup()
-require('mini.files').setup()
-require('mini.pairs').setup()
-require('mini.icons').setup()
-require('mini.fuzzy').setup()
-require('mini.notify').setup()
-require('mini.comment').setup()
-require('mini.cmdline').setup()
-require('mini.starter').setup()
-require('mini.tabline').setup()
-require('mini.surround').setup()
-require('mini.bufremove').setup()
-require('mini.bracketed').setup()
-require('mini.operators').setup()
-require('mini.statusline').setup()
-require('mini.indentscope').setup()
-require('mini.completion').setup()
-
-require("mason").setup()
-
--- plugins config
 vim.g.goyo_width = '80%'
 vim.g.closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
 vim.g.vimwiki_ext2syntax = {['.Rmd'] = 'markdown', ['.rmd'] = 'markdown', ['.md'] = 'markdown', ['.markdown'] = 'markdown', ['.mdown'] = 'markdown'}
 vim.g.vimwiki_list = {{path = '~/sync/note/', syntax = 'markdown', ext = '.md'}}
 vim.g.vimwiki_global_ext = 0
+
+local mini_modules = {
+  'ai', 'git', 'pick', 'diff', 'clue', 'files', 'pairs', 'icons',
+  'fuzzy', 'notify', 'comment', 'cmdline', 'starter', 'tabline',
+  'surround', 'bufremove', 'bracketed', 'operators', 'statusline',
+  'indentscope', 'completion',
+}
+
+for _, name in ipairs(mini_modules) do
+  require('mini.' .. name).setup()
+end
+
+require('mason').setup()
 
 local gen_loader = require('mini.snippets').gen_loader
 require('mini.snippets').setup({
