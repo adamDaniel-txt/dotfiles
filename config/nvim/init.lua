@@ -37,6 +37,7 @@ vim.o.splitright = true
 vim.o.clipboard = 'unnamedplus'
 
 vim.pack.add({
+    {src = "https://github.com/nvim-telescope/telescope.nvim.git"},
     {src = "https://github.com/chomosuke/typst-preview.nvim.git"},
     {src = "https://github.com/sphamba/smear-cursor.nvim.git"},
     {src = "https://github.com/HakonHarnes/img-clip.nvim"},
@@ -80,7 +81,7 @@ map('', '<leader>f', ':Goyo | set linebreak<CR>')
 map('', '<leader>O', ':setlocal spell! spelllang=en_us<CR>')
 map('', '<leader>p', ':PasteImage<CR>')
 map('', '<leader>t', ':sp | term<CR>')
-map('', '<leader><leader>', ':Pick buffers<CR>')
+map('', '<leader><leader>', ':Telescope find_files<CR>')
 map('', '<leader>h', ':Pick help<CR>')
 map('', '<leader>g', ':Pick grep_live<CR>')
 map('', '<leader>G', ':Pick grep<CR>')
