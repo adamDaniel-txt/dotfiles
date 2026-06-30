@@ -166,28 +166,32 @@
 
   nix.settings.trusted-users = [ "root" "fdan" ];
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # Allow unfree & insecure packages
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    curl
-    gcc
-    gnumake
-    wget
-    git
-    xclip
-    libnotify
+    # librewolf
     alacritty
-    librewolf
-    devenv
+    android-tools
+    curl
     ddev
+    devenv
+    gcc
+    git
+    gnumake
+    libnotify
     mkcert
+    nh
     nssTools
     steam-run
-    android-tools
+    vim
+    wget
+    xclip
   ];
 
   # Fonts
@@ -264,6 +268,18 @@
   };
   programs.slock.enable = true;
   programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Common libraries Wine environments usually need
+    stdenv.cc.cc
+    glibc
+    libx11
+    libxext
+    libxcursor
+    libxrandr
+    libxi
+    vulkan-loader
+    # Add other dependencies if Wine complains about more missing .so files
+  ];
   programs.auto-cpufreq.enable = true;
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
@@ -273,6 +289,7 @@
     pinentryPackage = pkgs.pinentry-dmenu;
     # enableSSHSupport = true;
   };
+  programs.gpu-screen-recorder.enable = true;
   virtualisation.docker = {
     enable = true;
   };
