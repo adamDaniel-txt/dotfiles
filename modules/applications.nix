@@ -1,36 +1,49 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    arandr
-    thunderbird
-    birdtray
-    steam
-    sunshine
-    pcmanfm
-    winboat
-    protonup-ng
-    # lutris
-    nwg-look
-    onlyoffice-desktopeditors
-    inkscape
-    gimp
-    vesktop
-    keepassxc
-    qbittorrent
-    ani-cli
-    localsend
-    kdePackages.kdenlive
-    pdftk
-    texliveFull
-    pandoc
-    typst
-    flameshot
-    magic-wormhole
-    # beets
-    distrobox
-    blender
-    # helium
+    # ai / coding agents
+    agent-browser
+    claude-code
     opencode
     pi-coding-agent
+    # browsers
     google-chrome
+    mullvad-browser
+    tor-browser
+    # communication
+    localsend
+    thunderbird
+    vesktop
+    # cli utilities
+    ani-cli
+    distrobox
+    magic-wormhole
+    # gaming
+    faugus-launcher
+    lutris
+    protonup-ng
+    steam
+    sunshine
+    # graphics & media
+    blender
+    flameshot
+    gimp
+    gpu-screen-recorder-gtk
+    inkscape
+    kdePackages.kdenlive
+    obs-studio
+    # office & documents
+    onlyoffice-desktopeditors
+    pandoc
+    pdftk
+    texliveFull
+    typst
+    # system utilities
+    arandr
+    keepassxc
+    nwg-look
+    pcmanfm
+    qbittorrent
+    rmpc
+    winboat
   ];
 }
