@@ -1,4 +1,18 @@
 {
+    "yaml frontmatter": {
+      "prefix": "fm",
+      "body": [
+        "---",
+        "title: \"$1\"",
+        "author: \"${2:Adam Daniel}\"",
+        "date: \"$CURRENT_DATE-$CURRENT_MONTH-$CURRENT_YEAR\"",
+        "header-includes:",
+        "  - \\\\usepackage{graphicx}",
+        "...",
+        "$0"
+      ],
+      "description": "Inserts the standard YAML frontmatter for notes"
+    },
     "copyright": {
         "prefix": "copyright",
         "body": [
