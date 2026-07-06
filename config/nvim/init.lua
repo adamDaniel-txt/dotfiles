@@ -79,7 +79,7 @@ map('', '<leader>pc', pack_clean)
 -- plugin shortcuts
 map('', '<leader>f', ':Goyo | set linebreak<CR>')
 map('', '<leader>O', ':setlocal spell! spelllang=en_us<CR>')
-map('', '<leader>p', ':PasteImage<CR>')
+map('', '<leader>pi', ':PasteImage<CR>')
 map('', '<leader>t', ':sp | term<CR>')
 map('', '<leader><leader>', ':Telescope find_files<CR>')
 map('', '<leader>h', ':Pick help<CR>')
@@ -128,7 +128,7 @@ vim.g.goyo_width = '80%'
 vim.g.closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
 vim.g.vimwiki_ext2syntax = {['.Rmd'] = 'markdown', ['.rmd'] = 'markdown', ['.md'] = 'markdown', ['.markdown'] = 'markdown', ['.mdown'] = 'markdown'}
 vim.g.vimwiki_list = {{path = '~/sync/note/', syntax = 'markdown', ext = '.md'}}
-vim.g.vimwiki_global_ext = 0
+-- vim.g.vimwiki_global_ext = 0
 
 local mini_modules = {
   'ai', 'git', 'pick', 'diff', 'clue', 'files', 'pairs', 'icons',
