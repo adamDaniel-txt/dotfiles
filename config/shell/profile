@@ -28,11 +28,11 @@ export STEAM_EXTRA_COMPAT_TOOLS_PATHS="$HOME/.steam/root/compatibilitytools.d"
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 # export GITHUB_TOKEN=$(pass show github/api/token)
-export AGENT_BROWSER_EXECUTABLE_PATH=$(which google-chrome)
+export AGENT_BROWSER_EXECUTABLE_PATH=$(which helium)
 export _JAVA_AWT_WM_NONREPARENTING=1
 export AWT_TOOLKIT="MToolkit wmname LG3D"
-export QT_QPA_PLATFORMTHEME="Adwaita-Dark"
-export QT_STYLE_OVERRIDE="Adwaita-Dark"
+# export QT_QPA_PLATFORMTHEME="Adwaita-Dark"
+# export QT_STYLE_OVERRIDE="Adwaita-Dark"
 export PI_SKIP_VERSION_CHECK=1
 
 # use vim to open manpage
