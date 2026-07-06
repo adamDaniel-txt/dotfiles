@@ -1,10 +1,14 @@
 #!/bin/sh
-output='/home/fdan/pix/screenshots/%Y-%m-%d-%T-screenshot.png'
+output='/home/fdan/pix/screenshots/%Y%m%d_%H%M%S.png'
 
 case "$1" in
-	"select") scrot "$output" --select --line mode=edge || exit ;;
-	"window") scrot "$output" --focused --border || exit ;;
-	*) scrot "$output" || exit ;;
+	"select") file=$(date +"$output")
+		scrot "$file" --select --line mode=edge || exit ;;
+	"window") file=$(date +"$output")
+		scrot "$file" --focused --border || exit ;;
+	*) file=$(date +"$output")
+		scrot "$file" || exit ;;
 esac
 
+xclip -selection clipboard -t image/png -i "$file"
 notify-send "Screenshot taken"
