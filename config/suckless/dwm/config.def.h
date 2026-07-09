@@ -179,7 +179,7 @@ static const Key keys[] = {
 	{ MODKEY,             		    XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
-	{ 0, XK_Print,				    spawn,     {.v = (const char*[]){ "flameshot", "gui", NULL } } },
+	{ 0, XK_Print,				    spawn,     SHCMD("screenshot select") },
 	{ 0, XK_Insert,				    spawn,     SHCMD("xdotool type $(grep -v '^#' ~/.config/nixos/config/bookmarks | dmenu -i -l 30 -p Bookmarks: | cut -d' ' -f1)") },
 	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("pamixer --toggle-mute") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("pamixer --increase 5") },
