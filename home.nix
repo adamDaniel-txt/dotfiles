@@ -54,14 +54,15 @@ in
     enable = true;
     enableBashIntegration = true;
   };
-  programs.firefox = {
+  programs.librewolf = {
     enable = true;
-    configPath = "${config.xdg.configHome}/mozilla/firefox";
+    # configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles.fdan = {
       extraConfig = builtins.readFile ./config/firefox/user.js;
       userChrome = builtins.readFile ./config/firefox/userChrome.css;
     };
   };
+  stylix.targets.librewolf.profileNames = [ "fdan" ];
   services.mpd = {
     enable = true;
     musicDirectory = "${config.home.homeDirectory}/mus";
@@ -129,6 +130,7 @@ in
   stylix.image = ./.bg;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
   stylix.fonts = {
+    sizes.applications = 10;
     serif = {
       package = pkgs.liberation_ttf;
       name = "Liberation Serif";
