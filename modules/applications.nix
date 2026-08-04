@@ -5,8 +5,10 @@
     claude-code
     opencode
     pi-coding-agent
-    # browsers
+    # internet
+    brave-origin
     google-chrome
+    grayjay
     mullvad-browser
     tor-browser
     # communication
@@ -16,6 +18,7 @@
     # cli utilities
     ani-cli
     distrobox
+    fsel
     magic-wormhole
     # gaming
     faugus-launcher
@@ -25,18 +28,27 @@
     sunshine
     # graphics & media
     blender
+    famistudio
     flameshot
     gimp
     gpu-screen-recorder-gtk
     inkscape
     kdePackages.kdenlive
     obs-studio
+    upscayl
+    waifu2x-converter-cpp
+    # lsp
+    typescript-language-server
+    clang-tools
+    lua-language-server
     # office & documents
     onlyoffice-desktopeditors
     pandoc
     pdftk
     texliveFull
     typst
+    # python tool
+    python314Packages.markitdown
     # system utilities
     arandr
     keepassxc
@@ -44,6 +56,8 @@
     pcmanfm
     qbittorrent
     rmpc
+    sc-im
+    thunar
     winboat
   ];
 }
