@@ -45,6 +45,7 @@ vim.pack.add({
     {src = "https://github.com/mikavilpas/yazi.nvim.git"},
     {src = "https://github.com/ellisonleao/gruvbox.nvim"},
     {src = "https://github.com/mason-org/mason.nvim.git"},
+    {src = "https://github.com/pablopunk/pi.nvim.git"},
     {src = "https://github.com/nvim-mini/mini.nvim"},
     {src = "https://github.com/alvan/vim-closetag"},
     {src = "https://github.com/junegunn/goyo.vim"},
@@ -77,6 +78,8 @@ map('', '<leader>v', ':VimwikiIndex<CR>')
 map('', '<leader>b', ':vsp ~/.local/share/index.bib<CR>')
 map('', '<leader>pc', pack_clean)
 -- plugin shortcuts
+map('n', '<leader>ai', ':PiAsk<CR>', { desc = "Ask pi" })
+map('v', '<leader>ai', ':PiAskSelection<CR>', { desc = "Ask pi (selection)" })
 map('', '<leader>f', ':Goyo | set linebreak<CR>')
 map('', '<leader>O', ':setlocal spell! spelllang=en_us<CR>')
 map('', '<leader>pi', ':PasteImage<CR>')
@@ -92,6 +95,9 @@ map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
+
+-- lsp
+vim.lsp.enable('lua_ls')
 
 -- autocmds
 local augroup = vim.api.nvim_create_augroup
