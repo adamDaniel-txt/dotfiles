@@ -83,7 +83,7 @@ in
 
   home.packages = with pkgs; [
     # apps
-    bluetui duf dunst dust fastfetch fd fzf btop imagemagick lazygit mpc mpv ncdu ncmpcpp neovim pamixer qrencode ripgrep taskwarrior3 tealdeer tmux trashy xdotool xwallpaper sioyek zathura zoxide ghostscript brightnessctl p7zip unar yt-dlp fff ffmpeg ctpv bc vimv file mediainfo bat yazi ueberzugpp pass kitty scrot
+    bluetui duf dunst dust fastfetch fd fzf btop imagemagick lazygit mpc mpv ncdu ncmpcpp neovim pamixer qrencode ripgrep taskwarrior3 tealdeer tmux trashy xdotool xwallpaper sioyek zathura zoxide ghostscript brightnessctl p7zip unar yt-dlp fff ffmpeg ctpv bc vimv file mediainfo bat yazi ueberzugpp pass kitty scrot nodejs python3
   ];
   home.file.".config/user-dirs.dirs".text = ''
     XDG_DESKTOP_DIR="$HOME/desk"
@@ -125,6 +125,7 @@ in
 
   # Theme
   home.pointerCursor = {
+    enable = true;
     gtk.enable = true;
     x11.enable = true;
     package = pkgs.banana-cursor;
@@ -133,10 +134,10 @@ in
   };
   gtk = {
     enable = true;
-    theme = {
-      package = pkgs.gruvbox-material-gtk-theme;
-      name = "Gruvbox-Material-Dark";
-    };
+    # theme = {
+    #   package = pkgs.gruvbox-dark-gtk;
+    #   name = "gruvbox-dark";
+    # };
     gtk4.theme = null;
     iconTheme = {
       package = pkgs.papirus-icon-theme;
