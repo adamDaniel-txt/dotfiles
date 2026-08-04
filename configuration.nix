@@ -16,7 +16,7 @@
 
   boot = {
     plymouth = {
-      enable = true;
+      enable = false;
       theme = "splash";
       themePackages = with pkgs; [
         # By default we would install all themes
@@ -121,7 +121,10 @@
   services.printing = {
     # run on first setup `sudo hp-setup -i -a`
     enable = true;
-    drivers = [ pkgs.hplipWithPlugin ];
+    drivers = [
+      pkgs.hplip
+      pkgs.hplipWithPlugin
+    ];
   };
 
   # Enable sound with pipewire.
@@ -169,13 +172,14 @@
   # Allow unfree & insecure packages
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [];
+    permittedInsecurePackages = [
+      "electron-40.10.5"
+    ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # librewolf
     alacritty
     android-tools
     curl
@@ -185,6 +189,7 @@
     git
     gnumake
     libnotify
+    librewolf
     mkcert
     nh
     nssTools
@@ -308,10 +313,10 @@
     openDefaultPorts = true;
   };
   services.ollama.enable = true;
-  services.clamav = {
-    daemon.enable = true;
-    updater.enable = true;
-  };
+  # services.clamav = {
+  #   daemon.enable = true;
+  #   updater.enable = true;
+  # };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
