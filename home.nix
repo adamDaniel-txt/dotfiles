@@ -124,28 +124,36 @@ in
   };
 
   # Theme
-  home.pointerCursor = {
-    enable = true;
-    gtk.enable = true;
-    x11.enable = true;
+  stylix.enable = true;
+  stylix.polarity = "dark";
+  stylix.image = ./.bg;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  stylix.fonts = {
+    serif = {
+      package = pkgs.liberation_ttf;
+      name = "Liberation Serif";
+    };
+    sansSerif = {
+      package = pkgs.liberation_ttf;
+      name = "Liberation Sans";
+    };
+    monospace = {
+      package = pkgs.nerd-fonts.caskaydia-mono;
+      name = "CaskaydiaMono Nerd Font";
+    };
+    emoji = {
+      package = pkgs.noto-fonts-color-emoji;
+      name = "Noto Color Emoji";
+    };
+  };
+  stylix.cursor = {
     package = pkgs.banana-cursor;
     name = "Banana";
     size = 24;
   };
-  gtk = {
+  stylix.icons = {
     enable = true;
-    # theme = {
-    #   package = pkgs.gruvbox-dark-gtk;
-    #   name = "gruvbox-dark";
-    # };
-    gtk4.theme = null;
-    iconTheme = {
-      package = pkgs.papirus-icon-theme;
-      name = "Papirus";
-    };
-  };
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk3";
+    package = pkgs.papirus-icon-theme;
+    dark = "Papirus";
   };
 }

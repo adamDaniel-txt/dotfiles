@@ -6,6 +6,10 @@
   	  url = "github:nix-community/home-manager";
   	  inputs.nixpkgs.follows = "nixpkgs";
   	};
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +20,7 @@
     # };
   };
 
-  outputs = { self, nixpkgs, home-manager, auto-cpufreq, ... }:
+  outputs = { self, nixpkgs, home-manager, stylix, auto-cpufreq, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -43,7 +47,9 @@
   	  	  home-manager = {
   	  	  	useGlobalPkgs = true;
   	  	  	useUserPackages = true;
-  	  	  	users.fdan = import ./home.nix;
+  	  	  	users.fdan = {
+  	  	  		imports = [ stylix.homeModules.stylix ./home.nix ];
+  	  	  	};
   	  	  	backupFileExtension = "backup";
   	  	  };
   	  	}

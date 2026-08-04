@@ -199,22 +199,6 @@
     xclip
   ];
 
-  # Fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.caskaydia-mono
-    liberation_ttf
-  ];
-  fonts.fontconfig = {
-    enable = true;
-    defaultFonts = {
-      monospace = [ "CaskaydiaMono Nerd Font" ];
-      sansSerif = [ "Liberation Sans" ];
-      serif = [ "Liberation Serif" ];
-    };
-    hinting.enable = true;
-    antialias = true;
-  };
-
   # Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
