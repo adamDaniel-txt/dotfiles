@@ -3,3 +3,4 @@ config/ncmpcpp/error.log
 /config/nvim/nvim-pack-lock.json
 /config/yazi/flavors
 /config/yazi/package.toml
+/config/browser/userjs_backups
