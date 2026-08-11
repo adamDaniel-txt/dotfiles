@@ -7,7 +7,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 5;        /* border pixel of windows */
-static const unsigned int gappx     = 10;        /* gaps between windows */
+static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
@@ -20,15 +20,14 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 static const char col_gray1[]       = "#282828";
-static const char col_gray2[]       = "#928374";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_gray2[]       = "#3c3836";
+static const char col_gray3[]       = "#ebdbb2";
+static const char col_gray4[]       = "#1d2021";
 static const char col_iwant[]       = "#fe8019";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray1, col_iwant, col_iwant },
+	[SchemeSel]  = { col_iwant, col_gray4, col_iwant },
 };
 
 static const char *const autostart[] = {
@@ -37,7 +36,6 @@ static const char *const autostart[] = {
     "xrdb", "/home/fdan/.config/nixos/config/x11/xresources", NULL,
     "sh", "-c", "sleep 0.1 && xsetroot -cursor_name left_ptr", NULL, /* Fixes XCursor Theme on wallpaper */
 	"dunst", NULL,
-    "birdtray", NULL,
 	"slstatus", NULL,
 	NULL /* terminate */
 };
@@ -46,15 +44,15 @@ static const char *const autostart[] = {
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const char *tagsel[][2] = {
-	{ "#fb4934", "#1d2021" },
-	{ "#fabd2f", "#1d2021" },
-	{ "#b8bb26", "#1d2021" },
-	{ "#83a598", "#1d2021" },
-	{ "#8ec07c", "#1d2021" },
-	{ "#b16286", "#1d2021" },
-	{ "#d3869b", "#1d2021" },
-	{ "#f7f6ec", "#1d2021" },
-	{ "#a89984", "#1d2021" },
+	{ "#fe8019", col_gray4 },
+	{ "#fb4934", col_gray4 },
+	{ "#b8bb26", col_gray4 },
+	{ "#fabd2f", col_gray4 },
+	{ "#83a598", col_gray4 },
+	{ "#d3869b", col_gray4 },
+	{ "#8ec07c", col_gray4 },
+	{ "#ebdbb2", col_gray4 },
+	{ "#928374", col_gray4 },
 };
 
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
@@ -76,6 +74,8 @@ static const Rule rules[] = {
 	{ "Gimp",    	NULL,     	 NULL,           1 << 8,    0,          0,           0,        -1 },
 	{ "Thunar",     NULL,     	 NULL,           0,         1,          0,           0,        -1 },
 	{ "Pcmanfm",	NULL,     	 NULL,           0,         1,          0,           0,        -1 },
+	{ "mpv",	    NULL,     	 NULL,           0,         1,          0,           0,        -1 },
+	{ "nsxiv",	    NULL,     	 NULL,           0,         1,          0,           0,        -1 },
 	{ NULL,      	NULL,     	 "Event Tester", 0,         0,          0,           1,        -1 },
 	{ TERMCLASS,    NULL,     	 NULL,           0,         0,          1,           0,        -1 },
 	{ TERMCLASS,	"floatterm", NULL,       	 0,         1,          1,           0,        -1 },
@@ -110,6 +110,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_iwant, "-sf", col_gray1, NULL };
+static const char *fselcmd[] =  { TERMINAL, "-n", "floatterm", "-e", "fsel", "--detach", NULL };
 static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *browser[]  = { BROWSER, NULL };
 static const char *passcmd[]  = { "passmenu", "-nb", col_gray1, "-nf", col_gray3, "-sb", col_iwant, "-sf", col_gray1, NULL };
@@ -120,7 +121,7 @@ static const char *downbrightness[] = { "brightnessctl", "set", "10%-", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_space,  spawn,          {.v = fselcmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_grave,  spawn,	   {.v = (const char*[]){ "dmenunicode", NULL } } },
@@ -179,7 +180,7 @@ static const Key keys[] = {
 	{ MODKEY,             		    XK_q,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
-	{ 0, XK_Print,				    spawn,     SHCMD("screenshot select") },
+	{ 0, XK_Print,				    spawn,     SHCMD("maim -s | xclip -selection clipboard -t image/png") },
 	{ 0, XK_Insert,				    spawn,     SHCMD("xdotool type $(grep -v '^#' ~/.config/nixos/config/bookmarks | dmenu -i -l 30 -p Bookmarks: | cut -d' ' -f1)") },
 	{ 0, XF86XK_AudioMute,          spawn,     SHCMD("pamixer --toggle-mute") },
 	{ 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("pamixer --increase 5") },
