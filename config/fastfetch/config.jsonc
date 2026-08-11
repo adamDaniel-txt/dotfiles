@@ -29,17 +29,8 @@
         "kernel",
         "uptime",
         {
-            "type": "loadavg",
-            "key": "Load Average"
-        },
-        "processes",
-        {
             "type": "wm",
             "key": "Window Manager"
-        },
-        {
-            "type": "de",
-            "key": "Desktop Environment"
         },
         "shell",
         {

@@ -8,33 +8,34 @@
 //	"break",
         {
             "type": "os",
-            "key": "OS  ",
+            "key": "os  ",
             "keyColor": "31"  // = color1
         },
         {
             "type": "kernel",
-            "key": "KER ",
+            "key": "ker ",
             "keyColor": "32"
         },
         {
-            "type": "packages",
-            "key": "PKG ",
-            "keyColor": "33",
-            "format": "{all}"
+            "type": "cpu",
+            "key" : "cpu ",
+            "format": "{cores-logical} x {name}",
+            "keyColor": "33"
         },
         {
-            "type": "shell",
-            "key": "SH  ",
+            "type": "gpu",
+            "key" : "gpu ",
+            "format": "{name}",
             "keyColor": "34"
         },
         {
-            "type": "terminal",
-            "key": "TER ",
+            "type": "memory",
+            "key" : "ram ",
             "keyColor": "35"
         },
         {
             "type": "wm",
-            "key": "WM  ",
+            "key": "wm  ",
             "keyColor": "36"
         }
     ]
