@@ -5,6 +5,10 @@
     claude-code
     opencode
     pi-coding-agent
+    neovim
+    nodejs
+    bun
+    python3
     # internet
     google-chrome
     grayjay
@@ -16,9 +20,33 @@
     vesktop
     # cli utilities
     ani-cli
+    bat
+    bc
+    btop
     distrobox
+    duf
+    dust
+    fastfetch
+    fd
+    fff
+    file
     fsel
+    fzf
+    lazygit
     magic-wormhole
+    mediainfo
+    ncdu
+    p7zip
+    qrencode
+    ripgrep
+    taskwarrior3
+    tealdeer
+    tmux
+    trashy
+    unar
+    vimv
+    yazi
+    zoxide
     # gaming
     faugus-launcher
     lutris
@@ -27,15 +55,24 @@
     sunshine
     # graphics & media
     blender
+    ctpv
     famistudio
+    ffmpeg
     flameshot
     gimp
     gpu-screen-recorder-gtk
+    imagemagick
     inkscape
     kdePackages.kdenlive
+    mpc
+    mpv
+    ncmpcpp
     obs-studio
+    pamixer
+    ueberzugpp
     upscayl
     waifu2x-converter-cpp
+    yt-dlp
     # lsp
     clang-tools
     lua-language-server
@@ -44,23 +81,40 @@
     typescript-language-server
     vscode-langservers-extracted
     # office & documents
+    ghostscript
     onlyoffice-desktopeditors
     pandoc
     pdftk
+    sioyek
     texliveFull
     typst
+    zathura
     # python tool
     python314Packages.markitdown
+    # fonts
+    corefonts
+    helvetica-neue-lt-std
+    montserrat
+    the-neue-black
     # system utilities
     arandr
+    bluetui
+    brightnessctl
+    dunst
     gearlever
     keepassxc
+    kitty
+    maim
     nwg-look
+    pass
     pcmanfm
     qbittorrent
     rmpc
     sc-im
+    scrot
     thunar
     winboat
+    xdotool
+    xwallpaper
   ];
 }
