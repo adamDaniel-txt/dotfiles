@@ -3,14 +3,14 @@
 {
   imports =
     [
-      ./modules/suckless.nix
-      ./modules/pkgs.nix
-      ./modules/shell.nix
-      ./modules/theme.nix
-      ./modules/browser.nix
-      ./modules/media.nix
-      ./modules/dotfiles.nix
-      ./modules/mime.nix
+      ./suckless.nix
+      ./pkgs.nix
+      ./shell.nix
+      ./theme.nix
+      ./browser.nix
+      ./media.nix
+      ./dotfiles.nix
+      ./mime.nix
     ];
 
   home.username = "fdan";

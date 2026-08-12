@@ -40,7 +40,7 @@
   	nixosConfigurations.nix = nixpkgs.lib.nixosSystem {
   	  system = "x86_64-linux";
   	  modules = [
-  	  	./configuration.nix
+  	  	./hosts/nix/default.nix
 
   	  	home-manager.nixosModules.home-manager
   	  	{
@@ -48,7 +48,7 @@
   	  	  	useGlobalPkgs = true;
   	  	  	useUserPackages = true;
   	  	  	users.fdan = {
-  	  	  		imports = [ stylix.homeModules.stylix ./home.nix ];
+  	  	  		imports = [ stylix.homeModules.stylix ./home/default.nix ];
   	  	  	};
   	  	  	backupFileExtension = "backup";
   	  	  };
