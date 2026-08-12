@@ -12,7 +12,10 @@
       dpi = 120;
       autoRepeatDelay = 200;
       autoRepeatInterval = 35;
-      displayManager.sessionCommands = '' xwallpaper --zoom ~/.bg '';
+      displayManager.sessionCommands = ''
+        xrdb -load ~/.config/nixos/config/x11/xresources
+        xwallpaper --zoom ~/.bg
+      '';
       windowManager.dwm = {
         enable = true;
         package = pkgs.dwm.overrideAttrs {
@@ -22,6 +25,7 @@
             libxft
             libxinerama
             libxcb
+            libXcursor
           ];
         };
       };
