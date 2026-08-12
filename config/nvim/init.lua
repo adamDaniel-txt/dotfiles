@@ -102,14 +102,15 @@ map("n", "N", "Nzzzv")
 
 -- lsp
 vim.lsp.enable({
-    'lua_ls',      -- Lua
     'clangd',      -- C/C++
-    'tsserver',    -- TypeScript/JavaScript
-    'tailwindcss', -- Tailwind CSS
-    'html',        -- from vscode-langservers-extracted
     'cssls',       -- from vscode-langservers-extracted
-    'jsonls',      -- from vscode-langservers-extracted
     'eslint',      -- optional, from vscode-langservers-extracted
+    'html',        -- from vscode-langservers-extracted
+    'jsonls',      -- from vscode-langservers-extracted
+    'lua_ls',      -- Lua
+    'nixd',        -- Nix
+    'tailwindcss', -- Tailwind CSS
+    'tsserver',    -- TypeScript/JavaScript
 })
 
 -- autocmds
