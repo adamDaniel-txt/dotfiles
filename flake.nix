@@ -34,6 +34,7 @@
           libxft
           libxinerama
           libxcb
+          libxcursor
         ];
       };
 
