@@ -6,7 +6,6 @@
     opencode
     pi-coding-agent
     # internet
-    brave-origin
     google-chrome
     grayjay
     mullvad-browser
@@ -38,9 +37,12 @@
     upscayl
     waifu2x-converter-cpp
     # lsp
-    typescript-language-server
     clang-tools
     lua-language-server
+    nixd
+    tailwindcss-language-server
+    typescript-language-server
+    vscode-langservers-extracted
     # office & documents
     onlyoffice-desktopeditors
     pandoc
@@ -51,6 +53,7 @@
     python314Packages.markitdown
     # system utilities
     arandr
+    gearlever
     keepassxc
     nwg-look
     pcmanfm
