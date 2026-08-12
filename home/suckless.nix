@@ -1,19 +1,14 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    (pkgs.st.overrideAttrs (_: {
+    (pkgs.st.overrideAttrs (old: {
       src = ../config/suckless/st;
       patches = [ ];
+      buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.libXcursor ];
     }))
-    (pkgs.slstatus.overrideAttrs (_: {
+    (pkgs.slstatus.overrideAttrs (old: {
       src = ../config/suckless/slstatus;
       patches = [ ];
-      buildInputs = with pkgs; [
-        libx11
-        libxft
-        libxcb
-        libxau
-        libxdmcp
-      ];
+      buildInputs = (old.buildInputs or [ ]) ++ [ pkgs.libxft ];
     }))
     (pkgs.dmenu.overrideAttrs (_: {
       src = ../config/suckless/dmenu;
