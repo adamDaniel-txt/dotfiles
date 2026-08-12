@@ -98,6 +98,7 @@
           ];
         };
       };
+      windowManager.oxwm.enable = true;
       # desktopManager.xfce.enable = true;
     };
 
@@ -189,7 +190,6 @@
     git
     gnumake
     libnotify
-    librewolf
     mkcert
     nh
     nssTools
@@ -296,7 +296,12 @@
     dataDir = "/home/fdan";
     openDefaultPorts = true;
   };
-  services.ollama.enable = true;
+  services.ollama = {
+    enable = true;
+    environmentVariables = {
+      OLLAMA_CONTEXT_LENGTH = "262144";
+    };
+  };
   # services.clamav = {
   #   daemon.enable = true;
   #   updater.enable = true;
