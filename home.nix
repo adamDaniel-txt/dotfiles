@@ -56,10 +56,9 @@ in
   };
   programs.librewolf = {
     enable = true;
-    # configPath = "${config.xdg.configHome}/mozilla/firefox";
     profiles.fdan = {
-      extraConfig = builtins.readFile ./config/firefox/user.js;
-      userChrome = builtins.readFile ./config/firefox/userChrome.css;
+      extraConfig = builtins.readFile ./config/browser/user.js;
+      userChrome = builtins.readFile ./config/browser/userChrome.css;
     };
   };
   stylix.targets.librewolf.profileNames = [ "fdan" ];
@@ -84,7 +83,7 @@ in
 
   home.packages = with pkgs; [
     # apps
-    bluetui duf dunst dust fastfetch fd fzf btop imagemagick lazygit mpc mpv ncdu ncmpcpp neovim pamixer qrencode ripgrep taskwarrior3 tealdeer tmux trashy xdotool xwallpaper sioyek zathura zoxide ghostscript brightnessctl p7zip unar yt-dlp fff ffmpeg ctpv bc vimv file mediainfo bat yazi ueberzugpp pass kitty scrot nodejs python3
+    bluetui duf dunst dust fastfetch fd fzf btop imagemagick lazygit mpc mpv ncdu ncmpcpp neovim pamixer qrencode ripgrep taskwarrior3 tealdeer tmux trashy xdotool xwallpaper sioyek zathura zoxide ghostscript brightnessctl p7zip unar yt-dlp fff ffmpeg ctpv bc vimv file mediainfo bat yazi ueberzugpp pass kitty scrot maim nodejs bun python3
   ];
   home.file.".config/user-dirs.dirs".text = ''
     XDG_DESKTOP_DIR="$HOME/desk"
@@ -127,8 +126,7 @@ in
   # Theme
   stylix.enable = true;
   stylix.polarity = "dark";
-  stylix.image = ./.bg;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
   stylix.fonts = {
     sizes.applications = 10;
     serif = {
@@ -148,6 +146,7 @@ in
       name = "Noto Color Emoji";
     };
   };
+  fonts.fontconfig.defaultFonts.monospace = [ "CaskaydiaMono Nerd Font" "Noto Color Emoji" ];
   stylix.cursor = {
     package = pkgs.banana-cursor;
     name = "Banana";
