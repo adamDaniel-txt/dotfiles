@@ -33,8 +33,8 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
     // "redshift", "-O", "4500", NULL,
     // "syncthing", "--no-browser", NULL,
-    "xrdb", "/home/fdan/.config/nixos/config/x11/xresources", NULL,
-    "sh", "-c", "sleep 0.1 && xsetroot -cursor_name left_ptr", NULL, /* Fixes XCursor Theme on wallpaper */
+    // "xrdb", "/home/fdan/.config/nixos/config/x11/xresources", NULL,
+    // "sh", "-c", "sleep 0.1 && xsetroot -cursor_name left_ptr", NULL, /* Fixes XCursor Theme on wallpaper */
 	"dunst", NULL,
 	"slstatus", NULL,
 	NULL /* terminate */
@@ -66,7 +66,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class     	instance  	 title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "firefox",	NULL,     	 NULL,           1 << 2,    0,          0,           0,        -1 },
+	{ "Helium",	    NULL,     	 NULL,           1 << 1,    0,          0,           0,        -1 },
 	{ "thunderbird",NULL,     	 NULL,           1 << 4,    0,          0,           0,        -1 },
 	{ "Audacity",	NULL,     	 NULL,           1 << 5,    0,          0,           0,        -1 },
 	{ "kdenlive",	NULL,     	 NULL,           1 << 6,    0,          0,           0,        -1 },
@@ -99,9 +99,9 @@ static const Layout layouts[] = {
 #define MODKEY Mod4Mask
 #define Alt Mod1Mask
 #define TAGKEYS(KEY,TAG) \
-{ MODKEY,                       KEY,      comboview,           {.ui = 1 << TAG} }, \
+{ MODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
 { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-{ MODKEY|ShiftMask,             KEY,      combotag,            {.ui = 1 << TAG} }, \
+{ MODKEY|ShiftMask,             KEY,      combotag,       {.ui = 1 << TAG} }, \
 { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
@@ -122,7 +122,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_space,  spawn,          {.v = fselcmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,                       XK_grave,  spawn,	   {.v = (const char*[]){ "dmenunicode", NULL } } },
+	{ MODKEY,                       XK_grave,  spawn,          {.v = (const char*[]){ "dmenunicode", NULL } } },
 	{ MODKEY,                       XK_b,	   spawn,          {.v = browser } },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
