@@ -4,6 +4,8 @@
 #include <string.h>
 #include <X11/Xlib.h>
 #include <X11/Xft/Xft.h>
+#include <X11/cursorfont.h>
+#include <X11/Xcursor/Xcursor.h>
 
 #include "drw.h"
 #include "util.h"
@@ -428,9 +430,28 @@ Cur *
 drw_cur_create(Drw *drw, int shape)
 {
 	Cur *cur;
+	const char *name = NULL;
+	size_t i;
+	static const struct {
+		int shape;
+		const char *name;
+	} shapes[] = {
+		{ XC_left_ptr, "left_ptr" },
+		{ XC_fleur,    "move" },
+		{ XC_sizing,   "size_all" },
+	};
 
 	if (!drw || !(cur = ecalloc(1, sizeof(Cur))))
 		return NULL;
+
+	for (i = 0; i < sizeof(shapes) / sizeof(shapes[0]); i++)
+		if (shapes[i].shape == shape) {
+			name = shapes[i].name;
+			break;
+		}
+
+	if (name && (cur->cursor = XcursorLibraryLoadCursor(drw->dpy, name)))
+		return cur;
 
 	cur->cursor = XCreateFontCursor(drw->dpy, shape);
 
