@@ -22,7 +22,6 @@
       name = "Noto Color Emoji";
     };
   };
-  fonts.fontconfig.defaultFonts.monospace = [ "CaskaydiaMono Nerd Font" "Noto Color Emoji" ];
   stylix.cursor = {
     package = pkgs.banana-cursor;
     name = "Banana";
