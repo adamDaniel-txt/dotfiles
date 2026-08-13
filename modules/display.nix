@@ -3,8 +3,23 @@
 {
   # Enable the X11 windowing system.
   services = {
-    displayManager = {
-      ly.enable = true;
+    displayManager.ly = {
+      enable = true;
+      settings = {
+        animation = "dur_file";
+        dur_file_path = "${../config/blackhole-smooth-240x67.dur}";
+        full_color = true;
+        clock = "%a %b %d %H:%M:%S %Y";
+        bigclock = "en";
+        bg = "0x00282828";
+        fg = "0x00EBDBB2";
+        border_fg = "0x00928374";
+        blank_box = true;
+        error_fg = "0x01FB4934";
+        error_bg = "0x00282828";
+        brightness_up_key = null;
+        brightness_down_key = null;
+      };
     };
 
     xserver = {
