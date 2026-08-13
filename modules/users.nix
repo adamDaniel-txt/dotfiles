@@ -13,6 +13,15 @@
 
   users.groups.libvirtd.members = ["fdan"];
 
+  # doas instead of sudo
+  security.sudo.enable = false;
+  security.doas.enable = true;
+  security.doas.extraRules = [{
+    users = ["fdan"];
+    keepEnv = true;
+    persist = true;
+  }];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [

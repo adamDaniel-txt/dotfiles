@@ -5,7 +5,7 @@
     initExtra = builtins.readFile ../config/shell/bashrc;
     shellAliases = {
       btw = "echo i use nix btw";
-      update = "sudo nixos-rebuild switch --flake";
+      update = "doas nixos-rebuild switch --flake";
     };
   };
   programs.fzf = {
