@@ -115,7 +115,7 @@ static const char *termcmd[]  = { TERMINAL, NULL };
 static const char *browser[]  = { BROWSER, NULL };
 static const char *passcmd[]  = { "passmenu", "-nb", col_gray1, "-nf", col_gray3, "-sb", col_iwant, "-sf", col_gray1, NULL };
 static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "64x32", NULL };
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120:34", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
