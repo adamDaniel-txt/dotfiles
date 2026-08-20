@@ -16,6 +16,7 @@ let
      waybar = "waybar";
      yazi = "yazi";
      zathura = "zathura";
+     pi = "pi";
    };
 in
 

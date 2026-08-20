@@ -25,6 +25,8 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export TEXMFHOME="$XDG_DATA_HOME/texmf"
 export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
 export STEAM_EXTRA_COMPAT_TOOLS_PATHS="$HOME/.steam/root/compatibilitytools.d"
+export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi"
+export PI_CODING_AGENT_SESSION_DIR="$XDG_CONFIG_HOME/pi/sessions"
 # export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 # export GITHUB_TOKEN=$(pass show github/api/token)
