@@ -1,25 +1,25 @@
 # pi agent configuration - ignore auto-generated and sensitive files
 
 # Session history (auto-generated, personal, often large)
-agent/sessions/
+sessions/
 
 # Authentication tokens
-agent/auth.json
+auth.json
 
 # Project trust decisions
-agent/trust.json
+trust.json
 
 # Installed pi packages (managed by pi install/remove)
-agent/git/
-agent/npm/
-agent/packages.json
+git/
+npm/
+packages.json
 
 # Project-local settings overrides
-agent/settings.json
+settings.json
 
 # Auto-generated caches (recreated on demand)
-agent/mcp-cache.json
-agent/models-store.json
+mcp-cache.json
+models-store.json
 
 # npm artifacts
 node_modules/
