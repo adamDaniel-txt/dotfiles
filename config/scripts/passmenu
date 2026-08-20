@@ -1,0 +1,6 @@
+#!/bin/sh
+
+prefix="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+entry=$(find "$prefix" -name '*.gpg' 2>/dev/null | sed -e "s|$prefix/||" -e 's|\.gpg$||' | \
+	rofi -dmenu -p "pass")
+[ -n "$entry" ] && pass show -c "$entry"
