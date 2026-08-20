@@ -14,7 +14,7 @@
   font-family: monospace;
   font-weight: 600;
   font-size: 14px;
-  margin: 1px;
+  margin: 0;
 }
 
 window#waybar {
@@ -29,7 +29,7 @@ window#waybar {
   box-shadow: none;
   text-shadow: none;
   padding: 4px;
-  margin: 4px;
+  margin: 0;
 }
 
 #workspaces button {
@@ -80,7 +80,7 @@ window#waybar {
   box-shadow: none;
   text-shadow: none;
   padding: 0 16px;
-  margin: 4px;
+  margin: 0;
   color: @fg;
 }
 
