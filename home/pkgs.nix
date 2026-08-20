@@ -118,6 +118,7 @@
     xdotool
     xwallpaper
     # wayland tools
+    cliphist
     foot
     grim
     slurp
