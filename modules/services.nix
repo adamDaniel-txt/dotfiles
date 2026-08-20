@@ -63,7 +63,7 @@
   programs.gpu-screen-recorder.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-dmenu;
+    pinentryPackage = pkgs.pinentry-rofi;
     # enableSSHSupport = true;
   };
   virtualisation.docker = {
