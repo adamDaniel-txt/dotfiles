@@ -57,6 +57,8 @@
     };
   };
 
+  programs.mango.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -79,4 +81,5 @@
   '';
 
   programs.slock.enable = true;
+  security.pam.services.swaylock = {};
 }
