@@ -2,13 +2,14 @@
   home.packages = with pkgs; [
     # ai / coding agents
     agent-browser
+    bun
     claude-code
-    opencode
-    pi-coding-agent
     neovim
     nodejs
-    bun
+    opencode
+    pi-coding-agent
     python3
+    uv
     # internet
     google-chrome
     grayjay
@@ -116,5 +117,17 @@
     winboat
     xdotool
     xwallpaper
+    # wayland tools
+    foot
+    grim
+    slurp
+    swaybg
+    swaylock
+    waybar
+    wdisplays
+    wl-clipboard
+    wtype
+    rofi
+    dmenu-wayland
   ];
 }
