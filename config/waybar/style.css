@@ -1,0 +1,108 @@
+/* gruvbox version of daccfiles' waybar theme (gray pills, yellow active) */
+
+@define-color bg0       #1d2021; /* gruvbox bg0_hard — bar */
+@define-color bg1       #282828; /* gruvbox bg0 — pills / workspaces box */
+@define-color bg2       #3c3836; /* gruvbox bg1 — workspace buttons */
+@define-color bg3       #504945; /* gruvbox bg2 — hover */
+@define-color fg        #ebdbb2; /* gruvbox fg — text */
+@define-color orange    #fe8019; /* active: orange pill */
+@define-color yellow    #fabd2f; /* workspace idle accent */
+@define-color red       #fb4934;
+
+* {
+  border-radius: 0px;
+  font-family: monospace;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 1px;
+}
+
+window#waybar {
+  background: transparent;
+  border: none;
+  border-radius: 0px;
+}
+
+#workspaces {
+  border: none;
+  background: @bg1;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 4px;
+  margin: 4px;
+}
+
+#workspaces button {
+  border: none;
+  border-radius: 0px;
+  background: @bg2;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 2px 12px;
+  margin: 2px;
+  color: @yellow;
+}
+
+#workspaces button:hover {
+  border: none;
+  background: @bg3;
+  font-weight: 600;
+  color: @yellow;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  border: none;
+  background: @orange;
+  color: @bg0;
+  padding: 2px 24px;
+}
+
+#workspaces button.active:hover,
+#workspaces button.focused:hover {
+  border: none;
+  background: @yellow;
+  color: @bg0;
+  padding: 2px 24px;
+}
+
+#workspaces button.urgent {
+  background: @red;
+}
+
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#tray {
+  border: none;
+  background: @bg1;
+  box-shadow: none;
+  text-shadow: none;
+  padding: 0 16px;
+  margin: 4px;
+  color: @fg;
+}
+
+#clock:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#tray:hover {
+  border: none;
+  background: @bg2;
+  font-weight: 600;
+  color: @fg;
+}
+
+#network.disconnected {
+  color: @red;
+}
+
+#pulseaudio.muted {
+  color: @yellow;
+}
+
+#tray > .needs-attention {
+  background-color: @bg2;
+}
