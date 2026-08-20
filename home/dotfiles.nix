@@ -4,15 +4,18 @@ let
    dotfiles = "${config.home.homeDirectory}/.config/nixos/config";
    create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
    configs = {
-     nvim = "nvim";
-     fastfetch = "fastfetch";
-     zathura = "zathura";
-     tmux = "tmux";
      dunst = "dunst";
+     fastfetch = "fastfetch";
+     kitty = "kitty";
+     mango = "mango";
      mpv = "mpv";
      ncmpcpp = "ncmpcpp";
+     nvim = "nvim";
+     rofi = "rofi";
+     tmux = "tmux";
+     waybar = "waybar";
      yazi = "yazi";
-     kitty = "kitty";
+     zathura = "zathura";
    };
 in
 
