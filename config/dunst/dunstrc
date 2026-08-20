@@ -7,7 +7,7 @@
 	padding = 15
 	horizontal_padding = 15
 	# origin = bottom-right
-	font = Monospace 10
+	font = Monospace 12
 	format = "<b>%s</b>\n%b"
 
 	# progress_bar = true
