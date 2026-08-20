@@ -48,7 +48,14 @@
   },
   "clock": {
     "format": "{:%b %d (%a) %I:%M%p}",
-    "tooltip-format": "{:%A, %d %b %Y}"
+    "tooltip-format": "{:%A, %d %b %Y}\n{calendar}",
+    "calendar": {
+      "mode": "month",
+      "first-day-of-week": 1,
+      "format": {
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    }
   },
   "tray": {
     "icon-size": 16,

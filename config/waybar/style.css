@@ -106,3 +106,40 @@ window#waybar {
 #tray > .needs-attention {
   background-color: @bg2;
 }
+
+tooltip {
+  background: @bg0;
+  border: 1px solid @bg3;
+  border-radius: 0px;
+}
+
+tooltip * {
+  background: transparent;
+  color: @fg;
+}
+
+.calendar {
+  color: @fg;
+}
+
+.calendar.month,
+.calendar.year {
+  color: @yellow;
+}
+
+.calendar.weekday {
+  color: @orange;
+}
+
+.calendar.weekend {
+  color: @orange;
+}
+
+.calendar.highlight {
+  color: @red;
+  font-weight: 700;
+}
+
+.calendar.weeknumber {
+  color: @bg3;
+}
