@@ -68,6 +68,7 @@ window#waybar {
 
 #workspaces button.urgent {
   background: @red;
+  color: @bg1;
 }
 
 #clock,
