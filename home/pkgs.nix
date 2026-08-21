@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    # ai / coding agents
     agent-browser
     bun
     claude-code
@@ -12,7 +11,6 @@
     uv
     # internet
     google-chrome
-    grayjay
     mullvad-browser
     tor-browser
     # communication
@@ -72,7 +70,6 @@
     pamixer
     ueberzugpp
     upscayl
-    waifu2x-converter-cpp
     yt-dlp
     # lsp
     clang-tools
@@ -102,7 +99,6 @@
     bluetui
     brightnessctl
     dunst
-    gearlever
     keepassxc
     kitty
     maim
