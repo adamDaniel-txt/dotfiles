@@ -6,17 +6,20 @@ let
    configs = {
      dunst = "dunst";
      fastfetch = "fastfetch";
+     foot = "foot";
+     fsel = "fsel";
      kitty = "kitty";
      mango = "mango";
      mpv = "mpv";
      ncmpcpp = "ncmpcpp";
      nvim = "nvim";
+     pi = "pi";
      rofi = "rofi";
+     swaylock = "swaylock";
      tmux = "tmux";
      waybar = "waybar";
      yazi = "yazi";
      zathura = "zathura";
-     pi = "pi";
    };
 in
 
