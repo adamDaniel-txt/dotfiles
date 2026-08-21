@@ -30,6 +30,6 @@
   stylix.icons = {
     enable = true;
     package = pkgs.papirus-icon-theme;
-    dark = "Papirus";
+    dark = "Papirus-Dark";
   };
 }
